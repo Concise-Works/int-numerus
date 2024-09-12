@@ -148,5 +148,42 @@ I.e., given ``$b=c$'' multiplying both sides by $a$ yields ``$ab=ac$'', still $b
 \newpage
 
 \begin{Def}[Prime Numbers]
-    If an integer $n$ is greater than 1 and only has divisors 1 and itself, then $n$ is a \textbf{prime number}.
+
+    $p\in\mathbb{Z}$ is prime if $p\neq 0$ and $p$ has no divisors other than $1$ and $p$.
 \end{Def}
+\underline{We will \textbf{only} consider positive prime numbers,} in this text. Examples of primes are:
+$$2,3,5,7,11,13,17,\dots$$
+
+\begin{Def}[Composite Numbers]
+
+    $n,a,b\in\mathbb{Z}$ is composite if $n=ab$ and $1<a<n$ and $1<b<n$.
+\end{Def}
+I.e., a composite number is a number can be factor into two integers, other than $1$ and itself.
+
+\noindent
+\textbf{Examples:}
+\begin{itemize}
+    \item $4$ is composite because $4=2\cdot2$.
+    \item $6$ is composite because $6=2\cdot3$.
+    \item $10$ is composite because $10=2\cdot5$.
+\end{itemize}
+
+\noindent
+Briefly observe the following:
+\begin{theo}[Division Algorithm]
+
+    For all $a,b\in\mathbb{Z}$, $b\neq0$, there exists unique $q,r\in\mathbb{Z}$ such that $a=bq+r$ and $0\leq r<|b|$.
+\end{theo}
+
+\noindent
+To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely such that:
+
+\begin{center}
+    \HUGE{``\textcolor{red}{$a$}=\textcolor{OliveGreen}{$b$}\textcolor{orange}{$q$}+\textcolor{blue}{$r$}''}\\
+    \vspace*{.5em}
+    \LARGE{\textcolor{red}{\textbf{Dividend}} = \textcolor{OliveGreen}{\textbf{Divisor}} $\cdot$ \textcolor{orange}{\textbf{Quotient}} + \textcolor{blue}{\textbf{Remainder}}}\\
+    \Large{\textcolor{OliveGreen}{$b$} fits into \textcolor{red}{$a$} \textcolor{orange}{$q$} times with \textcolor{blue}{$r$} left over.}
+\end{center}
+
+
+
