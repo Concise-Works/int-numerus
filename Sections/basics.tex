@@ -2,7 +2,7 @@
 
 \section{Divisibility and primality}
 
-\bt{``$a$ divides $b$''}, i.e., $\left(\frac{b}{a}\right)$, means \bt{$b$} is reached by \bt{$a$}, when \bt{$a$} is multiplied by some integer.
+\bt{``$a$ divides $b$''}, i.e., $\left(\frac{b}{a}\right)$, means \bt{$b$} is reached by \bt{$a$}, when \underline{\bt{$a$} is multiplied by \textbf{some integer}.}
 
 \begin{Def}[Division]
 
@@ -44,23 +44,53 @@
 
 \noindent
 Observe the following:
-\begin{theo}[Properties of divisibility]
+\begin{theo}[Properties of Divisibility]
 
     \textbf{Theorem 1.1.} For all $a, b, c \in \mathbb{Z}$:
 
     \begin{itemize}
-        \item[(i)] $a \mid a$, $1 \mid a$, and $a \mid 0$;
-        \item[(ii)] $0 \mid a$ if and only if $a = 0$;
-        \item[(iii)] $a \mid b$ if and only if $-a \mid b$ if and only if $a \mid -b$;
-        \item[(iv)] $a \mid b$ and $a \mid c$ implies $a \mid (b + c)$;
-        \item[(v)] $a \mid b$ and $b \mid c$ implies $a \mid c$.
+        \item[(i)] $a \mid a$, $1 \mid a$, and $a \mid 0$
+        \item[(ii)] $0 \mid a$ if and only if $a = 0$
+        \item[(iii)] $a \mid b$ if and only if $-a \mid b$ if and only if $a \mid -b$
+        \item[(iv)] $a \mid b$ and $a \mid c$ implies $a \mid (b + c)$
+        \item[(v)] $a \mid b$ and $b \mid c$ implies $a \mid c$
     \end{itemize}
 \end{theo}
 
+\noindent
 To prove,
-
 \begin{Proof}[Theorem 1.1]
+    \textit{\textbf{Proof.}} For all $a, b, x,y \in \mathbb{Z}$:
     \begin{itemize}
-        \item hi
+        \item[(i)]  \begin {itemize}
+        \item ``$a\mid a$'' means ``$a = ax$'', choosing $x = 1$ always satisfies.
+        \item ``$1\mid a$'' because $a = 1\cdot a$
+        \item ``$a\mid 0$'' because $0 = a\cdot 0$
     \end{itemize}
+    \item[(ii)] \begin {itemize}
+    \item If ``$0\mid a$'' then ``$a = 0\cdot x$'', 0 times any integer is 0, so $a = 0$
+    \item If ``$a = 0$'' then ``$0 = 0\cdot x$'', $x$ can be any integer.
+    \end {itemize}
+
+    \noindent
+    \item[(iii)]
+    Proving $a\mid b \Longleftrightarrow -a\mid b$:
+    \begin{itemize}
+        \item If ``$a\mid b$'' then ``$b = ax = (-a)(-x)$'', $-x$ is some integer, say $x'$.\\
+              So ``$b = (-a)x'$'' then ``$-a\mid b$''
+        \item If ``$-a\mid b$'' then ``$b = (-a)x$'', choose $x$ to be some negative integer.\\
+    \end{itemize}
+    \vspace{-1em}
+    Proving $-a\mid b \Longleftrightarrow a\mid -b$:
+    \begin{itemize}
+        \item If ``$-a\mid b$'' then ``$b = (-a)x$'', choose $x$ positive integer.
+        \item If ``$a\mid -b$'' then ``$-b = ax$'', choose $x$ to be some negative integer.
+    \end{itemize}
+    \item[(iv)] If ``$a\mid b$'' and ``$a\mid c$'' then ``$b = ax$'' and ``$c = ay$'' add both equations, ``$b+c = ax+ay$''
+    factor, ``$b+c = a(x+y)$'', $(x+y)$ is some integer, so ``$a\mid (b+c)$''
+
+    \item[(v)] If ``$a\mid b$'' and ``$b\mid c$'' then ``$b = ax$'' and ``$c = by$'' substitute $b$ in $c$, ``$c = (ax)y$''\\
+    shift terms, ``$c = a(xy)$'', $(xy)$ is some integer, so ``$a\mid c$''
+    \end{itemize}
+
 \end{Proof}
