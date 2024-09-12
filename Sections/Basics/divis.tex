@@ -58,6 +58,8 @@ Observe the following:
 \end{theo}
 
 \noindent
+Try to prove these properties before reading the proof below.
+\noindent
 \begin{Proof}[Theorem 1.1]
     \textit{\textbf{Proof.}} For all $a, b, x,y \in \mathbb{Z}$:
     \begin{itemize}
@@ -101,3 +103,37 @@ Observe the following:
 For all $a, b \in \mathbb{Z}$: ``$a \mid b$'' $\land$ ``$b \mid a$'' $\Longleftrightarrow$ ``$a = \pm b$''. Additionally, ``$a \mid 1$'' $\Longleftrightarrow$ ``$a = \pm 1$''.
 \end{theo}
 
+\begin{Proof}[Theorem 1.2]
+    \textit{\textbf{Proof.}} For all $a, b, x,y \in \mathbb{Z}$:\\
+
+    \noindent
+    Proving ``$a\mid b$'' $\land$ ``$b\mid a$'' $\Longrightarrow$ ``$a = \pm b$'':
+    \begin{align*}
+        a\mid b \quad a\mid b \quad \quad & \textit{ Given}                      \\
+        b = ax \quad a = by         \quad & \textit{ Definition of Division}     \\
+        ab = (ax) (by)              \quad & \textit{ Multiplying both equations} \\
+        ab = (ab)(xy)               \quad & \textit{ Shift terms}                \\
+        1 = xy                      \quad & \textit{ Divide both sides by } ab
+    \end{align*}
+
+    \noindent
+    $x$ and $y$ are integers, so ``$x = y = 1$''. Substitute $x$ and $y$,
+    \hspace{-3em}
+    \begin{align*}
+        b = a(1) \quad a = b(1) \quad & \textit{ Substitute}              \\
+        a = b \quad                   & \textit{ Simplify } \hspace*{9em}
+    \end{align*}
+    $x$ or $y$ could be $\pm$, so ``$a = \pm b$''. Now ``$a=\pm b$'' $\Longrightarrow$ ``$a\mid b$'' and ``$b\mid a$''.
+    From Theorem 1.1, we can use (i) to show ``$a\mid a$'' substitute $b$ in for $a$, ``$a\mid b$'' or $b\mid a$.\\
+
+    \noindent
+    Proving ``$a\mid 1$'' $\Longrightarrow$ ``$a = \pm 1$'':
+    \begin{align*}
+        a\mid 1 \quad \quad  & \textit{ Given}                  \\
+        1 = ax \quad \quad   & \textit{ Definition of Division} \\
+        1 = a(1) \quad \quad & \textit{ Simplify}               \\
+    \end{align*}
+    $a$ must be 1, $x$ could be $\pm$, so ``$a = \pm 1$''.
+
+
+\end{Proof}
