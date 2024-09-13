@@ -60,7 +60,7 @@ Observe the following:
 \noindent
 Try to prove these properties before reading the proof below.
 \noindent
-\begin{Proof}[Theorem 1.1]
+\begin{Proof}[Properties of Divisibility]
     \textit{\textbf{Proof.}} For all $a, b, x,y \in \mathbb{Z}$:
     \begin{itemize}
         \item[(i)]  \begin {itemize}
@@ -103,7 +103,7 @@ Try to prove these properties before reading the proof below.
 For all $a, b \in \mathbb{Z}$: ``$a \mid b$'' $\land$ ``$b \mid a$'' $\Longleftrightarrow$ ``$a = \pm b$''. Additionally, ``$a \mid 1$'' $\Longleftrightarrow$ ``$a = \pm 1$''.
 \end{theo}
 
-\begin{Proof}[Theorem 1.2]
+\begin{Proof}[Reflexive Divisibility]
     \textit{\textbf{Proof.}} For all $a, b, x,y \in \mathbb{Z}$:\\
 
     \noindent
@@ -151,7 +151,7 @@ I.e., given ``$b=c$'' multiplying both sides by $a$ yields ``$ab=ac$'', and stil
 
     $p\in\mathbb{Z}$ is prime if $p\neq 0$ and $p$ has no divisors other than $1$ and $p$.
 \end{Def}
-\underline{We will \textbf{only} consider positive prime numbers,} in this text. Examples of primes are:
+\underline{We will \textbf{only consider positive prime numbers},} in this text. Examples of primes are:
 $$2,3,5,7,11,13,17,\dots$$
 
 \begin{Def}[Composite Numbers]
@@ -194,5 +194,23 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
 \begin{Note}
     \textbf{Note:} Funnily, Theorem 1.3 is called the Division Algorithm, despite not being an algorithm.
 \end{Note}
+
+\newpage
+
+\begin{Proof} [Division Algorithm]
+    \textit{\textbf{Proof.}} For all $a,b\in\mathbb{Z}$, $b\neq0$, there exists unique $q,r\in\mathbb{Z}$ such that $a=bq+r$ and $0\leq r<|b|$.
+    \begin{itemize}
+        \item Existence: Take the definition of division ``$a\mid b$'' then ``$b=ax$'', $x$ is
+              \textit{some} integer. Note ``$b-ax=0$'', shows we are a whole number and not some decimal. Though what if we weren't wholeNow consider  as this would confirm To account for all \textit{such} integers we construct the set ``$S=\{a-bx:x\in\mathbb{Z}\}$''
+              $S$ is non-empty because $a-b\cdot0=a\in S$. By the Well-Ordering Principle, $S$ has a least element, say $r$.\\
+              $r=a-bq$ for some $q\in\mathbb{Z}$.\\
+              $r\geq0$ because $r\in S$.\\
+              $r<|b|$ because $r$ is the least element of $S$.
+        \item Uniqueness: Suppose $a=bq_1+r_1=bq_2+r_2$ where $0\leq r_1,r_2<|b|$.\\
+              Subtract both equations, $b(q_1-q_2)=r_2-r_1$.\\
+              $|b|\leq r_2-r_1<|b|$, so $r_2-r_1=0$.\\
+              $r_1=r_2$ and $q_1=q_2$.
+    \end{itemize}
+\end{Proof}
 
 
