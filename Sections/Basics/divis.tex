@@ -203,14 +203,29 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     \noindent
     Take the definition of division ``$a\mid b$'' then ``$b=ax$'', $x$ is
     \textit{some} integer. Subtracting $ax$ from both sides, ``$b-ax=0$'', shows we are a whole number, nothing is left over.
-    But what if we weren't whole and we had some other integer than 0? Let's represent all possibilities by the set
-    ``$S=\{a-bx:x\in\mathbb{Z}\}$''.\\
+    But what if we had some other integer than 0? Let's represent all possibilities by the set:
+    \LARGE{$$S=\{b-ax:x\in\mathbb{Z}\}$$}
+    \normalsize
+    \begin{center}
+        Showing how many times $b$ fits into $a$, $x$ times.
+    \end{center}
 
     \noindent
-    While running over all $x\in\mathbb{Z}$, we will see how many times $b$ fits into $a$ $x$ times.\\
-
-    We will use the Well-Ordering Principle \textit{(ch. Prerequisites)} to say
-    there is a least element of this set.\\
+    Let's try some outputs of $S$: ``$a=2$, $b=6$'':\\
+    \begin{center}
+        \begin{tabular}{c|cc}
+            $x$ & $a-bx$                \\
+            \hline
+            0   & 0      & $=6-2\cdot0$ \\
+            1   & 4      & $=6-2\cdot1$ \\
+            2   & 2      & $=6-2\cdot2$ \\
+            3   & 0      & $=6-2\cdot3$ \\
+            \hline
+            4   & -2     & $=6-2\cdot4$ \\
+        \end{tabular}
+    \end{center}
+    Let's not consider negative results such as $x=4$. We'll modify the set $S$ to:
+    \LARGE{$$S=\{|b-ax|:x\in\mathbb{Z}\}$$}
     \begin{itemize}
         \item Existence:
 
