@@ -206,7 +206,7 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     \large{$$S=\{a-bx:x\in\mathbb{Z}\}$$}
     \normalsize
     \begin{center}
-        $a$ fits into $b$, for some $x$ times. E.g., ``$b=2$, $a=6$'':
+        What's left of $a$ after taking $b$, $x$ times. E.g., ``$b=2$, $a=6$'':
     \end{center}
     \begin{center}
         \begin{tabular}{c|cc}
@@ -222,19 +222,19 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     \end{center}
 
     \noindent
-    Let r be outputs of $S$ and ``$q:=x$'' then ``$a-bq=r$'' add $bx$ to both sides, \underline{``$a=bq+r$''}\\
+    Let r be outputs of $S$ and ``$q:=x$'' then ``$a-bq=r$'' add $bx$ to both sides, \underline{``$a=bq+r$''}.\\
 
     \noindent
     \textbf{Intuitively:} I cut a cake of size $a$ into pieces of $b$ width for $q$ people. Leftovers $r$
-    can't be more than the size of my cake: I either have none left or shared nothing, i.e., \underline{``$0\leq r<b$''}\\
+    can't exceed the size of the original cake: between nothing left or sharing nothing, i.e., \underline{``$0\leq r<b$''}.\\
 
     \noindent
     We found our lower bound: \Large{$S=\{a-bx:x\in\mathbb{Z}, a-bx\geq0\}$.}\\
 
     \normalsize
     \noindent
-    \textbf{Formally:} By the Well-Ordering Principle, there exists a smallest element in $S$, call it $r$.
-    To show existence in $S$, choose ``$x=0$'' then ``$a-b(0)=a$'' we are left with ``$a\geq 0$''\\
+    \textbf{Formally:} By the Well-Ordering Principle, there exists a smallest element in $S$, say $r$.
+    To show existence in $S$, choose ``$x=0$'' then ``$a-b(0)=a$'' we are left with ``$a\geq 0$''.\\
 
     \noindent
     Without loss of generality, assume ``$a<0$''. To satisfy ``$a-bx\geq0$'' choose ``$x=a$'' yielding
@@ -242,15 +242,15 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     ``$a(1-b)\geq0$'' as ``$(n<0\,\cdot m\leq0)=p\geq0$'' for some $n,m,p\in\mathbb{Z}$. So \underline{$S$ is not empty.}\\
 
     \noindent
-    To show \underline{``$r<b$''} we argue by contradiction ``$r\geq b$'' then ``$r=a-bq\geq b$'' subtract $b$ from both sides,
-    ``$(r-b=a-bq-b)\geq (b-b$ = 0)'' factoring we see ``$r-b=a-b(q+1)$'' since
-    $q+1$ is some integer say $q'$, ``$r-b=a-bq'$'' showing \underline{``$(r-b)<r$'' contradicting our assumption.}\\
+    For \underline{``$r<b$''} we argue by contradiction ``$r\geq b$'' then ``$r=a-bq\geq b$''. Subtract $b$ from both sides,
+    ``$(r-b=a-bq-b)\geq (b-b$ = 0)'' factoring we see ``$r-b=a-b(q+1)$''. Since
+        ``$q+1$'' is some integer say $q'$, ``$r-b=a-bq'$'' showing \underline{``$(r-b)<r$'' contradicting our assumption.}\\
 
         \noindent
-        To show $q$ and $r$ are unique, we argue by contradiction, assume there exists another pair $q',r'$
-        such that ``$a=(bq'+r')=(bq+r)$'' and ``$0\leq r'<b$''. Without loss of generality, assume ``$r'\geq r$''
-        re-arrange both sides, ``$r'-r=bq-bq'$'' factor ``$r'-r=b(q-q')$'', then ``$b\mid r'-r$''
-        , but ``$0\leq r'-r<b$'' so ``$r'-r=0$' therefore ``$r'=r$'' showing \underline{``$r$ is unique''}.
+        For $q,r$ uniqueness, we argue by contradiction, assume another pair $q',r'$ such that\\
+        ``$a=(bq'+r')=(bq+r)$'' and ``$0\leq r'<b$''. Without loss of generality, assume ``$r'\geq r$''.
+        re-arrange both sides, ``$r'-r=bq-bq'$'' factor ``$r'-r=b(q-q')$''. Then ``$b\mid r'-r$''
+        , but ``$0\leq r'-r<b$'' so ``$r'-r=0$'' therefore ``$r'=r$'' showing \underline{``$r$ is unique''}.
         ``$b(q-q')=0$'' therefore ``$(q-q')=0$'' hence ``$q=q'$'' showing \underline{``$q$ is unique''}.
 \end{Proof}
 
