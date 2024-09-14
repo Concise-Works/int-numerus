@@ -2,15 +2,15 @@
 
 \section{Divisibility and primality}
 
-\bt{``$a$ divides $b$''}, i.e., $\left(\frac{b}{a}\right)$, means \bt{$b$} is reached by \bt{$a$}, when \underline{\bt{$a$} is multiplied by \textbf{some integer}.}
+\bt{$a$ divides $b$}, i.e., $\left(\frac{b}{a}\right)$, means \bt{$b$} is reached by \bt{$a$}, when \underline{\bt{$a$} is multiplied by \textbf{some integer}.}
 
 \begin{Def}[Division]
 
-    Let $a,b,x\in\mathbb{Z}$: $\left(\frac{b}{a}\right)$ means ``$b=ax$''.\\
+    Let $a,b,x\in\mathbb{Z}$: $\left(\frac{b}{a}\right)$ means $b=ax$.\\
 
     \noindent
     \underline{\textbf{Denoted:} $a|b$,}\\
-    $\qquad$ read ``$a$ divides $b$,'' and ``$a$ doesn't divide $b$'' is, $a\nmid b$.\\
+    $\qquad$ read $a$ divides $b$, and $a$ doesn't divide $b$ is, $a\nmid b$.\\
     \noindent
 \end{Def}
 
@@ -25,12 +25,12 @@
 
 
 \begin{Note}
-    \textbf{Note:} $a,b,x\in\mathbb{Z}$ for, ``$\left(\frac{b}{a}\right)$'' or ``$b = ax$'' are labeled, $a$: \bt{divisor}, $b$: \bt{dividend}, $x$: \bt{quotient}.
+    \textbf{Note:} $a,b,x\in\mathbb{Z}$ for, $\left(\frac{b}{a}\right)$ or $b = ax$ are labeled, $a$: \bt{divisor}, $b$: \bt{dividend}, $x$: \bt{quotient}.
 \end{Note}
 
 \begin{Tip}
-    Many problems will involve manipulating this ``$b=ax$'' equation. Whether
-    it's substituting $b$ for $ax$ or vice-versa, or adding/subtracting/multiplying/dividing ``$b=ax$''
+    Many problems will involve manipulating this $b=ax$ equation. Whether
+    it's substituting $b$ for $ax$ or vice-versa, or adding/subtracting/multiplying/dividing $b=ax$
     to itself to reveal some property.\\
 
     \noindent
@@ -49,11 +49,11 @@ Observe the following:
     \textbf{Theorem 1.1.} For all $a, b, c \in \mathbb{Z}$:
 
     \begin{itemize}
-        \item[(i)] ``$a \mid a$'', ``$1 \mid a$'', and ``$a \mid 0$''
-        \item[(ii)] ``$0 \mid a$'' $\Longleftrightarrow$ ``$a = 0$''
-        \item[(iii)] ``$a \mid b$'' $\Longleftrightarrow$ ``$-a \mid b$'' $\Longleftrightarrow$ ``$a \mid -b$''
-        \item[(iv)] ``$a \mid b$'' $\land$ ``$a \mid c$'' $\Longrightarrow$ ``$a \mid (b + c)$''
-        \item[(v)] ``$a \mid b$'' $\land$ ``$b \mid c$'' $\Longrightarrow$ ``$a \mid c$''
+        \item[(i)] $a \mid a$, $1 \mid a$, and $a \mid 0$
+        \item[(ii)] $0 \mid a$ $\Longleftrightarrow$ $a = 0$
+        \item[(iii)] $a \mid b$ $\Longleftrightarrow$ $-a \mid b$ $\Longleftrightarrow$ $a \mid -b$
+        \item[(iv)] $a \mid b$ $\land$ $a \mid c$ $\Longrightarrow$ $a \mid (b + c)$
+        \item[(v)] $a \mid b$ $\land$ $b \mid c$ $\Longrightarrow$ $a \mid c$
     \end{itemize}
 \end{theo}
 
@@ -64,34 +64,34 @@ Try to prove these properties before reading the proof below.
     \textit{\textbf{Proof.}} For all $a, b, x,y \in \mathbb{Z}$:
     \begin{itemize}
         \item[(i)]  \begin {itemize}
-        \item ``$a\mid a$'' means ``$a = ax$'', choosing $x = 1$ always satisfies.
-        \item ``$1\mid a$'' because $a = 1\cdot a$
-        \item ``$a\mid 0$'' because $0 = a\cdot 0$
+        \item $a\mid a$ means $a = ax$, choosing $x = 1$ always satisfies.
+        \item $1\mid a$ because $a = 1\cdot a$
+        \item $a\mid 0$ because $0 = a\cdot 0$
     \end{itemize}
     \item[(ii)] \begin {itemize}
-    \item If ``$0\mid a$'' then ``$a = 0\cdot x$'', 0 times any integer is 0, so $a = 0$
-    \item If ``$a = 0$'' then ``$0 = 0\cdot x$'', $x$ can be any integer.
+    \item If $0\mid a$ then $a = 0\cdot x$, 0 times any integer is 0, so $a = 0$
+    \item If $a = 0$ then $0 = 0\cdot x$, $x$ can be any integer.
     \end {itemize}
 
     \noindent
     \item[(iii)]
     Proving $a\mid b \Longleftrightarrow -a\mid b$:
     \begin{itemize}
-        \item If ``$a\mid b$'' then ``$b = ax = (-a)(-x)$'', $-x$ is some integer, say $x'$.\\
-              So ``$b = (-a)x'$'' then ``$-a\mid b$''
-        \item If ``$-a\mid b$'' then ``$b = (-a)x$'', choose $x$ to be some negative integer.\\
+        \item If $a\mid b$ then $b = ax = (-a)(-x)$, $-x$ is some integer, say $x'$.\\
+              So $b = (-a)x'$ then $-a\mid b$
+        \item If $-a\mid b$ then $b = (-a)x$, choose $x$ to be some negative integer.\\
     \end{itemize}
     \vspace{-1em}
     Proving $-a\mid b \Longleftrightarrow a\mid -b$:
     \begin{itemize}
-        \item If ``$-a\mid b$'' then ``$b = (-a)x$'', choose $x$ positive integer.
-        \item If ``$a\mid -b$'' then ``$-b = ax$'', choose $x$ to be some negative integer.
+        \item If $-a\mid b$ then $b = (-a)x$, choose $x$ positive integer.
+        \item If $a\mid -b$ then $-b = ax$, choose $x$ to be some negative integer.
     \end{itemize}
-    \item[(iv)] If ``$a\mid b$'' and ``$a\mid c$'' then ``$b = ax$'' and ``$c = ay$'' add both equations, ``$b+c = ax+ay$''
-    factor, ``$b+c = a(x+y)$'', $(x+y)$ is some integer, so ``$a\mid (b+c)$''
+    \item[(iv)] If $a\mid b$ and $a\mid c$ then $b = ax$ and $c = ay$ add both equations, $b+c = ax+ay$
+    factor, $b+c = a(x+y)$, $(x+y)$ is some integer, so $a\mid (b+c)$
 
-    \item[(v)] If ``$a\mid b$'' and ``$b\mid c$'' then ``$b = ax$'' and ``$c = by$'' substitute $b$ in $c$, ``$c = (ax)y$''\\
-    shift terms, ``$c = a(xy)$'', $(xy)$ is some integer, so ``$a\mid c$''.
+    \item[(v)] If $a\mid b$ and $b\mid c$ then $b = ax$ and $c = by$ substitute $b$ in $c$, $c = (ax)y$\\
+    shift terms, $c = a(xy)$, $(xy)$ is some integer, so $a\mid c$.
     \end{itemize}
 
 \end{Proof}
@@ -100,14 +100,14 @@ Try to prove these properties before reading the proof below.
 
 \begin {theo}[Reflexive Divisibility]
 
-For all $a, b \in \mathbb{Z}$: ``$a \mid b$'' $\land$ ``$b \mid a$'' $\Longleftrightarrow$ ``$a = \pm b$''. Additionally, ``$a \mid 1$'' $\Longleftrightarrow$ ``$a = \pm 1$''.
+For all $a, b \in \mathbb{Z}$: $a \mid b$ $\land$ $b \mid a$ $\Longleftrightarrow$ $a = \pm b$. Additionally, $a \mid 1$ $\Longleftrightarrow$ $a = \pm 1$.
 \end{theo}
 
 \begin{Proof}[Reflexive Divisibility]
     \textit{\textbf{Proof.}} For all $a, b, x,y \in \mathbb{Z}$:\\
 
     \noindent
-    Proving ``$a\mid b$'' $\land$ ``$b\mid a$'' $\Longrightarrow$ ``$a = \pm b$'':
+    Proving $a\mid b$ $\land$ $b\mid a$ $\Longrightarrow$ $a = \pm b$:
     \begin{align*}
         a\mid b \quad a\mid b \quad \quad & \textit{ Given}                      \\
         b = ax \quad a = by         \quad & \textit{ Definition of Division}     \\
@@ -117,33 +117,33 @@ For all $a, b \in \mathbb{Z}$: ``$a \mid b$'' $\land$ ``$b \mid a$'' $\Longleftr
     \end{align*}
 
     \noindent
-    $x$ and $y$ are integers, so ``$x = y = 1$''. Substitute $x$ and $y$,
+    $x$ and $y$ are integers, so $x = y = 1$. Substitute $x$ and $y$,
     \hspace{-3em}
     \begin{align*}
         b = a(1) \quad a = b(1) \quad & \textit{ Substitute}              \\
         a = b \quad                   & \textit{ Simplify } \hspace*{9em}
     \end{align*}
-    $x$ or $y$ could be $\pm$, so ``$a = \pm b$''. Now ``$a=\pm b$'' $\Longrightarrow$ ``$a\mid b$'' and ``$b\mid a$''.
-    From Theorem 1.1, we can use (i) to show ``$a\mid a$'' substitute $b$ in for $a$, ``$a\mid b$'' or $b\mid a$.\\
+    $x$ or $y$ could be $\pm$, so $a = \pm b$. Now $a=\pm b$ $\Longrightarrow$ $a\mid b$ and $b\mid a$.
+    From Theorem 1.1, we can use (i) to show $a\mid a$ substitute $b$ in for $a$, $a\mid b$ or $b\mid a$.\\
 
     \noindent
-    Proving ``$a\mid 1$'' $\Longrightarrow$ ``$a = \pm 1$'':
+    Proving $a\mid 1$ $\Longrightarrow$ $a = \pm 1$:
     \begin{align*}
         a\mid 1 \quad \quad  & \textit{ Given}                  \\
         1 = ax \quad \quad   & \textit{ Definition of Division} \\
         1 = a(1) \quad \quad & \textit{ Simplify}               \\
     \end{align*}
-    $a$ must be 1, $x$ could be $\pm$, so ``$a = \pm 1$'' then ``$a\mid \pm 1$'' so ``$a\mid 1$''.
+    $a$ must be 1, $x$ could be $\pm$, so $a = \pm 1$ then $a\mid \pm 1$ so $a\mid 1$.
 \end{Proof}
 
 \begin{Def}[Cancellation Law]
 
-    Let $a,b,c\in\mathbb{Z}$: If ``$ab=ac$'' and ``$a\neq 0$'' then ``$b=c$''.
+    Let $a,b,c\in\mathbb{Z}$: If $ab=ac$ and $a\neq 0$ then $b=c$.
 
 \end{Def}
 
 \noindent
-I.e., given ``$b=c$'' multiplying both sides by $a$ yields ``$ab=ac$'', and still $b=c$.
+I.e., given $b=c$ multiplying both sides by $a$ yields $ab=ac$, and still $b=c$.
 
 \newpage
 
@@ -178,7 +178,7 @@ Briefly observe the following:
 To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely such that:
 
 \begin{center}
-    \HUGE{``\textcolor{red}{$a$}=\textcolor{OliveGreen}{$b$}\textcolor{orange}{$q$}+\textcolor{blue}{$r$}''}\\
+    \HUGE{\textcolor{red}{$a$}=\textcolor{OliveGreen}{$b$}\textcolor{orange}{$q$}+\textcolor{blue}{$r$}}\\
     \vspace*{.5em}
     \LARGE{\textcolor{red}{\textbf{Dividend}} = \textcolor{OliveGreen}{\textbf{Divisor}} $\cdot$ \textcolor{orange}{\textbf{Quotient}} + \textcolor{blue}{\textbf{Remainder}}}\\
     \Large{\textcolor{OliveGreen}{$b$} fits into \textcolor{red}{$a$} \textcolor{orange}{$q$} times with \textcolor{blue}{$r$} left over.}
@@ -201,12 +201,12 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     \textit{\textbf{Proof.}} For all $a,b\in\mathbb{Z}$, $b\neq0$, there exists unique $q,r\in\mathbb{Z}$ such that $a=bq+r$ and $0\leq r<|b|$.\\
 
     \noindent
-    The definition of division ``$b\mid a$'' then ``$a=bx$'', $x\in\mathbb{Z}$. Subtract $bx$ from both sides, ``$a-bx=0$'', working out evenly to 0.
+    The definition of division $b\mid a$ then $a=bx$, $x\in\mathbb{Z}$. Subtract $bx$ from both sides, $a-bx=0$, working out evenly to 0.
     Freeze $a$ and $b$, and vary $x$ yields a set of outputs, $S$:
     \large{$$S=\{a-bx:x\in\mathbb{Z}\}$$}
     \normalsize
     \begin{center}
-        What's left of $a$ after taking $b$, $x$ times. E.g., ``$b=2$, $a=6$'':
+        What's left of $a$ after taking $b$, $x$ times. E.g., $b=2$, $a=6$:
     \end{center}
     \begin{center}
         \begin{tabular}{c|cc}
@@ -222,11 +222,11 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     \end{center}
 
     \noindent
-    Let r be outputs of $S$ and ``$q:=x$'' then ``$a-bq=r$'' add $bx$ to both sides, \underline{``$a=bq+r$''}.\\
+    Let r be outputs of $S$ and $q:=x$ then $a-bq=r$ add $bx$ to both sides, \underline{$a=bq+r$}.\\
 
     \noindent
     \textbf{Intuitively:} I cut a cake of size $a$ into pieces of $b$ width for $q$ people. Leftovers $r$
-    can't exceed the size of the original cake: it's between nothing left or nothing shared, i.e., \underline{``$0\leq r<b$''}.\\
+    can't exceed the size of the original cake: it's between nothing left or nothing shared, i.e., \underline{$0\leq r<b$}.\\
 
     \noindent
     We found our lower bound: \Large{$S=\{a-bx:x\in\mathbb{Z}, a-bx\geq0\}$.}\\
@@ -234,24 +234,24 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     \normalsize
     \noindent
     \textbf{Formally:} By the Well-Ordering Principle, there exists a smallest element in $S$, say $r$.
-    To show existence in $S$, choose ``$x=0$'' then ``$a-b(0)=a$'' we are left with ``$a\geq 0$''.\\
+    To show existence in $S$, choose $x=0$ then $a-b(0)=a$ we are left with $a\geq 0$.\\
 
     \noindent
-    Without loss of generality, assume ``$a<0$''. To satisfy ``$a-bx\geq0$'' choose ``$x=a$'' yielding
-    ``$a-ba=a(1-b)$'' we know ``($a<0)$'' and ``($b\geq1$)'' as ``$0\leq r <b$''. So ``$(1-b)\leq0$''. Hence
-    ``$a(1-b)\geq0$'' as ``$(n<0\,\cdot m\leq0)=p\geq0$'' for some $n,m,p\in\mathbb{Z}$. So \underline{$S$ is not empty.}\\
+    Without loss of generality, assume $a<0$. To satisfy $a-bx\geq0$ choose $x=a$ yielding
+    $a-ba=a(1-b)$ we know ($a<0)$ and ($b\geq1$) as $0\leq r <b$. So $(1-b)\leq0$. Hence
+    $a(1-b)\geq0$ as $(n<0\,\cdot m\leq0)=p\geq0$ for some $n,m,p\in\mathbb{Z}$. So \underline{$S$ is not empty.}\\
 
     \noindent
-    For \underline{``$r<b$''} we argue by contradiction ``$r\geq b$'' then ``$r=a-bq\geq b$''. Subtract $b$ from both sides,
-    ``$(r-b=a-bq-b)\geq (b-b$ = 0)'' factoring we see ``$r-b=a-b(q+1)$''. Since
-        ``$q+1$'' is some integer say $q'$, ``$r-b=a-bq'$'' showing \underline{``$(r-b)<r$'' contradicting our assumption.}\\
+    For \underline{$r<b$} we argue by contradiction $r\geq b$ then $r=a-bq\geq b$. Subtract $b$ from both sides,
+    $(r-b=a-bq-b)\geq (b-b$ = 0) factoring we see $r-b=a-b(q+1)$. Since
+    $q+1$ is some integer say $q'$, $r-b=a-bq'$ showing \underline{$(r-b)<r$ contradicting our assumption.}\\
 
         \noindent
         For $q,r$ uniqueness, we argue by contradiction, assume another pair $q',r'$ such that\\
-        ``$a=(bq'+r')=(bq+r)$'' and ``$0\leq r'<b$''. Without loss of generality, assume ``$r'\geq r$''.
-        re-arrange both sides, ``$r'-r=bq-bq'$'' factor ``$r'-r=b(q-q')$''. Then ``$b\mid r'-r$''
-        , but ``$0\leq r'-r<b$'' so ``$r'-r=0$'' therefore ``$r'=r$'' showing \underline{``$r$ is unique''}.
-        ``$b(q-q')=0$'' therefore ``$(q-q')=0$'' hence ``$q=q'$'' showing \underline{``$q$ is unique''}.
+    $a=(bq'+r')=(bq+r)$ and $0\leq r'<b$. Without loss of generality, assume $r'\geq r$.
+        re-arrange both sides, $r'-r=bq-bq'$ factor $r'-r=b(q-q')$. Then $b\mid r'-r$
+        , but $0\leq r'-r<b$ so $r'-r=0$ therefore $r'=r$ showing \underline{$r$ is unique}.
+    $b(q-q')=0$ therefore $(q-q')=0$ hence $q=q'$ showing \underline{$q$ is unique}.
 \end{Proof}
 
 
