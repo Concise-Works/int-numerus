@@ -225,8 +225,8 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     Let r be outputs of $S$ and ``$q:=x$'' then ``$a-bq=r$'' add $bx$ to both sides, \underline{``$a=bq+r$''}\\
 
     \noindent
-    \textbf{Intuitively:} I cut a cake of size $a$ for $q$ people. I cut $b$ big slices. I can't have
-    more leftovers than the size of the cake: I either have none left or shared nothing, i.e., \underline{``$0\leq r<b$''}\\
+    \textbf{Intuitively:} I cut a cake of size $a$ into pieces of $b$ width for $q$ people. Leftovers $r$
+    can't be more than the size of my cake: I either have none left or shared nothing, i.e., \underline{``$0\leq r<b$''}\\
 
     \noindent
     We found our lower bound: \Large{$S=\{a-bx:x\in\mathbb{Z}, a-bx\geq0\}$.}\\
@@ -242,7 +242,9 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
     ``$a(1-b)\geq0$'' as ``$(n<0\,\cdot m\leq0)=p\geq0$'' for some $n,m,p\in\mathbb{Z}$. So \underline{$S$ is not empty.}\\
 
     \noindent
-
+    To show ``$r<b$'' we argue by contradiction ``$r\geq b$'' then ``$r=a-bq\geq b$'' subtract $b$ from both sides,
+    ``$(r-b=a-bq-b)\geq (b-b$ = 0)'' factoring we see ``$r-b=a-b(q+1)$'' since
+    $q+1$ is some integer say $q'$, ``$r-b=a-bq'$'' showing ``$(r-b)<r$'' contradicting our assumption.\\
 
 
 \end{Proof}
