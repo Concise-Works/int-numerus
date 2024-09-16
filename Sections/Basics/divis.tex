@@ -1,6 +1,6 @@
 \chapter{Basic properties of Integers}
 
-\section{Divisibility and primality}
+\section{Divisibility}
 
 \bt{$a$ divides $b$}, i.e., $\left(\frac{b}{a}\right)$, means \bt{$b$} is reached by \bt{$a$}, when \underline{\bt{$a$} is multiplied by \textbf{some integer}.}
 
@@ -275,102 +275,6 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b\neq0$, $q$ and $r$ exist uniquely
 \end{Proof}
 
 \newpage
-
-\noindent
-\textbf{Remember:} For $a\in\mathbb{R}$, \underline {$a\in[0,1)$ is a range}, i.e., including decimals from 0 to 1 (excluding 1).\\
-
-\begin{Def}[Floor \& Ceiling]
-
-    \label{def:floor_ceiling}
-
-    For $x\in\mathbb{R}$, $m,n\in\mathbb{Z}$ we map $\mathbb{R}\rightarrow\mathbb{Z}$,\\
-
-    \noindent
-    \textbf{Floor} $x$, $\floor{x}$, is the largest $m$ such that $m\leq x<m+\varepsilon$, where $\varepsilon\in[0,1)$.\\
-
-    \vspace{-.5em}
-    \noindent
-    \textbf{Ceiling} $x$, $\ceil{x}$, is the smallest $n$ such that $n-\varepsilon<x\leq n$, where $\varepsilon\in[0,1)$.\\
-
-
-\end{Def}
-\noindent
-
-\begin{Def}[Mod Operator]
-
-    \label{def:mod_operator}
-
-    Let $a,b\in\mathbb{Z}$, $b\>0$: The remainder of $a$ divided by $b$. I.e., $a-b\floor{\frac{a}{b}}$.\\
-
-    \noindent
-    \textbf{Denoted:} ``$a\bmod b$'' or ``$a\,\%\,b$''.
-\end{Def}
-
-\noindent
-\textbf{Examples:}
-\begin{itemize}
-    \item $8\bmod3=2$
-    \item $5\bmod2=1$
-\end{itemize}
-
-\noindent
-From The Division Algorithm (\ref{theo:division_algorithm}) we see for all $a,b\in\mathbb{Z}$, $b\neq0$:
-$a=bq+r$ then $r=a\bmod b$.
-
-\begin{Proof}[Mod Operator]
-    \underline{The Division Algorithm (\ref{theo:division_algorithm}) only works for $b>0$.} To generalize for $b<0$,
-    \begin{align*}
-        a=bq+r \quad \quad    & \textit{ Given}                    \\
-        a/b=q+r/b \quad \quad & \textit{ Divide both sides by $b$}
-    \end{align*}
-    \noindent
-    We know $0\leq r<b$, dividing $b$ yielded $0\leq \dfrac{r}{b}<1$, so
-    $$\dfrac{r}{b}\in[0,1)\in\mathbb{R}$$
-    We notice $q=\left\lfloor\dfrac{a}{b}\right\rfloor$, as $q$ is the largest integer that fits into $a$, $b$ times.
-\end{Proof}
-\begin{Tip}
-    $q=\left\lfloor\dfrac{a}{b}\right\rfloor$ is similar to integer division in programming languages.
-\end{Tip}
-
-\newpage
-
-\begin{theo}[Division Algorithm Extended]
-
-    Let $a, b \in \mathbb{Z}$ with $b > 0$, and let $x \in \mathbb{R}$. Then there exist unique $q, r \in \mathbb{Z}$ such that $a = bq + r$ and $r \in [x, x + b)$.
-\end{theo}
-
-\noindent
-$r \in [x, x + b)$ allows us to work with negative numbers and different intervals. Going back
-to the Division Algorithm Proof (\ref{proof:division_algorithm}) and extending our example:\\
-
-\begin{center}
-    $S=\{a-bx:q\in\mathbb{Z}\}$, $a=6$, $b=2$, remainder output:
-\end{center}
-\begin{center}
-    \begin{tabular}{c|cc}
-        $x$ & $a-bx$                \\
-        \hline
-        0   & 0      & $=6-2\cdot0$ \\
-        1   & 4      & $=6-2\cdot1$ \\
-        2   & 2      & $=6-2\cdot2$ \\
-        3   & 0      & $=6-2\cdot3$ \\
-        \hline
-        4   & -2     & $=6-2\cdot4$ \\
-        5   & -4     & $=6-2\cdot5$ \\
-        6   & -6     & $=6-2\cdot6$ \\
-        7   & -8     & $=6-2\cdot7$ \\
-    \end{tabular}
-\end{center}
-
-\noindent
-Attempt to divide two numbers varying the divisor.
-You'll notice the remainder will always be between 0 and the divisor (exclusive).
-
-
-
-\noindent
-
-
 
 
 
