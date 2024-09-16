@@ -334,6 +334,42 @@ $a=bq+r$ then $r=a\bmod b$.
 
 \newpage
 
+\begin{theo}[Division Algorithm Extended]
+
+    Let $a, b \in \mathbb{Z}$ with $b > 0$, and let $x \in \mathbb{R}$. Then there exist unique $q, r \in \mathbb{Z}$ such that $a = bq + r$ and $r \in [x, x + b)$.
+\end{theo}
+
+\noindent
+$r \in [x, x + b)$ allows us to work with negative numbers and different intervals. Going back
+to the Division Algorithm Proof (\ref{proof:division_algorithm}) and extending our example:\\
+
+\begin{center}
+    $S=\{a-bx:q\in\mathbb{Z}\}$, $a=6$, $b=2$, remainder output:
+\end{center}
+\begin{center}
+    \begin{tabular}{c|cc}
+        $x$ & $a-bx$                \\
+        \hline
+        0   & 0      & $=6-2\cdot0$ \\
+        1   & 4      & $=6-2\cdot1$ \\
+        2   & 2      & $=6-2\cdot2$ \\
+        3   & 0      & $=6-2\cdot3$ \\
+        \hline
+        4   & -2     & $=6-2\cdot4$ \\
+        5   & -4     & $=6-2\cdot5$ \\
+        6   & -6     & $=6-2\cdot6$ \\
+        7   & -8     & $=6-2\cdot7$ \\
+    \end{tabular}
+\end{center}
+
+\noindent
+Attempt to divide two numbers varying the divisor.
+You'll notice the remainder will always be between 0 and the divisor (exclusive).
+
+
+
+\noindent
+
 
 
 
