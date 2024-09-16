@@ -318,17 +318,23 @@ From The Division Algorithm (\ref{theo:division_algorithm}) we see for all $a,b\
 $a=bq+r$ then $r=a\bmod b$.
 
 \begin{Proof}[Mod Operator]
-    The Division Algorithm (\ref{theo:division_algorithm}) only works for $b>0$. To extend we,
+    \underline{The Division Algorithm (\ref{theo:division_algorithm}) only works for $b>0$.} To generalize for $b<0$,
     \begin{align*}
         a=bq+r \quad \quad    & \textit{ Given}                    \\
-        a/b=q+r/b \quad \quad & \textit{ Divide both sides by $b$} \\
+        a/b=q+r/b \quad \quad & \textit{ Divide both sides by $b$}
     \end{align*}
-
-    \vspace{-3em}
-    \begin{center}
-        We know $0\leq r<b$, dividing $b$ yielded $0\leq \dfrac{r}{b}<1$, so $\dfrac{r}{b}\in[0,1)$ .
-    \end{center}
+    \noindent
+    We know $0\leq r<b$, dividing $b$ yielded $0\leq \dfrac{r}{b}<1$, so
+    $$\dfrac{r}{b}\in[0,1)\in\mathbb{R}$$
+    We notice $q=\left\lfloor\dfrac{a}{b}\right\rfloor$, as $q$ is the largest integer that fits into $a$, $b$ times.
 \end{Proof}
+\begin{Tip}
+    $q=\left\lfloor\dfrac{a}{b}\right\rfloor$ is similar to integer division in programming languages.
+\end{Tip}
+
+\newpage
+
+
 
 
 
