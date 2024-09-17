@@ -59,12 +59,13 @@ $a=bq+r$ then $r=a\bmod b$.
 
 \noindent
 $r \in [x, x + b)$ allows us to work with negative numbers and different intervals. Let's
-try to build some intuition about division and remainders.
+try to build some intuition about division and remainders:
 
 \begin{center}
-    $S=\{a-bx:q\in\mathbb{Z}\}$, $a=6$, $b=2$, remainder output:
+    $a,b,r\in\mathbb{Z}$ and $S=\{r=a-bq:q\in\mathbb{Z}\}$, $a=6$, $b=2$:
 \end{center}
 \begin{center}
+    (0)\qquad
     \begin{tabular}{c|cc}
         $x$ & $a-bx$                \\
         \hline
@@ -81,12 +82,12 @@ try to build some intuition about division and remainders.
 \end{center}
 
 \noindent
-Attempt to divide two numbers varying the divisor.
-You'll notice the remainder will always be between 0 and the divisor (exclusive).
+Dividing two numbers varying the divisor:
 
 
-
+\vfill
 \noindent
+(1)
 \begin{minipage}{0.32\textwidth}
     \centering
     \begin{tabular}{c|c}
@@ -131,48 +132,294 @@ You'll notice the remainder will always be between 0 and the divisor (exclusive)
         5   & 2           \\
         6   & 1           \\
         7   & 0           \\
-        9   & 7           \\
+        8   & 7           \\
     \end{tabular}
 \end{minipage}
 
 \vfill
-Do you see any patterns?
 \newpage
 
-Let's group the remainders by the divisor, vise versa.\\
+\noindent
+Grouping them by the remainder:\\
+(2)
+\begin{minipage}{0.32\textwidth}
+    \centering
+    \begin{tabular}{c|c}
+        $r$ & $3 \bmod b$    \\
+        \hline
+        0   & 1, 3           \\
+        1   & 2              \\
+        3   & 4, 5, 6, \dots \\
+    \end{tabular}
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}
+    \centering
+    \begin{tabular}{c|c}
+        $r$ & $9 \bmod b$       \\
+        \hline
+        0   & 1, 3, 9           \\
+        1   & 2, 4, 8           \\
+        3   & 5, 6, 7           \\
+        9   & 10, 11, 12, \dots \\
+    \end{tabular}
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}
+    \centering
+    \begin{tabular}{c|c}
+        $r$ & $7 \bmod b$     \\
+        \hline
+        0   & 1, 7            \\
+        1   & 2, 6            \\
+        2   & 5               \\
+        3   & 4               \\
+        7   & 8, 9, 10, \dots \\
+    \end{tabular}
+\end{minipage}
 
 
+\noindent
+Let's try the other way around.\\
+(3)
 \noindent
 \begin{minipage}{0.32\textwidth}
     \centering
     \begin{tabular}{c|c}
-        $r$ & $3 \bmod b$   \\
+        $a$ & $a \bmod 3$ \\
         \hline
-        0   & 1, 3          \\
-        1   & 2             \\
-        3   & 4, 5, 6, 7, 8 \\
+        0   & 0           \\
+        1   & 1           \\
+        2   & 2           \\
+        3   & 0           \\
+        4   & 1           \\
+        5   & 2           \\
+        6   & 0           \\
+        7   & 1           \\
+        8   & 2           \\
+        9   & 0           \\
     \end{tabular}
 \end{minipage}%
 \begin{minipage}{0.32\textwidth}
     \centering
     \begin{tabular}{c|c}
-        $r$ & $9 \bmod b$ \\
+        $a$   & $a \bmod 9$ \\
         \hline
-        0   & 1, 3, 9     \\
-        1   & 2, 4, 8     \\
-        3   & 5, 6, 7     \\
-        9   & 10          \\
+        0     & 0           \\
+        1     & 1           \\
+        2     & 2           \\
+        3     & 3           \\
+        \dots & \dots       \\
+        9     & 0           \\
+        10    & 1           \\
+        11    & 2           \\
+        \dots & \dots       \\
+        18    & 0           \\
+        19    & 1           \\
     \end{tabular}
 \end{minipage}%
 \begin{minipage}{0.32\textwidth}
     \centering
     \begin{tabular}{c|c}
-        $r$ & $7 \bmod b$ \\
+        $a$ & $a \bmod 7$ \\
         \hline
-        0   & 1, 7        \\
-        1   & 2, 6        \\
-        3   & 4           \\
-        2   & 5           \\
-        7   & 9           \\
+        0   & 0           \\
+        1   & 1           \\
+        2   & 2           \\
+        3   & 3           \\
+        4   & 4           \\
+        5   & 5           \\
+        6   & 6           \\
+        7   & 0           \\
+        8   & 1           \\
+        9   & 2           \\
     \end{tabular}
 \end{minipage}
+
+\noindent
+Grouping them by the remainder:\\
+(4)
+\begin{minipage}{0.32\textwidth}
+    \centering
+    \begin{tabular}{c|c}
+        $r$ & $a \bmod 3$ \\
+        \hline
+        0   & 0, 3, 6, 9  \\
+        1   & 1, 4, 7     \\
+        2   & 2, 5, 8     \\
+    \end{tabular}
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}
+    \centering
+    \begin{tabular}{c|c}
+        $r$ & $a \bmod 9$ \\
+        \hline
+        0   & 0, 9, 18    \\
+        1   & 1, 10, 19   \\
+        2   & 2, 11       \\
+        3   & 3, 12       \\
+        4   & 4, 13       \\
+        5   & 5, 14       \\
+        6   & 6, 15       \\
+        7   & 7, 16       \\
+        8   & 8, 17       \\
+    \end{tabular}
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}
+    \centering
+    \begin{tabular}{c|c}
+        $r$ & $a \bmod 7$ \\
+        \hline
+        0   & 0, 7        \\
+        1   & 1, 8        \\
+        2   & 2, 9        \\
+        3   & 3           \\
+        4   & 4           \\
+        5   & 5           \\
+        6   & 6           \\
+    \end{tabular}
+\end{minipage}
+
+
+% Minipage for the first table with text on the left
+\begin{minipage}{0.45\textwidth}
+
+    (5) \textbf{Table with increments of 3}\\
+    \begin{tabular}{c|ccc}
+        $a$                       & $a+1$ & $a+2$ \\
+        \hline
+        \rowcolor{OliveGreen!10}0 & 1     & 2     \\
+        \rowcolor{OliveGreen!10}3 & 4     & 5     \\
+        \rowcolor{OliveGreen!10}6 & 7     & 8     \\
+        9                         & 10    & 11    \\
+        12                        & 13    & 14    \\
+        15                        & 16    & 17    \\
+        \dots                     & \dots & \dots \\
+    \end{tabular}
+\end{minipage}%
+\hspace{0.05\textwidth} % Add some space between the text and the next section
+\begin{minipage}{0.5\textwidth}
+    What is multiplication but repeated addition?
+    What is division but repeated subtraction?\\
+
+    \noindent
+    Column $a$ in (5)-(7) shows multiples of $b$, and is
+    example (4) transposed (highlighted). We can think
+    of the width of a table as $a$'s period.\\
+
+    \noindent
+    Add 10 to 8, yields numbers always ending in 8.
+    Add add 5 to 8, yields numbers ending in 3 or 8.
+    These periods are more predictable than the other
+    examples.\\
+
+\end{minipage}
+
+\vspace{0.5cm} % Some vertical space between tables
+
+% Second table without minipage
+\noindent
+(6) \textbf{Table with increments of 7}\\
+\begin{tabular}{c|ccccccc}
+    $a$                        & $a+1$                       & $a+2$                       & $a+3$ & $a+4$ & $a+5$ & $a+6$ \\
+    \hline
+    \rowcolor{OliveGreen!10}0  & 1                           & 2                           & 3     & 4     & 5     & 6     \\
+    \cellcolor{OliveGreen!10}7 & \cellcolor{OliveGreen!10} 8 & \cellcolor{OliveGreen!10} 9 & 10    & 11    & 12    & 13    \\
+    14                         & 15                          & 16                          & 17    & 18    & 19    & 20    \\
+    21                         & 22                          & 23                          & 24    & 25    & 26    & 27    \\
+    28                         & 29                          & 30                          & 31    & 32    & 33    & 34    \\
+    35                         & 36                          & 37                          & 38    & 39    & 40    & 41    \\
+    \dots                      & \dots                       & \dots                       & \dots & \dots & \dots & \dots \\
+\end{tabular}
+
+\vspace{0.5cm} % Some vertical space between tables
+
+% Third table without minipage
+\noindent
+(7) \textbf{Table with increments of 9}\\
+\begin{tabular}{c|ccccccccc}
+    $a$                       & $a+1$ & $a+2$ & $a+3$ & $a+4$ & $a+5$ & $a+6$ & $a+7$ & $a+8$ \\
+    \hline
+    \rowcolor{OliveGreen!10}0 & 1     & 2     & 3     & 4     & 5     & 6     & 7     & 8     \\
+    \rowcolor{OliveGreen!10}9 & 10    & 11    & 12    & 13    & 14    & 15    & 16    & 17    \\
+    18                        & 19    & 20    & 21    & 22    & 23    & 24    & 25    & 26    \\
+    27                        & 28    & 29    & 30    & 31    & 32    & 33    & 34    & 35    \\
+    36                        & 37    & 38    & 39    & 40    & 41    & 42    & 43    & 44    \\
+    45                        & 46    & 47    & 48    & 49    & 50    & 51    & 52    & 53    \\
+    \dots                     & \dots & \dots & \dots & \dots & \dots & \dots & \dots & \dots \\
+\end{tabular}
+
+\noindent
+This is $[x, x+b)$: Expanding the definition beyond 0, allows us to
+represent rows 3 or 5 in (5)-(7). Whether we shift the table, starting at columns 1 or 2,
+the period/interval remains the same.\\
+
+\noindent
+We formally group (5)-(7)'s column headers into classes, which we call \underline{\textbf{\textit{residues}.}}
+
+\newpage
+
+\begin{Def}[Residue]
+
+    \label{def:residue}
+
+    Let $a,n\in\mathbb{Z}$, $n>0$.\\
+
+    \noindent
+    Set $R=\{a\bmod n: n\in\mathbb{Z}, n\neq0\}$ produces remainders $r\in[0,n-1]$.\\
+    Each remainder $r$ is a \underline{\textbf{residue}} of $a$ modulo $n$.
+\end{Def}
+
+\begin{Def}[Residue Class]
+
+    \label{def:residue_class}
+
+    The set of numbers produced by a residue.\\
+
+    \noindent
+    \textbf{Denoted:} $[a]_n$ or $a (\bmod\, n)$, $a$ the residue under modulo $n$.
+\end{Def}
+
+\begin{Def}[Representative]
+
+    \label{def:representative}
+
+    The smallest non-negative integer in a residue class, i.e., the residue itself.
+\end{Def}
+\underline{\textbf{Residue} and \textbf{Representative} are used interchangeably.}\\
+
+\noindent
+\textbf{Example:}\\
+
+\noindent
+mod 3:
+\begin{itemize}
+    \item $[0]_3=\{0,3,6,9,\dots\}$
+    \item $[1]_3=\{1,4,7,10,\dots\}$
+    \item $[2]_3=\{2,5,8,11,\dots\}$
+\end{itemize}
+
+\noindent
+The representative of $[1]_3$ is 1.\\
+
+\noindent
+\begin{Def}[Congruence]
+
+    \label{def:congruence}
+
+    Let $a,b,n\in\mathbb{Z}$, $n>0$.\\
+
+    \noindent
+    $a$ is \underline{\textbf{congruent}} to $b$ modulo $n$, if $a$ and $b$ produce the same remainder
+    modulo $n$.\\
+
+    \noindent
+    \textbf{Denoted:} $a\equiv b\pmod{n}$.
+\end{Def}
+
+\noindent
+\textbf{Example:} $8\equiv22\pmod7$, as $8\bmod7=1$ and $22\bmod7=1$.\\
+
+
+
+
+
+
