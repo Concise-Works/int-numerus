@@ -5,16 +5,16 @@
 
     \label{def:floor_ceiling}
 
-    For $x\in\mathbb{R}$, $m,n\in\mathbb{Z}$ we map $\mathbb{R}\rightarrow\mathbb{Z}$,\\
+    For $x\in\mathbb{R}$ and $m,n\in\mathbb{Z}$. Functions map $\mathbb{R}\rightarrow\mathbb{Z}$,\\
 
     \noindent
     \textbf{Floor} $x$, $\floor{x}$, is the largest $m$ such that $m\leq x<m+\varepsilon$, where $\varepsilon\in[0,1)$.\\
+    i.e., round down to the nearest integer.\\
 
     \vspace{-.5em}
     \noindent
     \textbf{Ceiling} $x$, $\ceil{x}$, is the smallest $n$ such that $n-\varepsilon<x\leq n$, where $\varepsilon\in[0,1)$.\\
-
-
+    i.e., round up to the nearest integer.
 \end{Def}
 \noindent
 
@@ -22,7 +22,7 @@
 
     \label{def:mod_operator}
 
-    Let $a,b\in\mathbb{Z}$, $b\>0$: The remainder of $a$ divided by $b$. I.e., $a-b\floor{\frac{a}{b}}$.\\
+    Let $a,b\in\mathbb{Z}$, $b>0$: The remainder of $a$ divided by $b$. I.e., $a-b\left\lfloor\frac{a}{b}\right\rfloor$.\\
 
     \noindent
     \textbf{Denoted:} ``$a\bmod b$'' or ``$a\,\%\,b$''.
@@ -30,10 +30,6 @@
 
 \noindent
 \textbf{Examples:} $8\bmod3=2$, and $5\bmod2=1$\\
-
-\noindent
-From The Division Algorithm (\ref{theo:division_algorithm}) we see for all $a,b\in\mathbb{Z}$, $b\neq0$:
-$a=bq+r$ then $r=a\bmod b$.
 
 \begin{Proof}[Mod Operator]
     \underline{The Division Algorithm (\ref{theo:division_algorithm}) only works for $b>0$.} To generalize for $b<0$,
@@ -46,8 +42,9 @@ $a=bq+r$ then $r=a\bmod b$.
     $$\dfrac{r}{b}\in[0,1)\in\mathbb{R}$$
     We notice $q=\left\lfloor\dfrac{a}{b}\right\rfloor$, as $q$ is the largest integer that fits into $a$, $b$ times.
 \end{Proof}
+
 \begin{Tip}
-    $q=\left\lfloor\dfrac{a}{b}\right\rfloor$ is similar to integer division in programming languages.
+    $q=\left\lfloor\dfrac{a}{b}\right\rfloor$ is similar to integer division in programming, and $\dfrac{a}{b}=c$ implies $c\in\mathbb{R}$.
 \end{Tip}
 
 \newpage
@@ -307,9 +304,12 @@ Grouping them by the remainder:\\
 
     \noindent
     Add 10 to 8, yields numbers always ending in 8.
-    Add add 5 to 8, yields numbers ending in 3 or 8.
-    These periods are more predictable than the other
-    examples.\\
+    Add 5 to 8, yields numbers ending in 3 or 8.\\
+    Then there are periods like (3).\\
+
+    \noindent
+    We can see from the table (3), if we keep adding 3 to 2,
+    we get 5, 8, 11, 14, etc.\\
 
 \end{minipage}
 
@@ -348,9 +348,8 @@ Grouping them by the remainder:\\
 \end{tabular}
 
 \noindent
-This is $[x, x+b)$: Expanding the definition beyond 0, allows us to
-represent rows 3 or 5 in (5)-(7). Whether we shift the table, starting at columns 1 or 2,
-the period/interval remains the same.\\
+We can represent these periods by $[x, x+b)$. Expanding the Division Algorithm (\ref{theo:division_algorithm}) beyond $b>0$, allows us to
+represent intervals no matter where we start on the number line.\\
 
 \noindent
 We formally group (5)-(7)'s column headers into classes, which we call \underline{\textbf{\textit{residues}.}}
@@ -375,7 +374,7 @@ We formally group (5)-(7)'s column headers into classes, which we call \underlin
     The set of numbers produced by a residue.\\
 
     \noindent
-    \textbf{Denoted:} $[a]_n$ or $a (\bmod\, n)$, $a$ the residue under modulo $n$.
+    \textbf{Denoted:} $[a]_n$ or $a (\bmod\, n)$, $a$ is the residue under modulo $n$.
 \end{Def}
 
 \begin{Def}[Representative]
@@ -387,10 +386,7 @@ We formally group (5)-(7)'s column headers into classes, which we call \underlin
 \underline{\textbf{Residue} and \textbf{Representative} are used interchangeably.}\\
 
 \noindent
-\textbf{Example:}\\
-
-\noindent
-mod 3:
+\textbf{Example:} mod 3:
 \begin{itemize}
     \item $[0]_3=\{0,3,6,9,\dots\}$
     \item $[1]_3=\{1,4,7,10,\dots\}$
@@ -416,7 +412,7 @@ The representative of $[1]_3$ is 1.\\
 \end{Def}
 
 \noindent
-\textbf{Example:} $8\equiv22\pmod7$, as $8\bmod7=1$ and $22\bmod7=1$.\\
+\textbf{Example:} $8\equiv22\pmod7$, as ($8\bmod7)=1$ and ($22\bmod7)=1$.\\
 
 
 
