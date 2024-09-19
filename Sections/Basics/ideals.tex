@@ -1,0 +1,119 @@
+\section{Ring Theory}
+We will primarily focus on \textbf{ideals} and the behavior of primes; Though
+to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \textbf{fields}.
+
+\begin{Def}[Group]
+
+    A \textit{group} is a set $G$ that is closed under one operation, say `$*$', that satisfies four properties:
+    \begin{itemize}
+        \item \textbf{Closure:} For all $a,b\in G$, $a*b\in G$.
+        \item \textbf{Associativity:} For all $a,b,c\in G$, $(a*b)*c=a*(b*c)$.
+        \item \textbf{Identity:} There exists an element $e\in G$ such that for all $a\in G$, $a*e=e*a=a$.
+        \item \textbf{Inverse:} $\forall a\,\exists\, a^{-1}\in G$, such that $a*a^{-1}=a^{-1}*a$ equates to the identity.
+    \end{itemize}
+\end{Def}
+\newpage
+
+\noindent
+\textbf{Examples:} The following are groups:
+\begin{itemize}
+    \item Set $S=\{-1,1\}$ closed under multiplication.
+          \begin{itemize}
+              \item \textbf{Closure:} $-1\cdot-1=1\in S$.
+              \item \textbf{Associativity:} $(-1\cdot1)\cdot-1=1\cdot-1=-1$ and $-1\cdot(1\cdot-1)=-1\cdot1=-1$.
+              \item \textbf{Identity:} 1, as $1 \cdot -1=-1\cdot1=-1$.
+              \item \textbf{Inverse:} -1 as $-1\cdot-1=1=$ the identity.
+          \end{itemize}
+
+    \item Set $I=\mathbb{Z}$ closed under addition.
+          \begin{itemize}
+              \item \textbf{Closure:} $a+b\in I$ for all $a,b\in I$.
+              \item \textbf{Associativity:} $(a+b)+c=a+(b+c)$ for all $a,b,c\in I$.
+              \item \textbf{Identity:} 0, as $a+0=0+a=a$ for all $a\in I$.
+              \item \textbf{Inverse:} $-a$ for all $a\in I$, as $a+(-a)=(-a)+a=0$.
+          \end{itemize}
+\end{itemize}
+
+\begin{Def}[Abelian Group]
+
+    An \textit{Abelian group} is a group that also satisfies the commutative property, i.e., for all $a,b\in G$, $a*b=b*a$.
+    for some operation `$*$'.
+
+\end{Def}
+
+\begin{Def}[Ring]
+
+    A \textit{ring} is a non-empty set $R$ that is closed under additive (+) and multiplicative $(\cdot)$ operations, such that:
+    \begin{itemize}
+        \item \textbf{Additive Group:} $(R)$ is an Abelian group.
+        \item \textbf{Multiplicative Closure:} For all $a,b\in R$, $a\cdot b\in R$.
+        \item \textbf{Distributive Property:} For all $a,b,c\in R$, $a\cdot(b+c)=a\cdot b+a\cdot c$ and $(a+b)\cdot c=a\cdot c+b\cdot c$.
+    \end{itemize}
+\end{Def}
+
+\noindent
+\textbf{Examples:} $\mathbb{Z}$, $\mathbb{Q}$, $\mathbb{R}$, and $\mathbb{C}$ are all rings standard addition and multiplication.\\
+
+\begin{Note}
+    \textbf{Note:} Operations aren't literally addition and multiplication. For example,
+    the set of $2\times2$ matrices with $\mathbb{R}$ entries forms a ring.
+\end{Note}
+\begin{Tip}
+    Numbers and symbols are just placeholders for the concepts they represent.
+    1,2 or ($\div$) don't have inherent properties; they are just symbols, changing meaning
+    in different contexts.
+\end{Tip}
+
+\newpage
+
+\begin{Def}[Ideal]
+
+    An \textit{ideal} $I$, is a special subset of a ring $R$, such that for all $a,b\in I$ and $r\in R$:
+    \begin{itemize}
+        \item \textbf{Additive:} $a+b\in I$.
+        \item \textbf{Multiplicative under the ring:} $a\cdot r\in I$ or $r\cdot a\in I$.
+        \item \textbf{Additive inverse:} $-a\in I$.
+        \item \textbf{Additive identity:} $a,a'\in I$ such that $a+a'=a'+a=a'$.
+    \end{itemize}
+\end{Def}
+
+\noindent
+\textbf{Example:} The set of all multiples of 2, $2\mathbb{Z}$, is an ideal of $\mathbb{Z}$.
+\begin {itemize}
+\item \textbf{Additive:} $(2\cdot a)+(2\cdot b)=2(a+b)\in 2\mathbb{Z}$.
+\item \textbf{Multiplicative:} $(2\cdot a)\cdot r=2(a\cdot r)\in 2\mathbb{Z}$.
+\item \textbf{Additive inverse:} $-2\in 2\mathbb{Z}$.
+\item \textbf{Additive identity:} $0\in 2\mathbb{Z}$.
+\end{itemize}
+
+% why is Z not considered an ideal?
+
+\begin{Def}[Field]
+
+    A \textit{field} is a ring $\mathbb{F}$ with additional properties:
+    \begin{itemize}
+        \item \textbf{Additive Structure:} $(\mathbb{F},+)$ forms an Abelian group.
+        \item \textbf{Multiplicative Structure:} $(\mathbb{F},\cdot)$ forms an Abelian group \underline{excluding 0}:
+        \item \textbf{Distributive:} For all $a,b,c\in\mathbb{F}$, $a\cdot(b+c)=a\cdot b+a\cdot c$.
+    \end{itemize}
+\end{Def}
+
+\noindent
+\textbf{Example:} $\mathbb{Q}$, the set of rational numbers:
+\begin{itemize}
+    \item \textbf{Multiplicative identity:} $1\in\mathbb{Q}$ as $1\cdot a=a\cdot 1=a$ for all $a\in\mathbb{Q}$.
+    \item \textbf{Multiplicative inverse:} $a^{-1}=\frac{1}{a}$ as $a\cdot\frac{1}{a}=1$.
+    \item \textbf{Excludes 0:} As $0$ has no multiplicative inverse, i.e., $\frac{1}{0}$ is undefined.
+\end{itemize}
+\begin{Tip}
+    A \bt{group} defines operations, an \bt{abelian group} ensures
+    commutativity, a \bt{ring} has an abelian group (+), multiplication ($\cdot$), and distribution,
+    an \bt{ideal} $I\subseteq  R$ ring, such that\\ $a\in I,r\in R, a\cdot r\in I$, and a \bt{field} is a ring
+    excluding 0 in its multiplicative abelian group.
+\end{Tip}
+
+\newpage
+
+\section{The Integer Ideal \& Primality}
+
+We will primarily
