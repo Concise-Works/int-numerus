@@ -223,6 +223,8 @@ Illustrating $I \cdot J$ as the sums of products ensures the additive and multip
 
 \begin{theo}[Ideal Properties]
 
+    \label{theo:ideal_properties}
+
     For ideals in the integers $\mathbb{Z}$, and all $a, b \in \mathbb{Z}$:
     \begin{itemize}
         \item $b \in a\mathbb{Z}$ if and only if $a \mid b$.
@@ -251,8 +253,11 @@ Illustrating $I \cdot J$ as the sums of products ensures the additive and multip
     \begin{itemize}
         \item \textbf{Existence:} $I=\{0\}$, then $d = 0$.
         \item $\mathbf{I \neq \{0\}:}$ Let $d$ be the smallest positive integer in $I$. 
-        If $a\in I$, then $d\mid a$ as $a = dq + r$  for some $q,r\in\mathbb{Z}$, where $0\leq r < d$ (\ref{theo:division_algorithm}).
+        If $a\in I$, then $d\mid a$, because  $a = dq + r$ for some $q,r\in\mathbb{Z}$, where $0\leq r < d$ (\ref{theo:division_algorithm}).
         Since $d$ is the smallest positive integer, $r = 0$, hence $d\mid a$.
+        \item $\mathbf{I\subseteq d\mathbb{Z}}$, as $d\mid a$ and $a\in I$ (\ref{theo:ideal_properties}).
+        \item \textbf{Uniqueness:} Let $d'$ be another non-negative integer. If $d'\mathbb{Z}=d\mathbb{Z}$,
+        then $d\mid d'$ and $d'\mid d$. Thus, $d=\pm d'$ (\ref{theo:properties_of_divisibility}). Since, $d'\geq0$, $d=d'$.
     \end{itemize}
     
 
