@@ -221,8 +221,40 @@ Therefore, the product of $2\mathbb{Z}$ and $3\mathbb{Z}$ is $6\mathbb{Z}$, the 
 Illustrating $I \cdot J$ as the sums of products ensures the additive and multiplicative closure properties of ideals.
 \newpage
 
-\begin{Def}[Ideal Subsets]
-    If $a \mid b$, then $b\mathbb{Z} \subseteq a\mathbb{Z}$, as $b=ac$
-    for some $c \in \mathbb{Z}$, which $b\mathbb{Z}$ may not contain. Likewise, for any ideal $I \subseteq R$, we have $a\mathbb{Z} \subseteq I$ if and only if $a \in I$.
-\end{Def}
+\begin{theo}[Ideal Properties]
+
+    For ideals in the integers $\mathbb{Z}$, and all $a, b \in \mathbb{Z}$:
+    \begin{itemize}
+        \item $b \in a\mathbb{Z}$ if and only if $a \mid b$.
+        \item For every ideal $I \subseteq \mathbb{Z}$, $b \in I$ if and only if $b\mathbb{Z} \subseteq I$.
+        \item Combining the above observations: $b\mathbb{Z} \subseteq a\mathbb{Z}$ if and only if $a \mid b$.
+    \end{itemize}
+\end{theo}
+
+\begin{Proof}[Proof of Ideal Properties]
+
+    \begin{itemize}
+        \item $b \in a\mathbb{Z}$, let $a$ be the smallest positive integer, then $b$ must be 0, $a$, or some
+        multiple of $a$, thus $a \mid b$. If $a\mid b$, then $b\in a\mathbb{Z}$, as $a\mathbb{Z}$ generates multiples of $a$.
+        \item $b \in I$, then $b\mathbb{Z} \subseteq I$ as $I$ upholds multiplicative closure. I.e., $q\in I$ then $bq\in I$.
+        \item $a\mid b$, then $b\in a\mathbb{Z}$, $a\mathbb{Z}$ is an ideal, thus $b\mathbb{Z} \subseteq a\mathbb{Z}$. If $b\mathbb{Z} \subseteq a\mathbb{Z}$, then $b\in a\mathbb{Z}$, and $a\mid b$.
+    \end{itemize}
+\end{Proof}
+
+
+\begin{theo}[Generator Ideal equality of $\mathbb{Z}$]
+
+    Let \( I \) be an ideal of \( \mathbb{Z} \). Then there exists a unique non-negative integer \( d \) such that \( I = d\mathbb{Z} \).
+\end{theo}
+
+\begin{Proof}[Proof of Generator Ideal equality of \( \mathbb{Z} \)]
+    \begin{itemize}
+        \item \textbf{Existence:} $I=\{0\}$, then $d = 0$.
+        \item $\mathbf{I \neq \{0\}:}$ Let $d$ be the smallest positive integer in $I$. 
+        If $a\in I$, then $d\mid a$ as $a = dq + r$  for some $q,r\in\mathbb{Z}$, where $0\leq r < d$ (\ref{theo:division_algorithm}).
+        Since $d$ is the smallest positive integer, $r = 0$, hence $d\mid a$.
+    \end{itemize}
+    
+
+\end{Proof}
 
