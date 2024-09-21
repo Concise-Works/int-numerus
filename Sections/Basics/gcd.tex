@@ -29,11 +29,16 @@
 
 \begin{theo}[GCD Ideal Linear Combination of $\mathbb{Z}$]
 
+    \label{theo:gcd_ideal_linear_combination}
+
     For all \(a, b,d \in \mathbb{Z}\) and $d=\gcd(a,b)$: \(a\mathbb{Z} + b\mathbb{Z} = d\mathbb{Z}\)
 
 \end{theo}
 
-\begin{Proof}
+\begin{Proof}[GCD Ideal Linear Combination of $\mathbb{Z}$]
+
+    \label{proof:gcd_ideal_linear_combination}
+
     Let $I:=a\mathbb{Z} + b\mathbb{Z}$. Then there exists $c\in Z$ such that $c\mathbb{Z} = I$ (\ref{theo:ideal_generator}). Then $a,b,c\in I$, are all
     positive integers. We will prove facts of $c$:
     \begin{itemize}
@@ -45,3 +50,33 @@
     \end{itemize}
 \end{Proof}
 
+\newpage
+
+\noindent
+This next theorem heavily relies on Definition (\ref{theo:ideal_properties}) and the previous Proof (\ref{theo:gcd_ideal_linear_combination}).
+\begin{theo}[Element Linear Combinations of $\mathbb{Z}$]
+
+    For all \(a, b,d \in \mathbb{Z}\) and $d=\gcd(a,b)$:\\
+    There exists some \(s, t \in \mathbb{Z}\), such that \(as + bt = r\) if and only if $d\mid r$.
+        
+\end{theo}
+
+
+\begin{Proof}[Element Linear Combinations of $\mathbb{Z}$]
+
+    Let $r\in\mathbb{Z}$, and $d=\gcd(a,b)$, we have
+    
+    \begin{center}
+
+        \begin{tabular}{p{2cm} p{1cm} p{2cm} p{5.5cm}}
+            $as + bt = r$ & $\Longleftrightarrow$ & $r \in a\mathbb{Z} + b\mathbb{Z}$ & (Ideal Multiplicative Closure (\ref{def:ideal_operations})) \\
+            & $\Longleftrightarrow$ & $r \in d\mathbb{Z}$ & (GCD Linear Combination (\ref{theo:gcd_ideal_linear_combination})) \\
+            & $\Longleftrightarrow$ & $d \mid r$ & (Property of Ideals (\ref{theo:ideal_properties})) \\
+        \end{tabular}
+    \end{center}
+\end{Proof}
+
+\noindent
+\begin{Note}
+    \textbf{Note:} In $as + bt = r$, $s$ and $t$ are not unique, \underline{nor do they have to be positive}: Example (\ref{def:ideal_operations})
+\end{Note}
