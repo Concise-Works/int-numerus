@@ -1,0 +1,47 @@
+\newpage
+\section{Primes \& Greatest/Lowest Common Divisors}
+
+\begin{Def}[Greatest Common Divisor (GCD)]
+
+    For all $a,b\in\mathbb{Z}$,\\
+    The \textit{greatest common divisor} of $a$ and $b$, is the largest positive integer dividing both $a$ and $b$.\\
+    I.e., $d\in\mathbb{Z}: d\mid a$ and $d\mid b$, and \underline{$d$ is unique.}
+
+    \noindent
+    Denoted: $\gcd(a,b)$.
+\end{Def}
+
+\begin{Proof}[GCD Existence and Uniqueness]
+
+    \label{theo:gcd_existence_uniqueness}
+
+    Let $a,b\in\mathbb{Z}$, and $d=\gcd(a,b)$.\\
+    \begin{itemize}
+        \item  \textbf{Existence:} $d$ exists by the Well-Ordering Principle, 
+        as it's greatest element in the set of common divisors of $a$ and $b$.
+        \item \textbf{Uniqueness:} Let there be another GCD $d'\in\mathbb{Z}$ such that $d'\mid a$ and $d'\mid b$.\\
+        Then, $d'\mid d$ and $d\mid d'$, so $d=\pm d'$ (\ref{theo:properties_of_divisibility}). GCD must be positive, so $d=d'$.
+    \end{itemize}
+
+   
+
+\end{Proof}
+
+\begin{theo}[GCD Ideal Linear Combination of $\mathbb{Z}$]
+
+    For all \(a, b,d \in \mathbb{Z}\) and $d=\gcd(a,b)$: \(a\mathbb{Z} + b\mathbb{Z} = d\mathbb{Z}\)
+
+\end{theo}
+
+\begin{Proof}
+    Let $I:=a\mathbb{Z} + b\mathbb{Z}$. Then there exists $c\in Z$ such that $c\mathbb{Z} = I$ (\ref{theo:ideal_generator}). Then $a,b,c\in I$, are all
+    positive integers. We will prove facts of $c$:
+    \begin{itemize}
+        \item \textbf{Common Divisor: }$a,b\in I$ and $c\mathbb{Z}=I$. So $a,b\in c\mathbb{Z}$. Then $c\mid a$ and $c\mid b$ (\ref{theo:ideal_properties}).
+        \item \textbf{Linear Combination:} Since $c\in I$ and $a\mathbb{Z} + b\mathbb{Z} = I$. There exists some linear combination $\underline{as+bt=c}$ for some $s,t\in\mathbb{Z}$ (\ref{def:ideal_operations}).
+        \item \textbf{Greatest Divisor} Let $a,b\in I$ be the products $a=a'c'$ and $b=b'c'$, where $a',b'\in\mathbb{Z}$.
+              Then there's a linear combination $a'c'+b'c'=c'(a'+b')=c$. So $c\mid c'$, hence $c$ is the greatest common divisor of $a$ and $b$.
+        \item \textbf{Uniqueness:} By Lemma (\ref{theo:gcd_existence_uniqueness}), $c$ is unique.
+    \end{itemize}
+\end{Proof}
+
