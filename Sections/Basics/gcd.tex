@@ -207,3 +207,25 @@ By ``up to the order of the factors", we mean that the factorization is commutat
     \end{itemize} 
     Continuing from $p_2$ to $p_k$ results in $p_i=q_i$ for all $i$, thus the factorization must be unique.
 \end{Proof}
+
+\newpage
+
+\begin{theo}[Euclids Theorem]
+
+    \label{theo:euclids_theorem}
+    
+        There exists infinitely many prime numbers.
+\end{theo}
+
+\begin{Proof}[Euclids Theorem]
+    Say there are a finite number of primes: $p_1,p_2,\ldots,p_n$.\\
+    Let $M:=p_1\times p_2\times\ldots\times p_n$ be the product of those primes. Let $N=M+1$:
+    \begin{align*}
+        N = M+1&\\
+        N= p_1\times p_2\times\ldots\times p_n + 1&\\
+        N= (p_1)(p_2\times\ldots\times p_n) + 1&\text{ (Form of Division Alg. (\ref{theo:division_algorithm}))}\\
+    \end{align*}
+    $N$ has remainder 1 when divided by any such prime. Thus, $N$ is not a product of primes.\\
+    Then $N$ must be a prime (\ref{theo:FTA}).
+\end{Proof}
+
