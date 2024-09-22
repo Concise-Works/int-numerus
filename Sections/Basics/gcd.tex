@@ -350,6 +350,52 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
     \end{itemize}
 \end{Proof}
 
+\begin{Tip}
+    Remember that $\mathcal{V}_p(n)$ is some arbitrary function we defined.
+    Despite this function being \textit{made-up}, it has very \textbf{real} implications as we'll see in the next theorem. 
+    It helps to abstract concepts, to avoid repetition and the accumulation of details.\\
+
+    \noindent
+    Similar to how computers are built on binary logic, and then subsequently written in some
+    abstracted higher-level language. Then even those languages have their own abstractions through various libraries and frameworks,
+    all helping speed up the process of development.
+
+\end{Tip}
+
+\newpage
+
+\begin{theo}[GCD abstracted $\mathcal{V}_p(n)$]
+
+    \label{theo:GCD_abstracted}
+
+    For all $a,b\in\mathbb{Z}$:
+    \[\gcd(a,b) = \prod_{p} p^{\min(\mathcal{V}_p(a),\mathcal{V}_p(b))}\]
+
+\end{theo}
+
+\begin{Proof}[GCD abstracted by $\mathcal{V}_p(n)$]
+    The $\gcd(a,b) = \prod_{p} p^{\min(\mathcal{V}_p(a),\mathcal{V}_p(b))}$ can be visualized into the following:
+    \[
+    \begin{array}{ccc|c|c|c|c}
+    
+    a=&\prod&p_1^{e_1} & p_2^{e_2} & p_3^{e_3} & \dots & p_k^{e_k} \\
+    b=&\vdots&p_1^{e'_1} & p_2^{e'_2} & p_3^{e'_3} & \dots & p_k^{e'_k} \\
+    \hline
+    gcd(a,b)=&\vdots&p_1^{\min(e_1, e'_1)} & p_2^{\min(e_2, e'_2)} & p_3^{\min(e_3, e'_3)} & \dots & p_4^{\min(e_k, e'_k)} \\
+
+    \end{array}
+    \]
+
+    \noindent
+    Separating $a$ and $b$ into their prime factors, taking the minimum exponent of each pair $p_i$,
+    Effectively striping all unnecessary factors, leaving only and all common factors between them.\\
+    
+    \noindent
+    I.e., the GCD.
+
+\end{Proof}
+
+
 
 
 
