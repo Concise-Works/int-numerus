@@ -69,6 +69,8 @@ This next theorem heavily relies on Definition (\ref{theo:ideal_properties}) and
     Let $r\in\mathbb{Z}$, and $d=\gcd(a,b)$, we have
     
     \begin{center}
+        \setlength{\tabcolsep}{4pt} % Adjust column separation
+\renewcommand{\arraystretch}{1.2} % Adjust row separation
 
         \begin{tabular}{p{2cm} p{1cm} p{2cm} p{5.5cm}}
             $as + bt = r$ & $\Longleftrightarrow$ & $r \in a\mathbb{Z} + b\mathbb{Z}$ & (Ideal Multiplicative Closure (\ref{def:ideal_operations})) \\
@@ -108,7 +110,9 @@ I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations
 
 \newpage 
 
-\begin{theo}[Coprime Coefficient Divisibility]
+\begin{theo}[Cancellation of GCD]
+
+    \label{theo:cancellation_of_gcd}
 
     Let \( a, b, c \in \mathbb{Z} \) such that \( c \mid ab \) and \( \gcd(a, c) = 1 \). Then \( c \mid b \).
 \end{theo}
@@ -124,6 +128,62 @@ I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations
         c(ds+bt)=b & \text{ (Factor out $c$).}
     \end{align*}
     Yields $(ds+bt)\in\mathbb{Z}$, say $m$. So $cm = b$, hence $c\mid b$.
-    
 \end{Proof}
 
+\begin{theo}[Euclid's Lemma]
+
+    Let \( p \) be a prime, and \( a, b \in \mathbb{Z} \). If \( p \mid ab \), then \( p \mid a \) or \( p \mid b \).
+\end{theo}
+
+\begin{Proof}[Euclid's Lemma]
+
+    Let $p$ be a prime, and $a,b\in\mathbb{Z}$ such that $p\mid ab$.
+    \begin{itemize}
+        \item If $p\mid a$, we satisfy the claim.
+        \item If $p\nmid a$, then $\gcd(p,a)=1$ (\ref{def:prime_numbers}). So by Cancellation of GCD (\ref{theo:cancellation_of_gcd}), $p\mid b$.
+    \end{itemize}
+\end{Proof}
+\begin{Note}
+    \textbf{Note:} Primes only have two divisors: $1$ and itself. So if $p\nmid a$, then $\gcd(p,a)$ must be $1$.
+\end{Note}
+\begin{Tip}
+    Euclid is pronounced ``You-clid''. He was a Greek mathematician who lived around 300 BC. His work laid the foundation for number theory.
+    He primarily worked on the properties of prime numbers, and is known for his algorithm to find the GCD of two numbers.
+\end{Tip}
+
+\newpage
+
+\noindent
+Our most important theorem, \underline{\textbf{The Fundamental Theorem of Arithmetic}}:
+
+\begin{theo}[Fundamental Theorem of Arithmetic]
+
+    \label{theo:FTA}
+
+    Every $n\in\mathbb{Z}:n>1$ is prime or is product of primes, up to the order of the factors.
+\end{theo}
+By ``up to the order of the factors", we mean that the factorization is commutative.\\
+\textbf{Example:} $30=2\cdot3\cdot5$ or $3\cdot2\cdot5$. The factorization is unique, except order (commutative).\\
+
+\begin{Proof}[Fundamental Theorem of Arithmetic]
+
+    Let $n\in\mathbb{Z}$ be a non-zero integer.\\
+
+    \noindent
+    \textbf{Existence:} by induction of $n$,
+    \begin{itemize}
+        \item \textbf{Base Case:} $n=2$, which holds as $2$ is prime.
+        \item \textbf{Inductive Hypothesis:} Assume for all $n=k$, $k$ is prime or product of primes.
+        \item \textbf{Inductive Step:} Let $n=k+1$. 
+        \begin{itemize}
+            \item If $n$ is prime, then we're done.
+            \item $n$ is not prime, then $n=ab\in\mathbb{Z}$ where $a\leq b<n,$ otherwise $ab>n$. Reasoning:\\
+                    If \( a \geq n \) or \( b \geq n \), then \( ab \geq n^2 \), contradicting \( ab = n \) unless \( n = 1 \), however \( n \geq 2 \).
+            \item \textbf{Recursively:} Then $a$ and $b$ are prime or product of primes (Inductive Hypothesis). Then $n$ is a product of primes.
+        \end{itemize}
+        Therefore by induction, every $n\in\mathbb{Z}:n>1$ is prime or is product of primes.
+    \end{itemize}
+    
+    \noindent
+    \textbf{Uniqueness:}
+\end{Proof}
