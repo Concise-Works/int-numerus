@@ -254,23 +254,23 @@ To dissect, for all $a,b,q,r\in\mathbb{Z}$, $b>0$, $q$ and $r$ exist uniquely su
     \normalsize
     \noindent
     \textbf{Formally:} By the Well-Ordering Principle (\ref{def:well_ordering_principle}), there exists a smallest element in $S$, say $r$.
-    To show existence in $S$, choose $x=0$ then $a-b(0)=a$, we are left with $a\geq 0$.\\
+    To show $S$ is not empty, choose $x=0$ then $a-b(0)=a$, we are left with $0\leq a$.\\
 
     \noindent
     Without loss of generality, also assume $a<0$. To satisfy $a-bx\geq0$ choose $x=a$ yielding
-    $a-ba=a(1-b)$. We know ($a<0)$ and ($b\geq1$) as $0\leq r <b$. So $(1-b)\leq0$. Hence
-    $a(1-b)\geq0$ as $(n<0\,\cdot m\leq0)=h\geq0$ for some $n,m,h\in\mathbb{Z}$. So \underline{$S$ is not empty.}\\
+    $a-ba=a(1-b)$. Then $(1-b)\leq0$ as ($0\leq r <b$) so ($1\leq b$). Hence
+    $a(1-b)\geq0$ as $(n<0)\cdot (m\leq0)=(h\geq0)$ for some $n,m,h\in\mathbb{Z}$. So \underline{$S$ is not empty.}\\
 
     \noindent
-    For \underline{$r<b$} say $r\geq b$, \underline{$r$ is the smallest element.} Then $r=a-bq\geq b$. Subtract $b$ from both sides,
+    $\bullet$ $\mathbf{r<b}$, say $r\geq b$, \underline{$r$ is the smallest element.} Then $r=a-bq\geq b$. Subtract $b$ from both sides,
     $(r-b=a-bq-b)\geq (b-b$ = 0) factoring we see $r-b=a-b(q+1)$. Since
     $q+1$ is some integer say $q'$, $r-b=a-bq'$. There exists some $b$, \underline{$(r-b)<r$ contradicting our assumption.}\\
 
         \noindent
-        For $q,r$ uniqueness, say there's another pair $q',r'$ such that
+    $\bullet$ $\mathbf{q,r}$ \textbf{uniqueness}, say there's another pair $q',r'$ such that
     $a=(bq'+r')=(bq+r)$ and $0\leq r'<b$. Without loss of generality, assume $r'\geq r$.
-        Re-arrange both sides, $r'-r=bq-bq'$ factor, $r'-r=b(q-q')$. Then $b\mid r'-r$
-        , but $0\leq r'-r<b$ so $r'-r=0$ therefore $r'=r$, showing \underline{$r$ is unique}.
+        Re-arrange both sides, $r'-r=bq-bq'$ factor, $r'-r=b(q-q')$. Then $b\mid (r'-r)$
+        , but $(0\leq r'-r<b)$ so $(r'-r)=0$ therefore $r'=r$, showing \underline{$r$ is unique}.
     $b(q-q')=0$ therefore $(q-q')=0$ hence $q=q'$ showing \underline{$q$ is unique}.
 \end{Proof}
 
