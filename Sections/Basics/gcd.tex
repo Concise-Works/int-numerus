@@ -86,6 +86,8 @@ From above it follows that:
 
 \begin{Def}[Reltively Prime]
 
+    \label{def:relatively_prime}
+
     For all \(a, b \in \mathbb{Z}\), \(a\) and \(b\) are \textit{relatively prime} if \(\gcd(a, b) = 1\).\\
     
     \noindent
@@ -101,8 +103,7 @@ I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations
 \end{itemize}
 
 \begin{Tip}
-    It's crucial to understand the reasoning behind $as+bt=r$ and it's relation to ideals generated under $\mathbb{Z}$.
-    It involves understanding the attributes of ideals under rings and their linear combinations as a result of those properties.
+    It's crucial to understand the reasoning behind $as+bt=r$ and it's relation to ideals generated under $\mathbb{Z}$. I.e., understand ideals (\ref{def:ideal}), and their operations (\ref{def:ideal_operations}) robustly.
 \end{Tip}
 
 \newpage 
@@ -111,4 +112,18 @@ I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations
 
     Let \( a, b, c \in \mathbb{Z} \) such that \( c \mid ab \) and \( \gcd(a, c) = 1 \). Then \( c \mid b \).
 \end{theo}
+
+\begin{Proof}[Coprime Coefficient Divisibility]
+
+    Let $a,b,c\in\mathbb{Z}$ such that $c\mid ab$ and $\gcd(a,c)=1$. $a$ and $c$ are coprime (\ref{def:relatively_prime}). Then there exists some $s,t\in\mathbb{Z}$
+    such that $as+ct=1$ (\ref{theo:element_linear_combinations}).Then, 
+    \begin{align*}
+        as+ct=1 & \text{ (Given)}\\
+        abs + cbt = b & \text{ (Multiply by $b$)}\\
+        cds + cbt = b & \text{ (Sub. $ab$ as $c\mid ab\Rightarrow ab = cd,d\in\mathbb{Z}$)}\\
+        c(ds+bt)=b & \text{ (Factor out $c$).}
+    \end{align*}
+    Yields $(ds+bt)\in\mathbb{Z}$, say $m$. So $cm = b$, hence $c\mid b$.
+    
+\end{Proof}
 
