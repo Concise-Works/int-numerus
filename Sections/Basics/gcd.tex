@@ -137,6 +137,8 @@ I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations
 
 \begin{Proof}[Euclid's Lemma]
 
+    \label{theo:euclids_lemma}
+
     Let $p$ be a prime, and $a,b\in\mathbb{Z}$ such that $p\mid ab$.
     \begin{itemize}
         \item If $p\mid a$, we satisfy the claim.
@@ -181,9 +183,27 @@ By ``up to the order of the factors", we mean that the factorization is commutat
                     If \( a \geq n \) or \( b \geq n \), then \( ab \geq n^2 \), contradicting \( ab = n \) unless \( n = 1 \), however \( n \geq 2 \).
             \item \textbf{Recursively:} Then $a$ and $b$ are prime or product of primes (Inductive Hypothesis). Then $n$ is a product of primes.
         \end{itemize}
+
+        \noindent
         Therefore by induction, every $n\in\mathbb{Z}:n>1$ is prime or is product of primes.
     \end{itemize}
     
     \noindent
-    \textbf{Uniqueness:}
+    \textbf{Uniqueness:} Let there be two different factorizations: $n = p_1p_2\ldots p_k= q_1q_2\ldots q_j$.\\
+    Both factorizations are products of primes. We divide both sides by $p_1$:
+    \begin{center}
+        \begin{tabular}{cc}
+            \(p_2p_3\ldots p_k = \dfrac{q_1q_2\ldots q_j}{p_1}\) &  \((p_1)(p_2\ldots p_k) = (q_1q_2\ldots q_j)\) \\
+            (Simplified left side) & (Multiply by \(p_1\)) \\
+       \end{tabular}
+    \end{center}
+
+    \noindent
+    Let $m:=(p_1)$, $n:=(p_2\ldots p_k)$, $k:=(q_1q_2\ldots q_j)$. Then $mn=k$, so $m\mid k$. Take
+    out $q_1$ from $k$, then $m\mid q_1\cdot k$. By Euclid's Lemma (\ref{theo:euclids_lemma}), $m\mid q_1$ or $m\mid k$ (the rest of the factors).
+    \begin{itemize}
+        \item If $m\mid q_1$, then $m=q_1$, by definition of prime (\ref{def:prime_numbers})
+        \item If $m\mid k$, then $m$ equals some other prime in $k$.
+    \end{itemize} 
+    Continuing from $p_2$ to $p_k$ results in $p_i=q_i$ for all $i$, thus the factorization must be unique.
 \end{Proof}
