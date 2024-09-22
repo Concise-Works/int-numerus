@@ -56,6 +56,8 @@
 This next theorem heavily relies on Definition (\ref{theo:ideal_properties}) and the previous Proof (\ref{theo:gcd_ideal_linear_combination}).
 \begin{theo}[Element Linear Combinations of $\mathbb{Z}$]
 
+    \label{theo:element_linear_combinations}
+
     For all \(a, b,d \in \mathbb{Z}\) and $d=\gcd(a,b)$:\\
     There exists some \(s, t \in \mathbb{Z}\), such that \(as + bt = r\) if and only if $d\mid r$.
         
@@ -75,8 +77,38 @@ This next theorem heavily relies on Definition (\ref{theo:ideal_properties}) and
         \end{tabular}
     \end{center}
 \end{Proof}
-
-\noindent
 \begin{Note}
     \textbf{Note:} In $as + bt = r$, $s$ and $t$ are not unique, \underline{nor do they have to be positive}: Example (\ref{def:ideal_operations})
 \end{Note}
+
+\noindent
+From above it follows that:
+
+\begin{Def}[Reltively Prime]
+
+    For all \(a, b \in \mathbb{Z}\), \(a\) and \(b\) are \textit{relatively prime} if \(\gcd(a, b) = 1\).\\
+    
+    \noindent
+    Also known as a \underline{\textbf{coprime}.}
+
+\end{Def}
+I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations}), if $r=1$, then $a$ and $b$ are coprime.\\
+
+\textbf{Examples:}
+\begin{itemize}
+    \item $\gcd(6,9)=3$, so $6$ and $9$ are not coprime.
+    \item $\gcd(6,7)=1$, so $6$ and $7$ are coprime.
+\end{itemize}
+
+\begin{Tip}
+    It's crucial to understand the reasoning behind $as+bt=r$ and it's relation to ideals generated under $\mathbb{Z}$.
+    It involves understanding the attributes of ideals under rings and their linear combinations as a result of those properties.
+\end{Tip}
+
+\newpage 
+
+\begin{theo}[Coprime Coefficient Divisibility]
+
+    Let \( a, b, c \in \mathbb{Z} \) such that \( c \mid ab \) and \( \gcd(a, c) = 1 \). Then \( c \mid b \).
+\end{theo}
+
