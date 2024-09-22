@@ -158,7 +158,7 @@ I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations
 \noindent
 Our most important theorem, \underline{\textbf{The Fundamental Theorem of Arithmetic}}:
 
-\begin{theo}[Fundamental Theorem of Arithmetic]
+\begin{theo}[Fundamental Theorem of Arithmetic (FTA)]
 
     \label{theo:FTA}
 
@@ -214,7 +214,7 @@ By ``up to the order of the factors", we mean that the factorization is commutat
 
     \label{theo:euclids_theorem}
     
-        There exists infinitely many prime numbers.
+        There are infinitely many primes.
 \end{theo}
 
 \begin{Proof}[Euclids Theorem]
@@ -228,4 +228,133 @@ By ``up to the order of the factors", we mean that the factorization is commutat
     $N$ has remainder 1 when divided by any such prime. Thus, $N$ is not a product of primes.\\
     Then $N$ must be a prime (\ref{theo:FTA}).
 \end{Proof}
+
+\noindent
+Extending the the Fundamental Theorem of Arithmetic (\ref{theo:FTA}):
+\begin{theo}[FTA Corollary]
+
+    \label{theo:FTA_corollary}
+
+    Every $n\in\mathbb{Z}:n>1$ has a unique prime factorization, up to order \underline{and sign}:
+    \[n = \pm p_1^{e_1}p_2^{e_2}\ldots p_k^{e_k}\]
+    For $p_1,p_2,\ldots,p_k$ distinct primes, and $e_1,e_2,\ldots,e_k$ positive integers.
+\end{theo}
+
+\begin{Proof}[FTA Corollary]
+
+   Let $n\in\mathbb{Z}:n>3$ and a composite number.
+   \begin{itemize}
+    \item $n=ab\in\mathbb{Z}$ by definition of a composite (\ref{def:composite_numbers}).
+    \item Then $a$ and $b$ are prime or product of primes (\ref{theo:FTA}).
+    \item Let $a$ and $b$ be prime and $a=b$
+   \end{itemize}
+  
+   \noindent
+   Then $n=a^2$, a prime squared.
+\end{Proof}
+
+\newpage
+\noindent
+We'll begin to define functions---which may or may not have logic---to abstract concepts.
+\begin{Func}[Prime Exponents - $\mathcal{V}_p(n)$]
+
+    For each prime $p$ where $n=p^em \in\mathbb{Z}$ and $p\nmid m$. We define $\mathcal{V}_p(n)=e$.\\
+    I.e., $\mathcal{V}_p(n)$ is the exponent of $p$ in the prime factorization of $n$. 
+\end{Func}
+In specifying $p\nmid m$, we ensure that $p^e$ is the highest power of $p$ dividing $n$.\\
+
+\noindent
+We'll use this to abstract the Fundamental Theorem of Arithmetic further:
+\begin{theo}[FTA Abstracted by $\mathcal{V}_p(n)$]
+
+    \label{theo:FTA_abstracted}
+
+    Every $n\in\mathbb{Z}:n>1$ has a unique prime factorization, up to order and sign:
+    \LARGE \[n = \pm \prod_{p} p^{\mathcal{V}_p(n)}\]
+    
+    \normalsize
+    \noindent
+    For $p$ distinct primes.
+\end{theo}
+\begin{Note}
+    \textbf{Note:} The notation $\prod$ is to products, as $\sum$ is to sums.
+\end{Note}
+
+\noindent
+To expand our theorem for clarity:
+\LARGE
+\[
+    n = \pm \prod_{p} p^{\mathcal{V}_p(n)} = \pm p_1^{\mathcal{V}_{p_1}(n)} p_2^{\mathcal{V}_{p_2}(n)} \cdots p_k^{\mathcal{V}_{p_k}(n)}
+\]
+\normalsize
+
+\noindent
+The ``$\pm$'' accounts for the sign of $n$. Say $n=-30$, then $n=-(2\cdot3\cdot5)$.\\
+
+\noindent
+The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Least Common multiple} (LCM),} but first we define two other functions:
+
+\begin{Func}[Minumum \& Maximum - $\min()$, $\max()$]
+    
+        For all $a,b\in\mathbb{Z}$,
+        \begin{itemize}
+            \item $\min(a,b)$ is the smallest of $a$ and $b$.
+            \item $\max(a,b)$ is the largest of $a$ and $b$.
+        \end{itemize}
+\end{Func}
+
+\newpage
+
+\begin{theo}[Operations of $\mathcal{V}_p(n)$]
+
+    \label{theo:operations_of_V_p(n)}
+
+    For all $a,b\in\mathbb{Z}$ and $p$ prime:
+    \begin{itemize}
+        \item $\mathcal{V}_p(ab) = \mathcal{V}_p(a) + \mathcal{V}_p(b)$
+        \item $\mathcal{V}_p(a^k) = k \mathcal{V}_p(a)$
+        \item $a \mid b \iff \mathcal{V}_p(a) \leq \mathcal{V}_p(b) \text{ for all primes } p$
+    \end{itemize}
+\end{theo}
+
+\begin{Proof}[Operations of $\mathcal{V}_p(n)$]
+    For all $a,b\in\mathbb{Z}$ and $p$ prime:
+    \begin{itemize}
+        \item \underline{$\mathcal{V}_p(ab) = \mathcal{V}_p(a) + \mathcal{V}_p(b)$.}\\
+        Let $a = p^e m$ and $b = p^{e'} m'$, where $p \nmid m$ and $p \nmid m'$. 
+
+        \vspace{-.5em}
+        \begin{itemize}
+            \item $ab = p^e m \times p^{e'} m' = p^{e + e'} m m'$
+            \item $\mathcal{V}_p(ab) = e + e' = \mathcal{V}_p(a) + \mathcal{V}_p(b)$
+        \end{itemize}
+        \vspace{.5em}
+
+        \item \underline{$\mathcal{V}_p(a^k) = k \mathcal{V}_p(a)$.}\\
+        Let $a = p^e m$, where $p \nmid m$.
+
+        \vspace{-.5em}
+        \begin{itemize}
+            \item $a^k = (p^e m)^k = p^{ke} m^k$
+            \item $\mathcal{V}_p(a^k) = ke = k \mathcal{V}_p(a)$
+        \end{itemize}
+        \vspace{.5em}
+
+        \item \underline{$a \mid b \iff \mathcal{V}_p(a) \leq \mathcal{V}_p(b) \text{ for all primes } p$.}\\
+        Let $a = p^e m$ and $b = p^{e'} m'$, where $p \nmid m$ and $p \nmid m'$. 
+        \vspace{-.5em}
+        \begin{itemize}
+            \item If $a \mid b$, then $b = aq\in\mathbb{Z}$. Thus, $\mathcal{V}_p(a) \leq \mathcal{V}_p(b)$, i.e., $e\leq e'$, otherwise $b<aq$.
+            \item $\mathcal{V}_p(a) \leq \mathcal{V}_p(b)$, both refer to $p$. Thus $a\mid b$ as $a$ can pull some factor $p^e$ out of $b$.
+        \end{itemize}
+    \end{itemize}
+\end{Proof}
+
+
+
+
+
+
+
+
 
