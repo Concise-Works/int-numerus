@@ -9,7 +9,7 @@ to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \te
         \item \textbf{Closure:} For all $a,b\in G$, $a*b\in G$.
         \item \textbf{Associativity:} For all $a,b,c\in G$, $(a*b)*c=a*(b*c)$.
         \item \textbf{Identity:} There exists an element $e\in G$ such that for all $a\in G$, $a*e=e*a=a$.
-        \item \textbf{Inverse:} $\forall a\,\exists\, a^{-1}\in G$, such that $a*a^{-1}=a^{-1}*a$ equates to the identity.
+        \item \textbf{Inverse:} $\forall a\,\exists\, a^{-1}\in G$, such that $a*a^{-1}=a^{-1}*a=e$ the identity.
     \end{itemize}
 \end{Def}
 \newpage
@@ -22,7 +22,7 @@ to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \te
               \item \textbf{Closure:} $-1\cdot-1=1\in S$.
               \item \textbf{Associativity:} $(-1\cdot1)\cdot-1=1\cdot-1=-1$ and $-1\cdot(1\cdot-1)=-1\cdot1=-1$.
               \item \textbf{Identity:} 1, as $1 \cdot -1=-1\cdot1=-1$.
-              \item \textbf{Inverse:} -1 as $-1\cdot-1=1=$ the identity.
+              \item \textbf{Inverse:} -1, as $-1\cdot-1=1=1$
           \end{itemize}
 
     \item Set $I=\mathbb{Z}$ closed under addition.
@@ -45,7 +45,7 @@ to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \te
 
     A \textit{ring} is a non-empty set $R$ that is closed under additive (+) and multiplicative $(\cdot)$ operations, such that:
     \begin{itemize}
-        \item \textbf{Additive Group:} $(R)$ is an Abelian group.
+        \item \textbf{Additive Structure:} $(R)$ is an Abelian group.
         \item \textbf{Multiplicative Closure:} For all $a,b\in R$, $a\cdot b\in R$.
         \item \textbf{Distributive Property:} For all $a,b,c\in R$, $a\cdot(b+c)=a\cdot b+a\cdot c$ and $(a+b)\cdot c=a\cdot c+b\cdot c$.
     \end{itemize}
@@ -56,7 +56,7 @@ to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \te
 
 \begin{Note}
     \textbf{Note:} Operations aren't literally addition and multiplication. For example,
-    the set of $2\times2$ matrices with $\mathbb{R}$ entries forms a ring.
+    the set of $2\times2$ matrices. Multiplication is different than standard applications, though exists in some form.
 \end{Note}
 \begin{Tip}
     Numbers and symbols are just placeholders for the concepts they represent.
@@ -74,8 +74,8 @@ to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \te
     \begin{itemize}
         \item \textbf{Additive:} $a+b\in I$.
         \item \textbf{Multiplicative under the ring:} $a\cdot r\in I$ or $r\cdot a\in I$.
-        \item \textbf{Additive inverse:} $-a\in I$.
-        \item \textbf{Additive identity:} $a,a'\in I$ such that $a+a'=a'+a=a'$.
+        \item \textbf{Additive identity:} There exists $e\in I:a+e=e+a=a$ (often 0).
+        \item \textbf{Additive inverse:} $-a\in I:a+(-a)=-a+a=e$.
     \end{itemize}
 \end{Def}
 
@@ -84,8 +84,8 @@ to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \te
 \begin {itemize}
 \item \textbf{Additive:} $(2\cdot a)+(2\cdot b)=2(a+b)\in 2\mathbb{Z}$.
 \item \textbf{Multiplicative:} $(2\cdot a)\cdot r=2(a\cdot r)\in 2\mathbb{Z}$.
-\item \textbf{Additive inverse:} $-2\in 2\mathbb{Z}$.
 \item \textbf{Additive identity:} $0\in 2\mathbb{Z}$.
+\item \textbf{Additive inverse:} For every $2a \in 2\mathbb{Z}$, its inverse is $-2a \in 2\mathbb{Z}$.
 \end{itemize}
 
 % why is Z not considered an ideal?
@@ -108,11 +108,9 @@ to understand ideals, is to understand \textbf{groups }, \textbf{rings}, and \te
     \item \textbf{Excludes 0:} As $0$ has no multiplicative inverse, i.e., $\frac{1}{0}$ is undefined.
 \end{itemize}
 \begin{Tip}
-    A \textbf{group} defines operations, an \textbf{abelian group} ensures
-    commutativity, a \textbf{ring} has an abelian group (+), multiplication ($\cdot$), and distribution,
-    an \textbf{ideal} $I\subseteq  R$ ring, such that\\ $a\in I,r\in R, a\cdot r\in I$, and a \textbf{field} is a ring
-    excluding 0 in its multiplicative abelian group.
+    A \textbf{group} defines operations, an \textbf{abelian group} ensures commutativity, a \textbf{ring} $R$ consists of an abelian group (+), multiplication ($\cdot$), and distribution. An \textbf{ideal} $I \subseteq R$ is a special subset of a ring, such that for $a \in I$ and $r \in R$, $a \cdot r \in I$. Finally, a \textbf{field} is a ring where the non-zero elements form a multiplicative abelian group.
 \end{Tip}
+
 
 \newpage
 
@@ -121,7 +119,10 @@ We will use $\mathbb{Z}$ as an ideal to explore the behavior of primes and divis
 
 \begin{Def}[Generator]
 
-    An element or set of elements that can be used to \textit{generate} a structure by repeated application of that structure's operations.
+    An element or set of elements that can be used to \textit{generate} a structure by repeated application of that structure's operations.\\
+
+    \noindent
+    Denoted: $\langle a \rangle$, element $a$ generating a structure.
 \end{Def}
 
 
@@ -131,9 +132,6 @@ We will use $\mathbb{Z}$ as an ideal to explore the behavior of primes and divis
     \begin{equation*}
         a\mathbb{Z} = \{ a \cdot x : x \in \mathbb{Z} \}= \{ \ldots, -2a, -a, 0, a, 2a, \ldots \}.
     \end{equation*}
-
-    \noindent
-    Also Denoted: \underline{$\langle a \rangle$ when the generator is clear.}
 \end{Def}
 
 \noindent
@@ -193,9 +191,6 @@ Since $\mathbb{Z}$ forms a ring, for $a\in\mathbb{Z}$, $\langle a \rangle$ is a 
 \end{Def}
 
 \noindent
-This follows from the properties of ideals in $\mathbb{Z}$ and can be generalized to any ring $R$.\\
-
-\noindent
 \textbf{Example:} Consider ideals in $\mathbb{Z}$:
 
 \[
@@ -223,6 +218,7 @@ Thus, the product of $I$ and $J$ is:
 \]
 Therefore, the product of $2\mathbb{Z}$ and $3\mathbb{Z}$ is $6\mathbb{Z}$, the set of multiples of 6.
 Illustrating $I \cdot J$ as the sums of products ensures the additive and multiplicative closure properties of ideals.
+
 \newpage
 
 \begin{theo}[Ideal Properties]

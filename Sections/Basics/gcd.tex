@@ -7,7 +7,7 @@
 
     For all $a,b\in\mathbb{Z}$,\\
     The \textit{greatest common divisor} of $a$ and $b$, is the largest positive integer dividing both $a$ and $b$.\\
-    I.e., $d\in\mathbb{Z}: d\mid a$ and $d\mid b$, and \underline{$d$ is unique.}
+    I.e., $d\in\mathbb{Z}: d\mid a$ and $d\mid b$, and \underline{$d$ is unique.}\\
 
     \noindent
     Denoted: $\gcd(a,b)$.
@@ -17,7 +17,7 @@
 
     \label{theo:gcd_existence_uniqueness}
 
-    Let $a,b\in\mathbb{Z}$, and $d=\gcd(a,b)$.\\
+    Let $a,b\in\mathbb{Z}$, and $d=\gcd(a,b)$.
     \begin{itemize}
         \item  \textbf{Existence:} $d$ exists by the Well-Ordering Principle, 
         as it's greatest element in the set of common divisors of $a$ and $b$.
@@ -48,7 +48,7 @@
         \item \textbf{Linear Combination:} Since $c\in I$ and $a\mathbb{Z} + b\mathbb{Z} = I$. There exists some linear combination $\underline{as+bt=c}$ for some $s,t\in\mathbb{Z}$ (\ref{def:ideal_operations}).
         \item \textbf{Greatest Divisor} Let $a,b\in I$ be the products $a=a'c'$ and $b=b'c'$, where $a',b'\in\mathbb{Z}$.
               Then there's a linear combination $a'c'+b'c'=c'(a'+b')=c$. So $c\mid c'$, hence $c$ is the greatest common divisor of $a$ and $b$.
-        \item \textbf{Uniqueness:} By Lemma (\ref{theo:gcd_existence_uniqueness}), $c$ is unique.
+        \item \textbf{Uniqueness:} By Lemma (\ref{theo:gcd_existence_uniqueness}), $c$ is unique, yielding $c=\gcd(a,b)$.
     \end{itemize}
 \end{Proof}
 
@@ -56,7 +56,7 @@
 
 \noindent
 This next theorem heavily relies on Definition (\ref{theo:ideal_properties}) and the previous Proof (\ref{theo:gcd_ideal_linear_combination}).
-\begin{theo}[Element Linear Combinations of $\mathbb{Z}$]
+\begin{theo}[Bezout's Identity]
 
     \label{theo:element_linear_combinations}
 
@@ -66,7 +66,7 @@ This next theorem heavily relies on Definition (\ref{theo:ideal_properties}) and
 \end{theo}
 
 
-\begin{Proof}[Element Linear Combinations of $\mathbb{Z}$]
+\begin{Proof}[Bezout's Identity]
 
     Let $r\in\mathbb{Z}$, and $d=\gcd(a,b)$, we have
     
@@ -100,6 +100,7 @@ From above it follows that:
 \end{Def}
 I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations}), if $r=1$, then $a$ and $b$ are coprime.\\
 
+\noindent
 \textbf{Examples:}
 \begin{itemize}
     \item $\gcd(6,9)=3$, so $6$ and $9$ are not coprime.
@@ -107,7 +108,7 @@ I.e., given the equation $as + bt = r$ in (\ref{theo:element_linear_combinations
 \end{itemize}
 
 \begin{Tip}
-    It's crucial to understand the reasoning behind $as+bt=r$ and it's relation to ideals generated under $\mathbb{Z}$. I.e., understand ideals (\ref{def:ideal}), and their operations (\ref{def:ideal_operations}) robustly.
+    Étienne Bézout was a prominent 18th-century French mathematician, known for his contributions to algebra and number theory. He is most famous for \textbf{Bézout's Identity}. Bézout also contributed to algebraic geometry, notably with \textbf{Bézout's Theorem}, which gives the maximum number of intersections between two algebraic curves.
 \end{Tip}
 
 \newpage 
@@ -419,8 +420,7 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
     \begin{itemize}
         \item  \textbf{Existence:} $m$ exists by the Well-Ordering Principle.
         \item \textbf{Uniqueness:} Let there be another smallest $m'\in\mathbb{Z}:a\mid m'$ and $b\mid m'$.\\
-        Then, both $m$ and $m'$ are divisible by $a$ and $b$, it follows that $m \mid m'$ and $m' \mid m$.\\
-        Thus, $m=\pm m'$ (\ref{theo:reflexive_divisibility}). LCM must be positive, so $m = m'$.
+        Then, both $m$ and $m'$ are divisible by $a$ and $b$. If $m$ and $m'$ are both the smallest, $m \mid m'$ and $m' \mid m$. Thus, $m=\pm m'$ (\ref{theo:reflexive_divisibility}). LCM must be positive, so $m = m'$.
     \end{itemize}
 \end{Proof}
 
@@ -472,12 +472,7 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
     \textit{Proof on next page.}
 \end{center}
 
-\begin{Tip}
-    \textbf{Euclid}, one of the greatest ancient mathematicians, laid the groundwork for the \textit{Fundamental Theorem of Arithmetic} around 300 BCE. In \textit{Elements}, Euclid proved the \textbf{existence} of prime factorizations for integers greater than 1.
-    
-    \textbf{Carl Friedrich Gauss}, the \textit{Prince of Mathematicians}, later proved the \textbf{uniqueness} of prime factorizations in his 1801 work \textit{Disquisitiones Arithmeticae}. Gauss showed that prime factorizations are unique, up to the order of factors.
-    \end{Tip}
-    
+
     
     
 
