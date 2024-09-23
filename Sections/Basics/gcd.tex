@@ -355,11 +355,11 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
 \begin{Tip}
     Remember that $\mathcal{V}_p(n)$ is some arbitrary function we defined.
     Despite this function being \textit{made-up}, it has very \textbf{real} implications as we'll see in the next theorem. 
-    It helps to abstract concepts, to avoid repetition and the accumulation of details.\\
+    $\mathcal{V}_p(n)$ is no more real than $\gcd(a,b)$. It's a tool that helps us abstract.
 
-    \noindent
+
     Similar to how computers are built on binary logic, and then subsequently written in some
-    abstracted higher-level language. Then even those languages have their own abstractions through various libraries and frameworks,
+    abstracted higher-level language. Even those languages have their own abstractions through various libraries and frameworks,
     all helping speed up the process of development.
 
 \end{Tip}
@@ -386,14 +386,14 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
     a=&\prod&p_1^{e_1} & p_2^{e_2} & p_3^{e_3} & \dots & p_k^{e_k} \\
     b=&\vdots&p_1^{e'_1} & p_2^{e'_2} & p_3^{e'_3} & \dots & p_k^{e'_k} \\
     \hline
-    gcd(a,b)=&\vdots&p_1^{\min(e_1, e'_1)} & p_2^{\min(e_2, e'_2)} & p_3^{\min(e_3, e'_3)} & \dots & p_4^{\min(e_k, e'_k)} \\
+    gcd(a,b)=&\vdots&p_1^{\min(e_1, e'_1)} & p_2^{\min(e_2, e'_2)} & p_3^{\min(e_3, e'_3)} & \dots & p_k^{\min(e_k, e'_k)} \\
 
     \end{array}
     \]
 
     \noindent
     Separating $a$ and $b$ into their prime factors, taking the minimum exponent of each pair $p_i$,
-    effectively striping all unnecessary factors, leaving only and all common factors between them.\\
+    effectively intersecting all shared factors between $a$ and $b$.\\
     
     \noindent
     I.e., the GCD.
@@ -445,14 +445,14 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
     a=&\prod&p_1^{e_1} & p_2^{e_2} & p_3^{e_3} & \dots & p_k^{e_k} \\
     b=&\vdots&p_1^{e'_1} & p_2^{e'_2} & p_3^{e'_3} & \dots & p_k^{e'_k} \\
     \hline
-    lcm(a,b)=&\vdots&p_1^{\max(e_1, e'_1)} & p_2^{\max(e_2, e'_2)} & p_3^{\max(e_3, e'_3)} & \dots & p_4^{\max(e_k, e'_k)} \\
+    lcm(a,b)=&\vdots&p_1^{\max(e_1, e'_1)} & p_2^{\max(e_2, e'_2)} & p_3^{\max(e_3, e'_3)} & \dots & p_k^{\max(e_k, e'_k)} \\
 
     \end{array}
     \]
 
     \noindent
     Separating $a$ and $b$ into their prime factors, taking the maximum exponent of each pair $p_i$,
-    effectively including only and all necessary factors between them.\\
+    effectively creating a union between $a$ and $b$ factors.\\
     
     \noindent
     I.e., the LCM.
@@ -472,65 +472,117 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
     \textit{Proof on next page.}
 \end{center}
 
+\begin{Tip}
+    \textbf{Euclid}, one of the greatest ancient mathematicians, laid the groundwork for the \textit{Fundamental Theorem of Arithmetic} around 300 BCE. In \textit{Elements}, Euclid proved the \textbf{existence} of prime factorizations for integers greater than 1.
+    
+    \textbf{Carl Friedrich Gauss}, the \textit{Prince of Mathematicians}, later proved the \textbf{uniqueness} of prime factorizations in his 1801 work \textit{Disquisitiones Arithmeticae}. Gauss showed that prime factorizations are unique, up to the order of factors.
+    \end{Tip}
+    
+    
+    
+
 \newpage
 
 \begin{Proof}[GCD-LCM Relationship]
 
     \label{proof:gcd_lcm_relationship}
 
-    Between $a,b\in\mathbb{Z}$: 
-    \begin{itemize}
-        \item GCD is the largest common factor.
-        \item LCM is the smallest common multiple.
-    \end{itemize}
-
-    We visualize this relationship:
+    For every $a,b\in\mathbb{Z}$,
+    % \begin{itemize}
+    %     \item GCD is the largest common factor.
+    %     \item LCM is the smallest common multiple.
+    % \end{itemize}
     
-    \begin{center}
+    % % \begin{center}
     
-        \begin{tikzpicture}
-            % Nodes
-            \node (lcm) at (0,3) {\textcolor{red}{$\text{lcm}(a,b)$}};
+    % %     \begin{tikzpicture}
+    % %         % Nodes
+    % %         \node (lcm) at (0,3) {\textcolor{red}{$\text{lcm}(a,b)$}};
             
-            \node (a) at (-2,0) {$\color{red}a\color{black} = f_1\color{blue}{\cdots}f_j\cdots\color{black} f_k$};
-            \node (b) at (2,0) {$f_1' \color{blue}{\cdots}f_j\cdots \color{black} f_k'=\color{red}b$};
+    % %         \node (a) at (-2,0) {$\color{red}a\color{black} = f_1\color{blue}{\cdots}f_j\cdots\color{black} f_k$};
+    % %         \node (b) at (2,0) {$f_1' \color{blue}{\cdots}f_j\cdots \color{black} f_k'=\color{red}b$};
             
-            \node (gcd) at (0,-2) {\textcolor{blue}{$\text{gcd}(a,b)$}};
+    % %         \node (gcd) at (0,-2) {\textcolor{blue}{$\text{gcd}(a,b)$}};
             
            
             
-            \draw[->, blue, thick] (gcd) to [out=90,in=-90] (-1.7,-.4);
-            \draw[->, blue, thick] (gcd) to [out=90,in=-90] (1.6,-.4);
+    % %         \draw[->, blue, thick] (gcd) to [out=90,in=-90] (-1.7,-.4);
+    % %         \draw[->, blue, thick] (gcd) to [out=90,in=-90] (1.6,-.4);
 
-            % blue crosses times
-            \draw[->, blue, thick] (-1.7,.3)  arc
-            [
-                start angle=20,
-                end angle=160,
-                x radius=.8cm,
-                y radius =0.8cm
-            ];
-            \draw[->, blue, thick] (1.6,.3) arc
-            [
-                start angle=160,
-                end angle=20,
-                x radius=.8cm,
-                y radius =0.8cm
-            ];
+    % %         % blue crosses times
+    % %         \draw[->, blue, thick] (-1.7,.3)  arc
+    % %         [
+    % %             start angle=20,
+    % %             end angle=160,
+    % %             x radius=.8cm,
+    % %             y radius =0.8cm
+    % %         ];
+    % %         \draw[->, blue, thick] (1.6,.3) arc
+    % %         [
+    % %             start angle=160,
+    % %             end angle=20,
+    % %             x radius=.8cm,
+    % %             y radius =0.8cm
+    % %         ];
 
-            % Times
-            \node (timesa) at (-2.45,1) {{$\times$}};
-            \node (timesb) at (2.35,1) {{$\times$}};
+    % %         % Times
+    % %         \node (timesa) at (-2.45,1) {{$\times$}};
+    % %         \node (timesb) at (2.35,1) {{$\times$}};
             
-            % blue crosses
-             \draw[->, red, thick] (timesa) to [out=90,in=180]  (lcm);
-             \draw[->, red, thick] (timesb) to [out=90,in=0] (lcm);
+    % %         % blue crosses
+    % %          \draw[->, red, thick] (timesa) to [out=90,in=180]  (lcm);
+    % %          \draw[->, red, thick] (timesb) to [out=90,in=0] (lcm);
         
-        \end{tikzpicture}
-    \end{center}
-    Let $f_1,f_2,\ldots,f_k:=a$'s factors, $f_1',f_2',\ldots,f_k':=b$'s factors. Let $\gcd(a,b):=f_j$, factors $a\cap b$.
+    % %     \end{tikzpicture}
+    % % \end{center}
+    % % Let $f_1,f_2,\ldots,f_k:=a$'s factors, $f_1',f_2',\ldots,f_k':=b$'s factors. Let $\gcd(a,b):=f_j$, factors $a\cap b$:
+    % \noindent
+    % Let $m:=\text{lcm}(a,b)$, $n:=\gcd(a,b)$. Note $f_j$ could be $\emptyset$, in which case $n=1$.\\
+
+
+    % \begin{itemize}
+    %       \item \textbf{Bounds:} $2\leq\max(a,b)\leq m \leq ab$, as $a$ and $b$ must divide $m$.
+    %     \item Then $m\subseteq ab$'s factors. E.g., for $a=2,b=3$, then $m\subseteq2\cdot3$ factors, and $n=1$.
+    % \end{itemize}
+
+    \noindent
+    In Proof GCD abstracted (\ref{proof:gcd_abstracted}) LCM abstracted (\ref{proof:lcm_abstracted}) we showed:
+    \begin{itemize}
+        \item GCD creates the intersection of $a$ and $b$'s factors.
+        \item LCM creates the union of $a$ and $b$'s factors.
+    \end{itemize}
+    \noindent
+    LCM $\subseteq ab$'s factors. $ab$ can be visualized as:
+    \[
+    \begin{array}{ccc|c|c|c|c}
     
+    a=&\prod&p_1^{e_1} & p_2^{e_2} & p_3^{e_3} & \dots & p_k^{e_k} \\
+    b=&\vdots&p_1^{e'_1} & p_2^{e'_2} & p_3^{e'_3} & \dots & p_k^{e'_k} \\
+    \hline
+    ab=&\vdots&p_1^{(e_1 + e'_1)} & p_2^{(e_2+ e'_2)} & p_3^{(e_3+ e'_3)} & \dots & p_k^{(e_k+ e'_k)} \\
+
+    \end{array}
+    \]
+    Then $\dfrac{|ab|}{\gcd(a,b)}$ would be:\\
+    \[
+    \begin{array}{ccc|c|c}
     
+    a=&\prod&p_1^{e_1} &  \dots & p_k^{e_k} \\
+    b=&\vdots&p_1^{e'_1} &  \dots & p_k^{e'_k} \\
+    \hline
+    lcm(a,b)=&\vdots&p_1^{(e_1 + e'_1)-\min(e_1 + e'_1)} & \dots & p_k^{(e_k+ e'_k)-\min(e_k+ e'_k)} \\
+
+    \end{array}
+    \]
+
+    \noindent
+    We are done.
+    To further illustrate, $\max(e_i+e'_i) = (e_i+e'_i)-\min(e_i+e'_i)$. Using $\mathcal{V}_p(n)$:\\
+    \LARGE
+    \[
+        \lcm(a, b) = \prod_{p} p^{\mathcal{V}_p(ab)- \min(\mathcal{V}_p(a),\mathcal{V}_p(b))}
+    \]
+    \normalsize
 
     % \begin{align*}
     %     \lcm(a,b) = abc\in\mathbb{Z} & \text{ As ($ab\mid\lcm(a,b)$ (\ref{def:division}))}\\
@@ -539,6 +591,10 @@ The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Le
     % \end{align*}
     
     \end{Proof}
+
+    \begin{Note}
+        \textbf{Note:} $\mathcal{V}_p(ab)= \mathcal{V}_p(a) + \mathcal{V}_p(b)$ as shown in Theorem (\ref{theo:operations_of_V_p(n)}).
+    \end{Note}
 
 
 
