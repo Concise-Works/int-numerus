@@ -59,6 +59,7 @@ This next theorem heavily relies on Definition (\ref{theo:ideal_properties}) and
 \begin{theo}[Bezout's Identity]
 
     \label{theo:element_linear_combinations}
+    \label{theo:bezouts_identity}
 
     For all \(a, b,d \in \mathbb{Z}\) and $d=\gcd(a,b)$:\\
     There exists some \(s, t \in \mathbb{Z}\), such that \(as + bt = r\) if and only if $d\mid r$.
@@ -259,11 +260,11 @@ Extending the the Fundamental Theorem of Arithmetic (\ref{theo:FTA}):
 \newpage
 \noindent
 We'll begin to define functions---which may or may not have logic---to abstract concepts.
-\begin{Def}[Prime Exponents - $\mathcal{V}_p(n)$]
+\begin{Func}[Prime Exponents - $\mathcal{V}_p(n)$]
 
     For each prime $p$ where $n=p^em \in\mathbb{Z}$ and $p\nmid m$. We define $\mathcal{V}_p(n)=e$.\\
     I.e., $\mathcal{V}_p(n)$ is the exponent of $p$ in the prime factorization of $n$. 
-\end{Def}
+\end{Func}
 In specifying $p\nmid m$, we ensure that $p^e$ is the highest power of $p$ dividing $n$.\\
 
 \noindent
@@ -297,14 +298,14 @@ The ``$\pm$'' accounts for the sign of $n$. Say $n=-30$, then $n=-(2\cdot3\cdot5
 \noindent
 The function $\mathcal{V}_p(n)$ help us generalize GCD and \underline{\textbf{Least Common multiple} (LCM),} but first we define two other functions:
 
-\begin{Def}[Minumum \& Maximum - $\min()$, $\max()$]
+\begin{Func}[Minumum \& Maximum - $\min()$, $\max()$]
     
         For all $a,b\in\mathbb{Z}$,
         \begin{itemize}
             \item $\min(a,b)$ is the smallest of $a$ and $b$.
             \item $\max(a,b)$ is the largest of $a$ and $b$.
         \end{itemize}
-\end{Def}
+\end{Func}
 
 \newpage
 

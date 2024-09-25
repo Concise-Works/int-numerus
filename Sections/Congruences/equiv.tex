@@ -1,0 +1,225 @@
+\section{Equivalence Relations}
+
+\begin{Def}[Equivalence Relation]
+
+    An \textbf{equivalence relation} on set $S$ is a relation $\sim$ which satisfies:
+    \begin{enumerate}
+        \item \textbf{Reflexivity:} For all $a \in S$, $a \sim a$.
+        \item \textbf{Symmetry:} For all $a, b \in S$, if $a \sim b$, then $b \sim a$.
+        \item \textbf{Transitivity:} For all $a, b, c \in S$, if $a \sim b$ and $b \sim c$, then $a \sim c$.
+    \end{enumerate}
+    With $a\sim a$ reading, ``$a$ is related to $a$.''
+\end{Def}
+
+
+\begin{Def}[Equivalence Class]
+
+    \label{def:equiv_class}
+
+    For $\sim$ equivalence relation on set $S$. For each $a \in S$, the \textbf{equivalence class} of $a$ is the set
+    \[
+        [a] = \{x \in S \mid x \sim a\}.
+    \]
+\end{Def}
+
+\begin{Note}
+    \textbf{Note:} For $x\in[a]$, $x$ is a \textbf{representative} of the equivalence class $[a]$ (\ref{def:representative}).
+\end{Note}
+
+\begin{theo}[Equivalence Class Uniqueness]
+
+    For $\sim$ equivalence relation on set $S$, for all $a, b \in S$:
+
+    \begin{itemize}
+        \item[(i)]  $a \in [a]$.
+        \item[(ii)] $a \in [b] \Longrightarrow [a] = [b]$.
+    \end{itemize}
+    
+\end{theo}
+
+\newpage
+
+\begin{Proof}[Equivalence Class Uniqueness]
+    For $a,b \in S$:
+        \begin{itemize}
+            \item[(i)]  Since $\sim$ is reflexive, $a \sim a$.
+            \item[(ii)] Suppose $a \in [b]$. Then $a \sim b$. Then for $x \in S$,
+                        \begin{align*}
+                            x \in [a]&\Longrightarrow x \sim a \text{ (Definition of $[a]$ (\ref{def:equiv_class}))} \\
+                            &\Longrightarrow x \sim b \text{ (Transitivity, $x\sim a\land a\sim b$)} \\
+                            &\Longrightarrow x \in [b] \text{ (Definition of $[b]$ (\ref{def:equiv_class}))}
+                        \end{align*}
+                        Thus $[a] \subseteq [b]$. Similarly, $[b] \subseteq [a]$. Therefore $[a] = [b]$.
+        \end{itemize}
+\end{Proof}
+
+\section{Modular Congruences}
+Continuing with the notion of residues in, we introduce the concept of modular congruences (\ref{def:residue}). 
+
+\begin{Def}[Modular Congruence]
+
+    \label{def:mod_cong}
+
+    For $n \in \mathbb{N}$, $a, b \in \mathbb{Z}$, $a$ is \textbf{congruent} to $b$ modulo $n$ if $n \mid (a - b)$, denoted as
+    \[
+        a \equiv b \pmod{n}.
+    \]
+    If $n\nmid (a-b)$, then $a \not\equiv b \pmod{n}$.
+\end{Def}
+\noindent
+I.e., $a$ and $b$ have the same remainder when divided by $n$.
+\begin{Note}
+    \textbf{Note:} $a \equiv b \pmod{n}$: $\mathbf{a}$ and $\mathbf{b}$ are \textbf{dividends} of $\mathbf{n}$ our \textbf{divisor}, which relate by \textbf{remainder}.
+\end{Note}
+\begin{theo}[Modular Congruence Properties]
+
+    For all \(a, b, c \in \mathbb{Z}\), and some positive integer $n$:
+\begin{itemize}
+    \item[(i)] \( a \equiv a \pmod{n} \);
+    \item[(ii)] \( a \equiv b \pmod{n} \Longrightarrow b \equiv a \pmod{n} \);
+    \item[(iii)] \( a \equiv b \pmod{n} \) and \( b \equiv c \pmod{n} \Longrightarrow a \equiv c \pmod{n} \).
+\end{itemize}
+
+\end{theo}
+
+\newpage
+
+\begin{Proof}[Modular Congruence Properties]
+    For all \(a, b, c \in \mathbb{Z}\), and some positive integer $n$:
+    \begin{itemize}
+        \item[(i)] \( a \equiv a \pmod{n} \) so \( n \mid (a - a) \), which holds.
+        \item[(ii)] \( a \equiv b \pmod{n} \) so $n$ divides \((a-b)\) and \(-(a - b)=(b-a) \), then \( b \equiv a \pmod{n} \).
+        \item[(iii)] \( a \equiv b \pmod{n} \) so \( n \mid (a - b) \), and \( b \equiv c \pmod{n} \) is  \( n \mid (b - c) \). Therefore,
+       \begin{align*}
+              &\quad n \mid (a - b) \quad \text{and} \quad n \mid (b - c)& \\
+              \Longrightarrow &\quad n \mid [(a - b) + (b - c)]  \\
+              \Longrightarrow &\quad n \mid (a - c)  \\
+              \Longrightarrow &\quad a \equiv c \pmod{n}.
+       \end{align*}
+    \end{itemize}
+\end{Proof}
+
+\begin{theo}[Modular Arithmetic]
+
+    Let \(a, a', b, b', n \in \mathbb{Z}\) with \(n > 0\). If
+    \[
+    a \equiv a' \pmod{n} \quad \text{and} \quad b \equiv b' \pmod{n},
+    \]
+    then
+    \[
+    a + b \equiv a' + b' \pmod{n} \quad \text{and} \quad a \cdot b \equiv a' \cdot b' \pmod{n}.
+    \]
+    
+\end{theo}
+
+\begin{Proof}[Modular Arithmatic]
+    
+    \textbf{Addition:} For \(a, a', b, b', n \in \mathbb{Z}\),
+    \begin{itemize}
+        \item So $a\equiv a'\pmod{n}$ then $n\mid(a-a')$ means $a-a'=nx$ for some $x\in\mathbb{Z}$.
+        \item Similarly, $b\equiv b'\pmod{n}$ then $b-b'=ny$ for some $y\in\mathbb{Z}$.
+        \item Adding both equations, $(a-a')+(b-b')=(nx+ny)$ so $(a+b)-(a+b')=n(x+y)$.
+        \item Therefore, $a+b\equiv a'+b'\pmod{n}$, as $n\mid(a+b)-(a'+b')$.
+    \end{itemize}
+    \textbf{Multiplication:} Continuing,
+    \begin{itemize}
+        \item If we multiply both equations, $(a-a')(b-b')=(nx)(ny)$ so $(ab)-(a'b')=n(xy)$.
+        \item Therefore, $ab\equiv a'b'\pmod{n}$, as $n\mid(ab)-(a'b')$.
+    \end{itemize}
+     
+
+\end{Proof}
+
+\newpage
+
+\begin{theo}[Least Residue]
+
+    Let \(a, n \in \mathbb{Z}\) with \(n > 0\). There exists unique $z \in \mathbb{Z}$ such that:
+    \begin{itemize}
+        \item [(i)] \(0 \leq z < n\),
+        \item [(ii)] \(a \equiv z \pmod{n}\).
+        \item [(iii)] \(z\) is the \textbf{least residue} of \(a\) modulo \(n\).
+    \end{itemize}
+    Particularly, for all $x\in\mathbb{Z}$, $z\in[x,x+n)$.
+\end{theo}
+I.e., the least non-negative remainder $r$, which could be thought of as $r:=a\text{ mod } n$.
+\begin{Note}
+    \textbf{Note:} The period $[x,x+n)$, is the remainder count, a call back to the Division Alg. (\ref{theo:div_alg_ext}).
+\end{Note}
+
+\begin{Proof}[Least Residue]
+
+    For some $a,q,n,r\in\mathbb{Z}$,\\
+    The Division Algorithm grantees existence, for $a=qn+r:0\leq r<n$ (\ref{theo:div_alg_ext}). Residues 
+    mod $n>0$ are non-empty. Thus by the Well-Ordering Principle, there's a least element.
+\end{Proof}
+
+\noindent
+\textbf{Example:} Working to find the \textbf{set of solutions} $\mathbf{z}$ for $a\equiv z\pmod{n}$, i.e., find $z$ that satisfies,
+\begin{align*}
+3z+4 \equiv 6 \pmod{7} & \text{ (Given)} \\
+3z \equiv 2 \pmod{7} & \text{ (Subtracting 4 from both sides)} \\
+\end{align*}
+We can't necessarily divide, but we can shift residue by some favorable factor.
+\begin{align*}
+3z\cdot5 \equiv 2\cdot5 \pmod{7} & \text{ (Multiply 5 to both sides)} \\
+1\cdot z\equiv 10 \pmod{7} & \text{ (Since $15\equiv1\pmod{7}$)} 
+\end{align*}
+Finding solution $z\equiv10\pmod{7}$, which we can reduce to $z\equiv 3\pmod{7}$, as $3\equiv10\pmod{7}$.\\
+We say ``integers $z$ has solutions'' as $z\in[3]_{7}=\{3+7k:k\in\mathbb{Z}\}$ possible solutions.\\
+
+\begin{Note}
+    \textbf{Note:} $[3]_{7}$ reads as \textit{``the residue class 3 modulo 7.''} Mentioned in (\ref{def:equiv_class}).
+\end{Note}
+
+\newpage
+
+\section{Solving Linear Congruences}
+
+\begin{theo}[Linear Congruence Identities]
+Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).
+\begin{itemize}
+    \item[(i)] For every \(b \in \mathbb{Z}\), the congruence \(az \equiv b \pmod{n}\) has a solution \(z \in \mathbb{Z}\) if and only if \(d \mid b\).
+    
+    \item[(ii)] For every \(z \in \mathbb{Z}\), we have \(az \equiv 0 \pmod{n}\) if and only if \(z \equiv 0 \pmod{n/d}\).
+    
+    \item[(iii)] For all \(z, z' \in \mathbb{Z}\), we have \(az \equiv az' \pmod{n}\) if and only if \(z \equiv z' \pmod{n/d}\).
+\end{itemize}
+\end{theo}
+\begin{Proof}[Linear Congruence Identities]
+    Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).
+   \begin{itemize}
+    \item [(i)] 
+    \begin{align*}
+        &az \equiv b \pmod{n} \quad \text{for some } z \in \mathbb{Z} \\
+        \Longleftrightarrow \quad &az - b = ny \quad \text{for some } z, y \in \mathbb{Z} \quad \text{(Def. of congruence (\ref{def:mod_cong}))} \\
+        \Longleftrightarrow \quad &az - ny = b \quad \text{for some } z, y \in \mathbb{Z} \\
+        \Longleftrightarrow \quad &d \mid b \quad \text{(By Bezout's Identity (\ref{theo:bezouts_identity}))}.
+        \end{align*}
+        Bezout's Identity follows as $a$ and $n$ form a linear combination of $b$.-
+    \item [(ii)] 
+    \begin{align*}
+        n \mid az \Longleftrightarrow \quad & n/d \mid (a/d)z  \text{ (Props. of Divisibility (\ref{theo:properties_of_divisibility}))}\\
+        \Longleftrightarrow \quad & n/d \mid z.  \text{ (Cancellation of GCD: $\gcd(a/d,n/d)=1$ (\ref{theo:cancellation_of_gcd}))}
+    \end{align*}
+
+
+    \item [(iii)]
+    \begin{align*}
+        &az \equiv az' \pmod{n} \\
+        \Longleftrightarrow \quad & a(z - z') \equiv 0 \pmod{n} \\
+        \Longleftrightarrow \quad & z - z' \equiv 0 \pmod{n/d} \quad \text{(By part (ii))} \\
+        \Longleftrightarrow \quad & z \equiv z' \pmod{n/d}.
+        \end{align*}
+        
+
+   \end{itemize}
+\end{Proof}
+
+
+
+
+
+
+
+
