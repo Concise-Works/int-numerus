@@ -187,34 +187,43 @@ Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).
 \end{itemize}
 \end{theo}
 \begin{Proof}[Linear Congruence Identities]
-    Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).
-   \begin{itemize}
-    \item [(i)] 
+    Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).\\
+
+    (i)
+
+    \vspace{-3em}
     \begin{align*}
         &az \equiv b \pmod{n} \quad \text{for some } z \in \mathbb{Z} \\
         \Longleftrightarrow \quad &az - b = ny \quad \text{for some } z, y \in \mathbb{Z} \quad \text{(Def. of congruence (\ref{def:mod_cong}))} \\
         \Longleftrightarrow \quad &az - ny = b \quad \text{for some } z, y \in \mathbb{Z} \\
         \Longleftrightarrow \quad &d \mid b \quad \text{(By Bezout's Identity (\ref{theo:bezouts_identity}))}.
         \end{align*}
-        Bezout's Identity follows as $a$ and $n$ form a linear combination of $b$.-
-    \item [(ii)] 
+
+    (ii) Above is Bezout's Identity as $a$ and $n$ form a linear combination of $b$.-
     \begin{align*}
         n \mid az \Longleftrightarrow \quad & n/d \mid (a/d)z  \text{ (Props. of Divisibility (\ref{theo:properties_of_divisibility}))}\\
         \Longleftrightarrow \quad & n/d \mid z.  \text{ (Cancellation of GCD: $\gcd(a/d,n/d)=1$ (\ref{theo:cancellation_of_gcd}))}
     \end{align*}
 
 
-    \item [(iii)]
+    (iii)
+
+    \vspace{-3em}
     \begin{align*}
         &az \equiv az' \pmod{n} \\
         \Longleftrightarrow \quad & a(z - z') \equiv 0 \pmod{n} \\
         \Longleftrightarrow \quad & z - z' \equiv 0 \pmod{n/d} \quad \text{(By Part (ii))} \\
         \Longleftrightarrow \quad & z \equiv z' \pmod{n/d}.
         \end{align*}
-        
 
-   \end{itemize}
 \end{Proof}
+
+\noindent
+For emphasis, following from the above proof:
+\begin{Def}[GCD Identity]
+    
+    For $a,n\in\mathbb{Z}$, $d:=\gcd(a,n)$, then $\gcd(a/d,n/d)=1$.
+\end{Def}
 
 
 
