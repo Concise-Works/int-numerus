@@ -1,0 +1,52 @@
+\section{The Chinese Remainder Theorem}
+
+\begin{Note}
+    \textbf{Note:} $\mathbb{Z}^+$ denotes the set of positive integers, and $\{x_i\}_{i=1}^k$ is short for $\{x_1,...,x_k\}$.
+\end{Note}
+\begin{theo}[Chinese Remainder Theorem (CRT)]
+
+    Let $\{n_i\}_{i=1}^k\in\mathbb{Z}^+$ all be coprime to each other and let $\{a_i\}_{i=1}^k$ be arbitrary integers. Then there is a solution $a\in\mathbb{Z}$ to the system of congruences:
+    \begin{align*}
+        a &\equiv a_1 \pmod{n_1} \\
+        a &\equiv a_2 \pmod{n_2} \\
+        &\hspace*{.5em}\vdots \\
+        a &\equiv a_k \pmod{n_k}
+    \end{align*}
+    
+    
+    \noindent
+    Moreover, if $a$ and $b$ are solutions to the system, then $a\equiv b\pmod{\prod_{i=1}^k n_i}$.
+\end{theo}
+\begin{Proof}[Solving the System of Congruences (Part 1)]
+Let $\{n_i\}_{i=1}^k\in\mathbb{Z}^+$ all be pairwise coprime, and let $\{a_i\}_{i=1}^k$ be arbitrary integers,\\
+
+\noindent
+\textbf{Existence:} (i) Construct a partial solution for each congruence. (ii) Each
+partial solution must not interfere with other congruences. (iii) Combine partial solutions:\\
+
+\noindent
+We by define indexes $i,j=1,...,k$ representing any two $e_1,...,e_k$ integers such that:
+ \[e_j \equiv
+ \begin{cases} 
+ 1 \pmod{n_i} & \text{if } j = i, \text{ (target congruence)}\\
+ 0 \pmod{n_i} & \text{if } j \neq i \text{ (non-interfering)}.
+ \end{cases}
+ \]
+ I.e., $e_j$ has multiplicative identity to it's own system, and additive identity to all other systems
+ by being some multiple. This allows us to construct:
+ \begin{align*}
+    e_1\cdot a_1 &\equiv 1\cdot a_1 \pmod{n_1} \\
+    e_2\cdot a_2 &\equiv 1\cdot a_2 \pmod{n_2} \\
+    &\hspace*{.5em}\vdots \\
+    e_k\cdot a_k &\equiv 1\cdot a_k \pmod{n_k}
+\end{align*}
+Using additive identity, we concatenate partial-solutions to $a = \sum_{i=1}^k e_ia_i$, the solution.
+\end{Proof}
+
+\newpage
+
+\begin{Proof}[Solving the System of Congruences (Part 2)]
+
+\noindent
+To construct $e_1,...,e_k$, let $n := \prod_{i=1}^k n_i$ and $n_i^* := n/n_i$. Then, $n_i$ and $n_i'$ are coprime.\\
+\end{Proof}

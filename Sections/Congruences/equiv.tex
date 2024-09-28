@@ -165,7 +165,7 @@ We can't necessarily divide, but we can shift residue by some favorable factor.
 3z\cdot5 \equiv 2\cdot5 \pmod{7} & \text{ (Multiply 5 to both sides)} \\
 1\cdot z\equiv 10 \pmod{7} & \text{ (Since $15\equiv1\pmod{7}$)} 
 \end{align*}
-Finding solution $z\equiv10\pmod{7}$, which we can OliveGreenu15 to $z\equiv 3\pmod{7}$, as $3\equiv10\pmod{7}$.\\
+Finding solution $z\equiv10\pmod{7}$, which we can reduce to $z\equiv 3\pmod{7}$, as $3\equiv10\pmod{7}$.\\
 We say ``integers $z$ has solutions'' as $z\in[3]_{7}=\{3+7k:k\in\mathbb{Z}\}$ possible solutions.\\
 
 \begin{Note}
@@ -176,7 +176,7 @@ We say ``integers $z$ has solutions'' as $z\in[3]_{7}=\{3+7k:k\in\mathbb{Z}\}$ p
 
 \section{Solving Linear Congruences}
 
-\begin{theo}[Modular Multiple Identities]
+\begin{theo}[Modular Multiplicative Identities]
 
     \label{theo:mod_mult_id}
     
@@ -223,7 +223,7 @@ Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).
 
 \noindent
 For emphasis, as we saw above:
-\begin{Def}[GCD OliveGreenu15ion]
+\begin{Def}[GCD Reduction]
 
     For $a,n\in\mathbb{Z}$, $d:=\gcd(a,n)$, then $\gcd(a/d,n/d)=1$.
 \end{Def}
@@ -236,7 +236,7 @@ For emphasis, as we saw above:
 
 \noindent
 A corollary to the above theorem (\ref{theo:mod_mult_id}):
-\begin{theo}[Modular Multiples Map]
+\begin{theo}[Modular Multiplicative Map]
 
     Let $a,n\in \mathbb{Z}$ with $n>0$, and residue classes $I_n:=\{0,\dots,n-1\}$. Then $(a \mod n)\in I_n$.\\
     Notably, for $z\in\mathbb{Z}$, $(az \mod n)$ is also in $I_n$.\\
@@ -409,8 +409,40 @@ Indeed $2\equiv-3\pmod{5}$, as $2+3\equiv3-3\pmod{5}$. To show this, observe:
 \underline{Think of \textbf{negative numbers} as traveling backwards within the residue class.}
 
 \begin{Def}[Modular Iverses]
-    let $a,n\in\mathbb{Z}$ with $n>0$. If $a$ and $n$ are coprime, then $a$ has a \textbf{modular inverse} $a^{-1}$, such that $aa^{-1}\equiv1\pmod{n}$.
+    
+    Let $a,n\in\mathbb{Z}$ with $n>0$. If $az\equiv1\pmod{n}$, then $z$ is the \textbf{modular inverse} of $a$ \textbf{modulo} $n$\\
+    and unique.\\
+
+    \noindent
+    Denoted: $a^{-1}\pmod{n}$.
 \end{Def}
+\noindent
+If inverse $z$ modulo $n$ exists, it is unique, as if there were another inverse $z'$, then $z'\equiv z\pmod{n}$.\\
+
+\noindent
+Restating (\ref{theo:mod_mult_id}) under coprime conditions:
+\begin{theo}[Coprime Modular Multiplicative Identities ]
+    
+
+        \label{theo:co_mod_mult_id}
+        
+    Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(\gcd(a, n)=1\).
+    \begin{itemize}
+        \item[(i)] For every \(b \in \mathbb{Z}\), the congruence \(az \equiv b \pmod{n}\) has a solution \(z \in \mathbb{Z}\).
+        
+        \item[(ii)] For every \(z \in \mathbb{Z}\), we have \(az \equiv 0 \pmod{n}\).
+        
+        \item[(iii)] For all \(z, z' \in \mathbb{Z}\), we have \(az \equiv az' \pmod{n}\). 
+    \end{itemize}
+    \noindent
+\end{theo}
+Try to find inverses from the above table. Take an $a$ and find solution $z$ to $az\equiv1\pmod{5}$.
+
+\newpage
+
+
+
+
 
 
 
