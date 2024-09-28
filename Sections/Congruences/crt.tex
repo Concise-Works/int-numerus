@@ -1,3 +1,5 @@
+
+
 \section{The Chinese Remainder Theorem}
 
 \begin{Note}
@@ -17,7 +19,7 @@
     \noindent
     Moreover, if $a$ and $b$ are solutions to the system, then $a\equiv b\pmod{\prod_{i=1}^k n_i}$.
 \end{theo}
-\begin{Proof}[Solving the System of Congruences (Part 1)]
+\begin{Proof}[Solving a System of Congruences (Part 1)]
 Let $\{n_i\}_{i=1}^k\in\mathbb{Z}^+$ all be pairwise coprime, and let $\{a_i\}_{i=1}^k$ be arbitrary integers,\\
 
 \noindent
@@ -40,13 +42,87 @@ We by define indexes $i,j=1,...,k$ representing any two $e_1,...,e_k$ integers s
     &\hspace*{.5em}\vdots \\
     e_k\cdot a_k &\equiv 1\cdot a_k \pmod{n_k}
 \end{align*}
-Using additive identity, we concatenate partial-solutions to $a = \sum_{i=1}^k e_ia_i$, the solution.
+Using additive identity, we close partial-solutions to $a = \sum_{i=1}^k e_ia_i$, the whole solution.
 \end{Proof}
 
 \newpage
 
-\begin{Proof}[Solving the System of Congruences (Part 2)]
+\begin{Proof}[Solving a System of Congruences (Part 2)]
 
 \noindent
-To construct $e_1,...,e_k$, let $n := \prod_{i=1}^k n_i$ and $n_i^* := n/n_i$. Then, $n_i$ and $n_i'$ are coprime.\\
+To construct such $e_1,...,e_k$, let $n := \prod_{i=1}^k n_i$ (the product of all moduli) and $n_i^* := n/n_i$. Then, $n_i$ and $n_i^*$ are coprime, meaning they have solution $n_i^*z\equiv 1\pmod{n_i}$ for some $z\in\mathbb{Z}$.\\
+
+\noindent
+Then $z=(n_i^*)^{-1}$, we can now define $e_i := n_i^*z$ for each $i=1,...,k$. Therefore, $e_i\equiv 1\pmod{n_i}$.\\
+Since $n$ contains shared factors, and we take $n_i$ at congruence $i$, $e_i\equiv 0\pmod{n_j}$ for $i\neq j$.\\
+
+\noindent
+Thus, we can now construct the solution $a = \sum_{i=1}^k e_ia_i$.
+
 \end{Proof}
+\begin{Proof}[Uniqueness of Solutions (Part 3)]
+
+    If \( a \) and \( a' \) both satisfy the system of congruences
+    \[
+    a \equiv a_i \pmod{n_i} \quad \text{and} \quad a' \equiv a_i \pmod{n_i} \quad \text{for } i = 1, \dots, k
+    \]
+    Then they must be congruent, i.e., \( a \equiv a' \pmod{\prod_{i=1}^k n_i} \).\\
+    
+    \noindent
+\end{Proof}
+\textbf{Example:} We'll find solution $a$ to the system of congruences:
+\begin{align*}
+    a &\equiv 3 \pmod{5} \\
+    a &\equiv 5 \pmod{7} \\
+    a &\equiv 2 \pmod{11}
+\end{align*}
+Observe that ($3$ mod $5)=\{3,8,13,18,23,28,33,...\}$, and ($5$ mod $7)=\{5,12,19,26,33,...\}$.
+Sets describing $3+5k$ and $5+7k$ respectively. We see,  $3\equiv 33\pmod{5}$, and $5\equiv 33\pmod{7}$.\\
+
+\noindent
+We can take $n=5\cdot7=35$ to construct a new system:
+\begin{align*}
+    a &\equiv 33 \pmod{35} = 33+35k = \{33,68,...\} \\
+    a &\equiv 2 \pmod{11} = 2+11k = \{2,13,24,35,46,57,68,...\}
+\end{align*}
+We see that $33\equiv 68\pmod{35}$, and $2\equiv 68\pmod{11}$. Thus, $a=68$:
+\begin{align*}
+    68 &\equiv 3 \pmod{5} \\
+    68 &\equiv 5 \pmod{7} \\
+    68 &\equiv 2 \pmod{11}
+\end{align*}
+Using the definition of CRT in combination with our proof, we can design a general algorithm to solve such systems.
+
+\newpage
+\subsection{CRT Algorithm}
+\begin{Func}[CRT Algorithm - \texttt{crt()}]
+Computes \( a\in\mathbb{Z} \) satisfying a given system of congruences:
+
+\begin{algorithm}[H]
+    \SetAlgoLined
+    \KwIn{Positive integers \( \{n_i\}_{i=1}^k \) and integers \( \{a_i\}_{i=1}^k \)}
+    \KwOut{An integer \( a \) satisfying the system of congruences}
+    \vspace{.5em}
+    \SetKwProg{Fn}{Function}{:}{\KwRet{\( a \)}}
+    \Fn{\texttt{CRT}(\( \{n_i\}_{i=1}^k, \{a_i\}_{i=1}^k \))}{
+        \( a \gets a_1 \)\;
+        \( N \gets n_1 \)\;
+        \For{\( i \gets 2 \) \KwTo \( k \)}{
+            \While{\( a \mod n_i \neq a_i \)}{
+                \( a \gets a + N \)\;
+            }
+            \( N \gets N \times n_i \)\;
+        }
+    }
+\end{algorithm}
+\end{Func}
+We compute just like the example above:
+\begin{enumerate}
+    \item First take $a_1$ and $n_1$ as our initial solution and modulus.
+    \item Then iterate starting with $a_2$ and $n_2$ to solution $a$ mod $(n_i)$ = $a_i$.
+    \item If $a$ is not congruent to $a_i$, we increment $a$ by $N$ until it is.
+    \item Then update $N$ to the new product, and move to the next congruence.
+\end{enumerate}
+% We avoid computing inverse $e_i=\left(\dfrac{n}{n_i}\right)^{-1}$ for each $a_i$ as  
+
+    

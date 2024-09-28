@@ -421,21 +421,22 @@ If inverse $z$ modulo $n$ exists, it is unique, as if there were another inverse
 
 \noindent
 Restating (\ref{theo:mod_mult_id}) under coprime conditions:
-\begin{theo}[Coprime Modular Multiplicative Identities ]
+\begin{theo}[Coprime Modular Multiplicative Identities]
     
-
-        \label{theo:co_mod_mult_id}
-        
-    Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(\gcd(a, n)=1\).
+    \label{theo:co_mod_mult_id}
+    
+    Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(\gcd(a, n) = 1\).
     \begin{itemize}
-        \item[(i)] For every \(b \in \mathbb{Z}\), the congruence \(az \equiv b \pmod{n}\) has a solution \(z \in \mathbb{Z}\).
+        \item[(i)] The congruence \(az \equiv 1 \pmod{n}\) has a solution \(z \in \mathbb{Z}\), the modular inverse.
         
-        \item[(ii)] For every \(z \in \mathbb{Z}\), we have \(az \equiv 0 \pmod{n}\).
+        \item[(ii)] If \(az \equiv 0 \pmod{n}\), then \(z \equiv 0 \pmod{n}\) (i.e., \(z\) must be a multiple of \(n\)).
         
-        \item[(iii)] For all \(z, z' \in \mathbb{Z}\), we have \(az \equiv az' \pmod{n}\). 
+        \item[(iii)] If \(az \equiv az' \pmod{n}\), then \(z \equiv z' \pmod{n}\) (i.e., \(a\) cancels out, as long as \(\gcd(a, n) = 1\)).
     \end{itemize}
-    \noindent
+  
 \end{theo}
+
+\noindent
 Try to find inverses from the above table. Take an $a$ and find solution $z$ to $az\equiv1\pmod{5}$.
 
 \newpage

@@ -204,35 +204,43 @@
     \end{mdframed}
 }
 
-% FUNCTION BOXES
-\newcounter{Func}[section]\setcounter{Func}{0}
+% Function Counter
+\newcounter{Func}[section]
 \renewcommand{\theFunc}{\arabic{section}.\arabic{Func}}
 
-\newenvironment{Func}[2][]{%
+% Function Environment
+\newenvironment{Func}[1][]{
     \refstepcounter{Func}
-
     \ifstrempty{#1}% 
-    % if condition (without title)
-    {\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=black,text=white]
-                    {\strut Function~\theFunc};}
-        }%
-        % else condition (with title)
-    }{\mdfsetup{%
-            frametitle={%
-                    \tikz[baseline=(current bounding box.east),outer sep=0pt]
-                    \node[anchor=east,rectangle,fill=black,text=white]
-                    {\strut Function~\theFunc:~#1};}%
-        }%
-    }%
-    % Both conditions
-    \mdfsetup{%
-        innertopmargin=6pt,innerbottommargin=12pt,linecolor=black,%
-        linewidth=2pt,topline=true,%
-        frametitleaboveskip=\dimexpr-\ht\strutbox\relax%
+    {% If no title is provided
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                \node[anchor=east,rectangle,fill=black,text=white]
+                {\strut Function~\theFunc};}
+        }
+    }{% If a title is provided
+        \mdfsetup{
+            frametitle={
+                \tikz[baseline=(current bounding box.east),outer sep=0pt]
+                \node[anchor=east,rectangle,fill=black,text=white]
+                {\strut Function~\theFunc:~#1};}
+        }
     }
+    % Common settings for both cases
+    \mdfsetup{
+        innertopmargin=10pt,
+        innerbottommargin=10pt,
+        skipabove=\baselineskip,
+        skipbelow=\baselineskip,
+        linecolor=black,
+        linewidth=1pt,
+        topline=true,
+        frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+        frametitlealignment=\raggedright
+    }
+    \begin{mdframed}
+}{
+    \end{mdframed}
+}
 
-    \begin{mdframed}[]\relax}{
-    \end{mdframed}}
