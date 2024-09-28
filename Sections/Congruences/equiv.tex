@@ -165,7 +165,7 @@ We can't necessarily divide, but we can shift residue by some favorable factor.
 3z\cdot5 \equiv 2\cdot5 \pmod{7} & \text{ (Multiply 5 to both sides)} \\
 1\cdot z\equiv 10 \pmod{7} & \text{ (Since $15\equiv1\pmod{7}$)} 
 \end{align*}
-Finding solution $z\equiv10\pmod{7}$, which we can reduce to $z\equiv 3\pmod{7}$, as $3\equiv10\pmod{7}$.\\
+Finding solution $z\equiv10\pmod{7}$, which we can OliveGreenu15 to $z\equiv 3\pmod{7}$, as $3\equiv10\pmod{7}$.\\
 We say ``integers $z$ has solutions'' as $z\in[3]_{7}=\{3+7k:k\in\mathbb{Z}\}$ possible solutions.\\
 
 \begin{Note}
@@ -176,7 +176,10 @@ We say ``integers $z$ has solutions'' as $z\in[3]_{7}=\{3+7k:k\in\mathbb{Z}\}$ p
 
 \section{Solving Linear Congruences}
 
-\begin{theo}[Linear Congruence Identities]
+\begin{theo}[Modular Multiple Identities]
+
+    \label{theo:mod_mult_id}
+    
 Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).
 \begin{itemize}
     \item[(i)] For every \(b \in \mathbb{Z}\), the congruence \(az \equiv b \pmod{n}\) has a solution \(z \in \mathbb{Z}\) if and only if \(d \mid b\).
@@ -219,14 +222,195 @@ Let \(a, n \in \mathbb{Z}\) with \(n > 0\), and let \(d := \gcd(a, n)\).
 \end{Proof}
 
 \noindent
-For emphasis, following from the above proof:
-\begin{Def}[GCD Reduction]
+For emphasis, as we saw above:
+\begin{Def}[GCD OliveGreenu15ion]
 
     For $a,n\in\mathbb{Z}$, $d:=\gcd(a,n)$, then $\gcd(a/d,n/d)=1$.
 \end{Def}
 
+\newpage
 
+\begin{Note}
+    \textbf{Note:} ``$\rightarrow$'' (Maps to), ``$\mapsto$'' (Defines the action of how a single element maps to another), ``image'' (the set of all outputs), and ``pre-images'' (the set of all inputs).
+\end{Note}
 
+\noindent
+A corollary to the above theorem (\ref{theo:mod_mult_id}):
+\begin{theo}[Modular Multiples Map]
+
+    Let $a,n\in \mathbb{Z}$ with $n>0$, and residue classes $I_n:=\{0,\dots,n-1\}$. Then $(a \mod n)\in I_n$.\\
+    Notably, for $z\in\mathbb{Z}$, $(az \mod n)$ is also in $I_n$.\\
+
+    \noindent
+    I.e., $(az \mod n)$ is some re-ordering of the residue class $(a \mod n)$. Defining function, $\tau_a$:
+    \begin{align*}
+        \tau_a:&\enspace I_n \rightarrow I_n: z \mapsto az \text{ mod } n. \tag{3.2.1}
+    \end{align*}
+    The length of the image of $\tau_a$ is the number of distinct factors of $n$ relative to $a$, i.e., $n/d$. Let the image of $\tau_a$ be:
+    \begin{align*}
+        E := \{az \mod n : z \in I_n\} &= \{i \cdot d \mod n : i = 0, \dots, n/d - 1\}. \tag{3.2.2}
+    \end{align*}
+    The length of the pre-images of $\tau_a$ is the number of $z$ solutions to $az\equiv b \pmod{n}$, i.e., $d$. Let the pre-images of $\tau_a$ be:
+    \begin{align*}
+        P := \{z \in I_n : az \equiv b \pmod{n}\}. \tag{3.2.3}
+    \end{align*}
+    It follows that $\tau_a$ is a bijection (one-to-one and onto) if and only if $\gcd(a, n) = 1$. Then, the length of the image is $n$, and each pre-image has length 1.
+
+\end{theo}
+\textbf{Example:} for $a=1,2,3,4,5,6$ and $n=15$,
+\begin{table}[h!]
+    \setlength{\tabcolsep}{4pt} % Adjust column separation
+    \renewcommand{\arraystretch}{1.2} % Adjust row separation
+    \centering
+    \begin{tabular}{|c|p{.2cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|p{.6cm}|}
+        \hline
+$z$ & 0 
+& \cellcolor{OliveGreen!5}1 
+& \cellcolor{OliveGreen!10}2 
+& \cellcolor{OliveGreen!15}3 
+& \cellcolor{OliveGreen!20}4 
+& \cellcolor{OliveGreen!25}5 
+& \cellcolor{OliveGreen!30}6 
+& \cellcolor{OliveGreen!35}7 
+& \cellcolor{OliveGreen!40}8 
+& \cellcolor{OliveGreen!45}9 
+& \cellcolor{OliveGreen!50}10 
+& \cellcolor{OliveGreen!55}11 
+& \cellcolor{OliveGreen!60}12 
+& \cellcolor{OliveGreen!65}13 
+& \cellcolor{OliveGreen!70}14 \\ \hline
+        $2z \mod 15$ 
+        & 0 
+        & \cellcolor{OliveGreen!10}2 
+        & \cellcolor{OliveGreen!20}4 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!40}8 
+        & \cellcolor{OliveGreen!50}10 
+        & \cellcolor{OliveGreen!60}12 
+        & \cellcolor{OliveGreen!70}14 
+        & \cellcolor{OliveGreen!5}1 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!25}5 
+        & \cellcolor{OliveGreen!40}7 
+        & \cellcolor{OliveGreen!45}9 
+        & \cellcolor{OliveGreen!55}11 
+        & \cellcolor{OliveGreen!65}13 \\ \hline
+        $3z \mod 15$ 
+        & 0 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!45}9 
+        & \cellcolor{OliveGreen!60}12 
+        & 0 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!45}9 
+        & \cellcolor{OliveGreen!60}12 
+        & 0 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!45}9 
+        & \cellcolor{OliveGreen!60}12 \\ \hline
+        $4z \mod 15$ 
+        & 0 
+        & \cellcolor{OliveGreen!20}4 
+        & \cellcolor{OliveGreen!40}8 
+        & \cellcolor{OliveGreen!60}12 
+        & \cellcolor{OliveGreen!5}1 
+        & \cellcolor{OliveGreen!25}5 
+        & \cellcolor{OliveGreen!45}9 
+        & \cellcolor{OliveGreen!65}13 
+        & \cellcolor{OliveGreen!10}2 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!50}10 
+        & \cellcolor{OliveGreen!70}14 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!40}7 
+        & \cellcolor{OliveGreen!55}11 \\ \hline
+        $5z \mod 15$ 
+        & 0 
+        & \cellcolor{OliveGreen!25}5 
+        & \cellcolor{OliveGreen!50}10 
+        & 0 
+        & \cellcolor{OliveGreen!25}5 
+        & \cellcolor{OliveGreen!50}10 
+        & 0 
+        & \cellcolor{OliveGreen!25}5 
+        & \cellcolor{OliveGreen!50}10 
+        & 0 
+        & \cellcolor{OliveGreen!25}5 
+        & \cellcolor{OliveGreen!50}10 
+        & 0 
+        & \cellcolor{OliveGreen!25}5 
+        & \cellcolor{OliveGreen!50}10 \\ \hline
+        $6z \mod 15$ 
+        & 0 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!60}12 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!45}9 
+        & 0 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!60}12 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!45}9 
+        & 0 
+        & \cellcolor{OliveGreen!30}6 
+        & \cellcolor{OliveGreen!60}12 
+        & \cellcolor{OliveGreen!15}3 
+        & \cellcolor{OliveGreen!45}9 \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item \textbf{Row:2} We see $2$ and $15$ are coprime, hence $n$ images, $\{0,\dots,n-1\}$.
+    \item \textbf{Row:3} We see $3$ and $15$. Taking out common factors, $15/3$, we get $5$ distinct images.
+    \item \textbf{Row:4} We see $4$ and $15$ are coprime, hence $n$ images, $\{0,\dots,n-1\}$.
+    \item \textbf{Row:5} We see $5$ and $15$. Taking out common factors, $15/5$, we get $3$ distinct images.
+    \item \textbf{Row:6} We see $6$ and $15$. Taking out common factors, $15/3$, we get $5$ distinct images.
+\end{itemize}
+
+\newpage
+
+Another corollary to the above theorem (\ref{theo:mod_mult_id}):
+\begin{theo}[Modular Congruence Cancellation]
+
+    Let \( a, b, c, n \in \mathbb{Z} \) with \( n > 0 \) and \( \gcd(c, n) = 1 \). If \( ac \equiv bc \pmod{n} \), then \( a \equiv b \pmod{n} \).
+    
+    \end{theo}
+    
+\noindent
+\textbf{Example:} We'll demonstrate different representations of members residue class $[2]_5$:
+\begin{align*}
+    8 \equiv 13 \pmod{5} & \quad \text{(i)} \\
+    2\cdot4 \equiv 3\cdot5 \pmod{5} & \quad \text{(ii)} \\
+    2\cdot4 \equiv (-3)\cdot4 \pmod{5} & \quad \text{(iii)} \\ 
+    2 \equiv -3 \pmod{5} & \quad \text{(iv)}
+\end{align*}
+Indeed $2\equiv-3\pmod{5}$, as $2+3\equiv3-3\pmod{5}$. To show this, observe:
+
+\begin{table}[h!]
+    \setlength{\tabcolsep}{10pt} % Adjust column separation
+    \renewcommand{\arraystretch}{1.2} % Adjust row separation
+    \centering
+\begin{tabular}{|*{14}{c|}}
+    
+    
+    \hline
+   \rowcolor{OliveGreen!10}\cellcolor{white}$a$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $10$ & $11$ & $12$ \\
+    \hline
+       & $0$ & $1$ & $2$ & $3$ & $4$ & $0$ & $1$ & $2$ & $3$ & $4$ & $0$ & $1$ & $2$ \\
+    \cline{2-14}
+    \multirow{-2}{*}{$a\mod 5$}&0&-4&-3&-2&-1&0&-4&-3&-2&-1&0&-4&-3\\
+    \hline
+\end{tabular}
+\end{table}
+\noindent
+\underline{Think of \textbf{negative numbers} as traveling backwards within the residue class.}
+
+\begin{Def}[Modular Iverses]
+    let $a,n\in\mathbb{Z}$ with $n>0$. If $a$ and $n$ are coprime, then $a$ has a \textbf{modular inverse} $a^{-1}$, such that $aa^{-1}\equiv1\pmod{n}$.
+\end{Def}
 
 
 
