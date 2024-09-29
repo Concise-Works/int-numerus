@@ -27,7 +27,7 @@ Let $\{n_i\}_{i=1}^k\in\mathbb{Z}^+$ all be pairwise coprime, and let $\{a_i\}_{
 partial solution must not interfere with other congruences. (iii) Combine partial solutions:\\
 
 \noindent
-We by define indexes $i,j=1,...,k$ representing any two $e_1,...,e_k$ integers such that:
+We define indexes $i,j=1,...,k$ representing any two $e_1,...,e_k$ integers such that:
  \[e_j \equiv
  \begin{cases} 
  1 \pmod{n_i} & \text{if } j = i, \text{ (target congruence)}\\
@@ -80,6 +80,9 @@ Observe that ($3$ mod $5)=\{3,8,13,18,23,28,33,...\}$, and ($5$ mod $7)=\{5,12,1
 Sets describing $3+5k$ and $5+7k$ respectively. We see,  $3\equiv 33\pmod{5}$, and $5\equiv 33\pmod{7}$.\\
 
 \noindent
+Obtaining $e_1=7$, as $3+5(7)\Longrightarrow3(7)\equiv 1\pmod{5}$, and $5+7(7)\Longrightarrow5(7)\equiv0\pmod{7}$. 
+
+\noindent
 We can take $n=5\cdot7=35$ to construct a new system:
 \begin{align*}
     a &\equiv 33 \pmod{35} = 33+35k = \{33,68,...\} \\
@@ -91,7 +94,7 @@ We see that $33\equiv 68\pmod{35}$, and $2\equiv 68\pmod{11}$. Thus, $a=68$:
     68 &\equiv 5 \pmod{7} \\
     68 &\equiv 2 \pmod{11}
 \end{align*}
-Using the definition of CRT in combination with our proof, we can design a general algorithm to solve such systems.
+We can design a general algorithm based off this example to solve such systems.
 
 \newpage
 \subsection{CRT Algorithm}
@@ -104,7 +107,7 @@ Computes \( a\in\mathbb{Z} \) satisfying a given system of congruences:
     \KwOut{An integer \( a \) satisfying the system of congruences}
     \vspace{.5em}
     \SetKwProg{Fn}{Function}{:}{\KwRet{\( a \)}}
-    \Fn{\texttt{CRT}(\( \{n_i\}_{i=1}^k, \{a_i\}_{i=1}^k \))}{
+    \Fn{\texttt{crt}(\( \{n_i\}_{i=1}^k, \{a_i\}_{i=1}^k \))}{
         \( a \gets a_1 \)\;
         \( N \gets n_1 \)\;
         \For{\( i \gets 2 \) \KwTo \( k \)}{
@@ -119,7 +122,7 @@ Computes \( a\in\mathbb{Z} \) satisfying a given system of congruences:
 We compute just like the example above:
 \begin{enumerate}
     \item First take $a_1$ and $n_1$ as our initial solution and modulus.
-    \item Then iterate starting with $a_2$ and $n_2$ to solution $a$ mod $(n_i)$ = $a_i$.
+    \item Then iterate starting with $a_2$ and $n_2$ to find solution $a$ mod $(n_i)$ = $a_i$.
     \item If $a$ is not congruent to $a_i$, we increment $a$ by $N$ until it is.
     \item Then update $N$ to the new product, and move to the next congruence.
 \end{enumerate}

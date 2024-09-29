@@ -1,0 +1,68 @@
+\section{Residue Classes}
+We've spoken before about residue classes in (\ref{def:residue_class}), 
+but we'll go into more detail here.
+
+\begin{theo}[Residue Intervals]
+   
+    Remainders modular $n\in\mathbb{Z}:n>1$, denoted $\mathbb{Z}_n$, is the interval $[0,(n-1)]$.
+    As we pass $n-1$, we loop back to $0$. Yielding a general interval of $[x,x+(n-1)]$ for $x\in\mathbb{Z}$.\\
+
+    \noindent
+    Adding and multiplying residues shifts to some other position in the interval.
+    \begin{itemize}
+        \item \textbf{Addition:} $[a] + [b] = [a+b] = [c]\Longleftrightarrow a+b\equiv c\pmod{n}$
+        \item \textbf{Multiplication:} $[a]\cdot[b] = [a\cdot b]=[c]\Longleftrightarrow a\cdot b\equiv c \pmod{n}$
+    \end{itemize}
+
+    \noindent
+    If $n$ is odd, then our interval is $[-n/2,n/2]$. If even, then $[-n/2,n/2-1]$.
+\end{theo}
+\newpage
+\begin{Tip}
+    We define \textbf{parity} as the property of an integer being even or odd.    
+\end{Tip}
+
+\noindent
+\textbf{Example:} Consider tables $\mathbb{Z}_5$ and $\mathbb{Z}_6$:
+\begin{table}[h!]
+    \setlength{\tabcolsep}{10pt} % Adjust column separation
+    \renewcommand{\arraystretch}{1.2} % Adjust row separation
+    \centering
+\begin{tabular}{|*{14}{c|}}
+    
+    
+    \hline
+   \cellcolor{white}$a$ & $0$ & $1$ & $2$ & \cellcolor{OliveGreen!40}$3$ &\cellcolor{OliveGreen!40} $4$ &\cellcolor{OliveGreen!40} $5$ &\cellcolor{OliveGreen!40} $6$ &\cellcolor{OliveGreen!40} $7$ & $8$ & $9$ & $10$ & $11$ & $12$ \\
+    \hline
+       & $0$ & $1$ & $2$ & $3$ & $4$ & \cellcolor{OliveGreen!20}$0$ &\cellcolor{OliveGreen!20} $1$ &\cellcolor{OliveGreen!20} $2$ & $3$ & $4$ & $0$ & $1$ & $2$ \\
+    \cline{2-14}
+    \multirow{-2}{*}{$a\mod 5$}&0&-4&-3&\cellcolor{OliveGreen!20}-2&\cellcolor{OliveGreen!20}-1&\cellcolor{OliveGreen!20}0&-4&-3&-2&-1&0&-4&-3\\
+    \hline
+\end{tabular}
+\end{table}
+
+\noindent
+Since $5$ is odd, our interval is $[-5/2,5/2]=[-2,2]$, which could be seen as the interval $a\in[3,7]$.
+
+\noindent
+
+\begin{table}[h!]
+    \setlength{\tabcolsep}{10pt} % Adjust column separation
+    \renewcommand{\arraystretch}{1.2} % Adjust row separation
+    \centering
+\begin{tabular}{|*{14}{c|}}
+    \hline
+    \cellcolor{white}$a$ & $0$ & $1$ & $2$ &\cellcolor{OliveGreen!40} $3$ &\cellcolor{OliveGreen!40} $4$ &\cellcolor{OliveGreen!40} $5$ &\cellcolor{OliveGreen!40} $6$ &\cellcolor{OliveGreen!40} $7$ &\cellcolor{OliveGreen!40} $8$ & $9$ & $10$ & $11$ & $12$ \\
+    \hline
+       & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ &\cellcolor{OliveGreen!20} $0$ &\cellcolor{OliveGreen!20} $1$ &\cellcolor{OliveGreen!20} $2$ & $3$ & $4$ & $5$ & $0$ \\
+    \cline{2-14}
+    \multirow{-2}{*}{$a\mod 6$}&0&-5&-4&\cellcolor{OliveGreen!20}-3&\cellcolor{OliveGreen!20}-2&\cellcolor{OliveGreen!20}-1&\cellcolor{OliveGreen!20}0&-5&-4&-3&-2&-1&0\\
+    \hline
+\end{tabular}
+\end{table}
+
+\noindent
+Since $6$ is even, our interval is $[-6/2,6/2-1]=[-3,2]$, which could be seen as the interval $a\in[3,8]$.\\
+
+\noindent
+This interval is no different than $[0,5]$ or $[0,6]$, this shifting of the interval captures $[x,x+(n-1)]$.
