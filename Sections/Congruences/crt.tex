@@ -1,11 +1,13 @@
 
 
-\section{The Chinese Remainder Theorem}
+\subsection{The Chinese Remainder Theorem}
 
 \begin{Note}
     \textbf{Note:} $\mathbb{Z}^+$ denotes the set of positive integers, and $\{x_i\}_{i=1}^k$ is short for $\{x_1,...,x_k\}$.
 \end{Note}
 \begin{theo}[Chinese Remainder Theorem (CRT)]
+
+    \label{theo:crt}
 
     Let $\{n_i\}_{i=1}^k\in\mathbb{Z}^+$ all be coprime to each other and let $\{a_i\}_{i=1}^k$ be arbitrary integers. Then there is a solution $a\in\mathbb{Z}$ to the system of congruences:
     \begin{align*}
@@ -67,9 +69,10 @@ Thus, we can now construct the solution $a = \sum_{i=1}^k e_ia_i$.
     a \equiv a_i \pmod{n_i} \quad \text{and} \quad a' \equiv a_i \pmod{n_i} \quad \text{for } i = 1, \dots, k
     \]
     Then they must be congruent, i.e., \( a \equiv a' \pmod{\prod_{i=1}^k n_i} \).\\
-    
-    \noindent
 \end{Proof}
+\begin{Note}
+    \textbf{Note:} \underline{\textbf{Uniqueness refers to $\mathbf{\mathbb{Z}_n}$} (residue classes modulo $n$),} not just $a$. So there may be multiple solutions, but they congruent to each other under a unique modulus $n$
+\end{Note}
 \textbf{Example:} We'll find solution $a$ to the system of congruences:
 \begin{align*}
     a &\equiv 3 \pmod{5} \\
@@ -97,7 +100,7 @@ We see that $33\equiv 68\pmod{35}$, and $2\equiv 68\pmod{11}$. Thus, $a=68$:
 We can design a general algorithm based off this example to solve such systems.
 
 \newpage
-\subsection{CRT Algorithm}
+\subsection*{Chinese Remainder Theorem Algorithm}
 \begin{Func}[CRT Algorithm - \texttt{crt()}]
 Computes \( a\in\mathbb{Z} \) satisfying a given system of congruences:
 
@@ -126,6 +129,5 @@ We compute just like the example above:
     \item If $a$ is not congruent to $a_i$, we increment $a$ by $N$ until it is.
     \item Then update $N$ to the new product, and move to the next congruence.
 \end{enumerate}
-% We avoid computing inverse $e_i=\left(\dfrac{n}{n_i}\right)^{-1}$ for each $a_i$ as  
 
     

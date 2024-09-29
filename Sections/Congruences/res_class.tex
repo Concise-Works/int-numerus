@@ -66,6 +66,8 @@ This interval is no different than $[0,5]$ or $[0,6]$, this shifting of the inte
 \end{Note}
 \begin{theo}[Residue Class Operations]
     
+    \label{theo:res_class_ops}
+
     Let $\alpha\in\mathbb{Z}_n$ be residue classes. Then: 
     \begin{itemize}
         \item \textbf{Additive Identity:} $\alpha + [0] = \alpha$; \textbf{Additive Inverse:} $\alpha + (-\alpha) = [0]$.
@@ -125,4 +127,46 @@ We say $d<n$, otherwise $n\equiv 0\pmod{n}$ where $d=n$.
     \noindent
     These identities also hold for $\alpha,\beta\in \mathbb{Z}_n^*$.
 \end{theo}
+
+\newpage
+\noindent
+We may now generalize the Chinese Remainder Theorem (\ref{theo:crt}) under residue classes.
+\begin{theo}[Chinese Remainder Map]
+    
+    Let $\{n_i\}_{i=1}^k\in\mathbb{Z}^+$ all be pairwise coprime, and $n:=\prod_{i=1}^k n_i$. We define the map:
+    \begin{align*}
+        \theta: \mathbb{Z}_n &\to \mathbb{Z}_{n_1} \times \cdots \times \mathbb{Z}_{n_k} \\
+        [a]_n &\mapsto ([a]_{n_1}, \dots, [a]_{n_k})
+    \end{align*}
+    \noindent
+    For $\mathbb{Z}_n$ (Residue classes modulo $n$), we can visualize:
+    \begin{align*}
+        \theta([a]_n) = \begin{cases}
+            [a]_{n_1} & \text{mod } n_1 \\
+            [a]_{n_2} & \text{mod } n_2 \\
+            \vdots & \vdots \\
+            [a]_{n_k} & \text{mod } n_k
+        \end{cases}
+    \end{align*}
+    \noindent
+    Where $[a]_n$ can be thought of as our $a$ solution in the system of congruences:
+    \begin{align*}
+        a &\equiv a_1 \pmod{n_1} \\
+        a &\equiv a_2 \pmod{n_2} \\
+        &\hspace*{.5em}\vdots \\
+        a &\equiv a_k \pmod{n_k},
+    \end{align*}
+    extending the Chinese Remainder Theorem to classes produced by $a$ mod $n$, not just $a$.\\
+    \begin{enumerate}
+        \item [(i)] $\theta$ is unambiguous, i.e., any $[a]_n\in\mathbb{Z}_n$ has a unique image in $\mathbb{Z}_{n_1}\times\cdots\times\mathbb{Z}_{n_k}$.
+        \item [(ii)] $\theta$ forms a ring isomorphism, meaning:
+        \begin{enumerate}
+            \item [(a)] $\theta$ is a bijection (one-to-one and onto), i.e., there's an inverse map $\theta^{-1}$, which is the process of finding $a$ from $[a]_n$ (The Chinese Remainder Theorem).
+            \item [(b)] $\theta$ preserves addition and multiplication, since residues form a ring. Thus, operating on residue classes only affects the inputs to the map (\ref{theo:res_class_ops}).
+        \end{enumerate}
+    \end{enumerate}
+\end{theo}    
+\begin{Tip}
+    The Chinese Remainder Map ($\theta$) generates a system of congruences, while the Chinese Remainder Theorem solves them $(\theta^{-1})$.
+\end{Tip}
 \newpage
