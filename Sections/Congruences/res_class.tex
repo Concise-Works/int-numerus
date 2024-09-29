@@ -10,18 +10,14 @@ but we'll go into more detail here.
     \noindent
     Adding and multiplying residues shifts to some other position in the interval.
     \begin{itemize}
-        \item \textbf{Addition:} $[a] + [b] = [a+b] = [c]\Longleftrightarrow a+b\equiv c\pmod{n}$
-        \item \textbf{Multiplication:} $[a]\cdot[b] = [a\cdot b]=[c]\Longleftrightarrow a\cdot b\equiv c \pmod{n}$
+        \item \textbf{Addition:} $[(a+b)$ mod $n]:=[a] + [b] = [a+b] = [c]\Longleftrightarrow a+b\equiv c\pmod{n}$
+        \item \textbf{Multiplication:} $[(a\cdot b)$ mod $n]:=[a]\cdot[b] = [a\cdot b]=[c]\Longleftrightarrow a\cdot b\equiv c \pmod{n}$
     \end{itemize}
 
     \noindent
     If $n$ is odd, then our interval is $[-n/2,n/2]$. If even, then $[-n/2,n/2-1]$.
 \end{theo}
 \newpage
-\begin{Tip}
-    We define \textbf{parity} as the property of an integer being even or odd.    
-\end{Tip}
-
 \noindent
 \textbf{Example:} Consider tables $\mathbb{Z}_5$ and $\mathbb{Z}_6$:
 \begin{table}[h!]
@@ -63,6 +59,70 @@ Since $5$ is odd, our interval is $[-5/2,5/2]=[-2,2]$, which could be seen as th
 
 \noindent
 Since $6$ is even, our interval is $[-6/2,6/2-1]=[-3,2]$, which could be seen as the interval $a\in[3,8]$.\\
+This interval is no different than $[0,5]$ or $[0,6]$, this shifting of the interval captures $[x,x+(n-1)]$.
+
+\begin{Note}
+    \textbf{Note:} We'll use $\alpha$: ``alpha''; $\beta$: ``beta''; and such as variables when discussing residue classes.
+\end{Note}
+\begin{theo}[Residue Class Operations]
+    
+    Let $\alpha\in\mathbb{Z}_n$ be residue classes. Then: 
+    \begin{itemize}
+        \item \textbf{Additive Identity:} $\alpha + [0] = \alpha$; \textbf{Additive Inverse:} $\alpha + (-\alpha) = [0]$.
+        \item \textbf{Multiplicative Identity:} $\alpha\cdot [1] = \alpha$; \textbf{Multiplicative Inverse:} $\alpha\cdot \alpha^{-1} = [1]$.
+    \end{itemize}
+    \noindent
+    Moreover, \underline{\textbf{Residue classes form a ring} (\ref{def:ring}),} including distributive properties.
+\end{theo}
+
+\begin{theo}[Inverse Residue Classes]
+
+    For $n\in\mathbb{Z}:n>1$,\\
+    let $Z_n^*:=\{\alpha\in\mathbb{Z}_n\mid \gcd(\alpha,n)=1\}$, i.e., $Z_n^*$ contains elements in $\mathbb{Z}_n$ where $\alpha^{-1}$ exists.
+\begin{itemize}
+    \item If $n$ is prime, then $Z_n^*=\mathbb{Z}_n\setminus\{[0]\}$, i.e., $Z_n^*$ contains all elements in $\mathbb{Z}_n$ except $[0]$.
+    \item If $n$ is composite, then $Z_n^*\subsetneq\mathbb{Z}_n\setminus \{[0]\}$.
+\end{itemize}
+\end{theo}
+\begin{Note}
+    \textbf{Note:} The symbol $\subsetneq$ denotes a proper subset. If $A\subsetneq B$, then $A$ is a subset of $B$ but not equal to $B$.
+\end{Note}
+\newpage
 
 \noindent
-This interval is no different than $[0,5]$ or $[0,6]$, this shifting of the interval captures $[x,x+(n-1)]$.
+\begin{Proof}[Residue Class Inverses]
+
+\textbf{Primes:} The congruence $\alpha z \equiv 1\pmod{n}$ has a solution $z$ for all $\alpha\in\mathbb{Z}_n$ if $gcd(\alpha,n)=1$ (\ref{theo:co_mod_mult_id}).\\
+
+\noindent
+\textbf{Composites:} $Z_n^*\subsetneq\mathbb{Z}_n\setminus\{[0]\}$. If $d:=gcd(\alpha,n)\mid n$, and $1<d<n$, then $d\neq0$ and $\alpha\notin Z_n^*$ (\ref{theo:mod_mult_id}).
+We say $d<n$, otherwise $n\equiv 0\pmod{n}$ where $d=n$.
+
+\end{Proof}
+
+\begin{theo}[Inverse Operations]
+
+    Let $\alpha,\beta,\gamma\in\mathbb{Z}_n$ be residue classes. Then: 
+    \begin{itemize}
+        \item \textbf{Inverse of Inverse:} $(\alpha^{-1})^{-1} = \alpha$
+        \item \textbf{Product of Inverse:} $(\alpha\cdot\beta)^{-1} = \alpha^{-1}\cdot\beta^{-1}$
+        \item \textbf{Inverse Division:} $\alpha/\beta = \alpha\cdot\beta^{-1}$
+        \item \textbf{Cancellation Law:} $\alpha\beta = \alpha\gamma\implies\beta=\gamma\Longleftrightarrow\alpha\in Z_n^*$.
+    \end{itemize}
+\end{theo}
+\begin{theo}[Residue Powers Identities]
+    
+    Powers work similarly to integers. For $\alpha,\beta\in\mathbb{Z}_n$ and $k,l\in\mathbb{Z}$:
+    \begin{itemize}
+        \item \textbf{Zero Power:} $\alpha^0 = [1]$
+        \item \textbf{General Powers:} $\alpha^1 = \alpha$ and $\alpha^2=\alpha\cdot\alpha$ and so on.
+        \item \textbf{Inverse Power:} Inverse $\alpha^k$ is $(\alpha^{-1})^k$.
+        \item \textbf{Power of a Power:} $(\alpha^l)^k = \alpha^{lk}= (\alpha^k)^l$.
+        \item \textbf{Product of Powers:} $\alpha^k\cdot\alpha^l = \alpha^{k+l}$.
+        \item \textbf{Quotient of Powers:} $\alpha^k/\alpha^l = \alpha^{k-l}$.
+        \item \textbf{Power of a Product:} $(\alpha\beta)^k = \alpha^k\cdot\beta^k$.
+    \end{itemize}
+    \noindent
+    These identities also hold for $\alpha,\beta\in \mathbb{Z}_n^*$.
+\end{theo}
+\newpage
