@@ -3,7 +3,66 @@
     \textbf{Leonhard Euler} (1707–1783), pronounced as ``oiler,'' was a Swiss mathematician born in Basel. He worked in St. Petersburg and Berlin, shaping calculus and number theory.
 \end{Tip}
 
+\noindent
+Also known as the \textbf{Euler Totient Function}:
 \begin{Def}[Euler's Phi Function]
-    For all $n\in\mathbb{Z^+}$,
-    \[\phi(n):=|\mathbb{Z}_n^*\]
+
+    For all $n\in\mathbb{Z^+}$, we define Euler's Phi Function as:
+    \[\varphi (n):=|\mathbb{Z}_n^*|\]
+    \noindent
+    The number of inverses modulo $n$. Numbers coprime to $n$ are in $\mathbb{Z}_n^*$.\\
+     Therefore, for primes $p$, $\varphi(p)=p-1$.
 \end{Def}
+
+\begin{theo}[Chinese Remainder's Phi Function]
+
+    \label{theo:chinese_remainder_phi}
+
+    Let $n:=\prod_{i=1}^k n_i$ be the product of pairwise coprime integers. Then:
+    \[ \varphi(n) = \prod_{i=1}^k \varphi(n_i) = \varphi(n_1)\cdot\varphi(n_2)\cdots\varphi(n_k)\]
+    \noindent
+    The number of inverses in $\mathbb{Z}_n^*$ is the product of the number of inverses in $\mathbb{Z}_{n_i}^*$.
+\end{theo}
+\begin{Proof}[Chinese Remainder's Phi Function]
+    Consider the Chinese Remainder Map $\theta:\mathbb{Z}_n\to\mathbb{Z}_{n_1}\times\mathbb{Z}_{n_2}\times\cdots\times\mathbb{Z}_{n_k}$.
+    Since $\theta$ is isomorphic, it has a one-to-one correspondence. If we restrict our input to $\mathbb{Z}_n^*$, then the output will be in $\mathbb{Z}_{n_1}^*\times\mathbb{Z}_{n_2}^*\times\cdots\times\mathbb{Z}_{n_k}^*$.
+    Hence, $|\mathbb{Z}_n^*|=|\mathbb{Z}_{n_1}^*|\times|\mathbb{Z}_{n_2}^*|\times\cdots\times|\mathbb{Z}_{n_k}^*|=\prod_{i=1}^k|\mathbb{Z}_{n_i}^*|=\prod_{i=1}^k\varphi(n_i)$.
+
+\end{Proof}
+\begin{theo}[Euler's Phi of a Raised Prime]
+
+    Let $p$ be a prime and $e\in\mathbb{Z^+}$. Then:
+    \[\varphi(p^e)=p^{e-1}(p-1)\]
+\end{theo}
+\begin{Proof}[Euler's Phi of a Raised Prime]
+    
+    $\varphi(n)$ counts residue classes in $\mathbb{Z}_n$ that are coprime to $n$. $\mathbb{Z}_n$ represent integers $[0, n-1]$.\\
+
+    \noindent
+    Examining $\mathbb{Z}_{p^e}$, to obtain coprimes, we omit members sharing common factors to $p^e$, i.e.,\\
+    multiples $p$, which $p^e$ gives us $e$ of.\\
+
+    \noindent
+    Since the last factor reaches $p^e$, we ignore it, as it's beyond $p^e-1$. Leaving us $p^{e-1}$ multiples.\\
+    Therefore, $\varphi(p^e)=p^e-p^{e-1}=p^{e-1}(p-1)$.
+    
+\end{Proof}
+
+\noindent
+As implied by Theorem \ref{theo:chinese_remainder_phi}, we can generalize this to the prime factorization of $n$.
+\begin{theo}[Phi of Prime Factorization]
+
+    Let $n:=\prod_{i=1}^k p_i^{e_i}$ be the prime factorization of $n$. $\{p_{i}^{e_i}\}$ are pairwise coprime. Then:
+    \[\varphi(n)=\prod_{i=1}^k p_i^{e_i-1}(p_i-1)\]
+    Expanding the product, 
+    \[
+\varphi(n) = p_1^{e_1} \cdot \left( 1 - \frac{1}{p_1} \right) \cdot p_2^{e_2} \cdot \left( 1 - \frac{1}{p_2} \right) \cdot \dots \cdot p_k^{e_k} \cdot \left( 1 - \frac{1}{p_k} \right)
+\]
+\noindent
+Which gives us:
+    \[\varphi(n)=n\prod_{i=1}^k\left(1-\frac{1}{p_i}\right)\]
+\noindent
+as $n$ represents $p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}$.
+\end{theo}
+    
+    
