@@ -85,6 +85,7 @@ This interval is no different than $[0,5]$ or $[0,6]$, this shifting of the inte
     \item If $n$ is prime, then $Z_n^*=\mathbb{Z}_n\setminus\{[0]\}$, i.e., $Z_n^*$ contains all elements in $\mathbb{Z}_n$ except $[0]$.
     \item If $n$ is composite, then $Z_n^*\subsetneq\mathbb{Z}_n\setminus \{[0]\}$.
 \end{itemize}
+Moreover, $Z_n^*$ forms a group under multiplication. Therefore for all $\beta\in Z_n^*$, we have $\alpha\beta\in Z_n^*$.
 \end{theo}
 \begin{Note}
     \textbf{Note:} The symbol $\subsetneq$ denotes a proper subset. If $A\subsetneq B$, then $A$ is a subset of $B$ but not equal to $B$.
@@ -98,7 +99,14 @@ This interval is no different than $[0,5]$ or $[0,6]$, this shifting of the inte
 
 \noindent
 \textbf{Composites:} $Z_n^*\subsetneq\mathbb{Z}_n\setminus\{[0]\}$. If $d:=gcd(\alpha,n)\mid n$, and $1<d<n$, then $d\neq0$ and $\alpha\notin Z_n^*$ (\ref{theo:mod_mult_id}).
-We say $d<n$, otherwise $n\equiv 0\pmod{n}$ where $d=n$.
+We say $d<n$, otherwise $n\equiv 0\pmod{n}$ where $d=n$.\\
+
+\noindent
+\textbf{Multiplicative Group:} 
+\begin{itemize}
+    \item \textbf{Inverse:} Every element in $Z_n^*$ has an inverse.
+    \item \textbf{Closure:} Therefore $\alpha\beta\in Z_n^*$, as $(\alpha^{-1})\alpha\beta\equiv\beta\pmod{n}$ and $(\beta^{-1})\beta\alpha\equiv\alpha\pmod{n}$.
+\end{itemize}
 
 \end{Proof}
 

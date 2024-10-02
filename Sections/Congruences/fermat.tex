@@ -59,15 +59,17 @@ cycles in $\mathbb{Z}_n^*$ jump by powers of $\alpha\in\mathbb{Z}_n^*$, starting
     We see that $\alpha=2$ for $i=3$ and $i=6$, $3$ is the smallest $k$ such that $2^k\equiv 1\pmod{7}$.
     Additionally, we see the relationship $2^i\equiv 2^j\pmod{7}$ if and only if $i\equiv j\pmod{3}$.
  
+    \begin{Note}
+        \textbf{Note:} For set $S$, $\prod_{\beta\in S}\beta$ is the product of all elements in $S$. 
+    \end{Note}
     \begin{theo}[Euler's Theorem]
         
         Let $n\in\mathbb{Z^+}$ and $\alpha\in\mathbb{Z}_n^*$. Then $\alpha^{\varphi(n)}\equiv 1\pmod{n}$, when multiplicative order $\alpha$ divides $\varphi(n)$.
     \end{theo}
     \begin{Proof}[Euler's Theorem]
-        For every $\beta\in\mathbb{Z}_n^*$, theres an $\alpha\in\mathbb{Z}_n^*$ such that $\alpha\beta\in\mathbb{Z}_n^*$ (\ref{theo:res_class_ops}):
+        For every $\beta\in\mathbb{Z}_n^*$, theres an $\alpha\in\mathbb{Z}_n^*$ such that $\alpha\beta\in\mathbb{Z}_n^*$ (\ref{theo:res_class_ops}) $\varphi(n)$ and$\mathbb{Z}_n^*$:
         \[\prod_{\beta\in\mathbb{Z}_n^*}\beta=\prod_{\beta\in\mathbb{Z}_n^*}\alpha\beta=\alpha^{\varphi(n)}\prod_{\beta\in\mathbb{Z}_n^*}\beta\]
-        Where $\varphi(n)$ is the number of elements in $\mathbb{Z}_n^*$. Then take the inverse of $\prod_{\beta\in\mathbb{Z}_n^*}\beta$ results in:
-        \[1=\alpha^{\varphi(n)}\]
+        Taking the inverse of $\prod_{\beta\in\mathbb{Z}_n^*}\beta$ results in $1=\alpha^{\varphi(n)}$. \textbf{Note:} $\varphi(n):=|\mathbb{Z}_n^*|$ and both products $\beta$ and $\alpha\beta$ produce the same set as we cycle inverse residues.
         
 
     \end{Proof}
@@ -76,21 +78,22 @@ cycles in $\mathbb{Z}_n^*$ jump by powers of $\alpha\in\mathbb{Z}_n^*$, starting
 
     \begin{theo}[Fermat's Little Theorem]
         
-        For every prime $p$ and residue classes $\alpha\in\mathbb{Z}_p^*$: $\alpha^{p}= \alpha$.
+        For every prime $p$ and residue classes $\alpha\in\mathbb{Z}_p^*$: $\alpha^{p} \equiv \alpha \pmod{p}$.
     \end{theo}
 
     \begin{Proof}[Fermat's Little Theorem]
-        Since $p$ is prime, $\varphi(p)=p-1$. By Euler's Theorem, $\alpha^{p-1}=1$. 
-        Therefore, multiplying $\alpha$ to both sides yields, $\alpha^{p-1}(\alpha)= 1(\alpha)$. Hence $\alpha^p = \alpha$.
+        Since $p$ is prime, $\varphi(p)=p-1$. By Euler's Theorem, $\alpha^{p-1} \equiv 1 \pmod{p}$. 
+        Therefore, multiplying $\alpha$ to both sides yields, $\alpha^{p-1} \cdot \alpha \equiv 1 \cdot \alpha \pmod{p}$. Hence $\alpha^p \equiv \alpha \pmod{p}$.
     \end{Proof}
 
     \begin{Def}[Primitive Root]
         
         Let $n\in\mathbb{Z^+}$ and $\alpha\in\mathbb{Z}_n^*$. If the multiplicative order of $\alpha$ modulo $n$ is $\varphi(n)$, then $\alpha$ is a primitive root modulo $n$.
     \end{Def}
-    \textbf{Example:} In the above example modulo $7$, residues 3 and 5 are primitive roots.\\
 
     \begin{theo}[Multiplicative Order of Powers]
+
+        \label{theo:mult_order_powers}
             
         If $\alpha \in \mathbb{Z}_n^*$ has multiplicative order $k$. Then from every new residue produced by
          $\alpha^m$ where $m \in \mathbb{Z}$, the multiplicative order of $\alpha^m$ is:
@@ -124,18 +127,22 @@ cycles in $\mathbb{Z}_n^*$ jump by powers of $\alpha\in\mathbb{Z}_n^*$, starting
 
         \vspace{1em}
         \noindent
-        Raising $\alpha=2^3$ gave us 8, which is congruent to 1 modulo 7, and $\alpha=1$ has order 1.
+        Raising $\alpha=2^3$ gave us 8, which is congruent to 1 modulo 7, and $\alpha=1$ has order 1. Moreover,
+        \underline{residues 3 and 5 are primitive roots.}\\
 
+        \newpage 
         \noindent
-        We will abstract variables to emphasize definitions.
+        We will abstract variables to emphasize $\alpha^m$ being some other residue after shifting by $m$.
         \begin{Proof}[Multiplicative Order of Powers]
-            We abstract the residue produced by $\alpha^m:=\beta$. Then $\beta$'s multiplicative order is the smallest $l$ such that $\beta^l\equiv 1\pmod{n}$.
+            We define $\alpha^m:=\beta$. Then $\beta$'s multiplicative order is the smallest $l$ such that $\beta^l\equiv 1\pmod{n}$.
             Then by (\ref{theo:mult_order_interval}),
         \[\alpha^{m\cdot l}\equiv 1\pmod*{n}\Longleftrightarrow ml\equiv 0\pmod*{k}\]
-        We can drop $m$ as a common factor by taking $\gcd(m,k)$ from $k$, yielding:
+        We can drop $m$ as a common factor by taking $\gcd(m,k)$ from $k$ (\ref{theo:mod_mult_id}), yielding:
         \[l\equiv 0\pmod*{\dfrac{k}{\gcd(m,k)}}\]
         \noindent
-        Meaning $l$ is our multiplicative order, as for $\beta$, we also have $\beta^l\equiv 1\pmod{n}$.
+        Thus we have $\beta^l\equiv 1\pmod{n}\Longleftrightarrow l\equiv 0\pmod*{\dfrac{k}{\gcd(m,k)}}$ satisfying the definition.
 
         \end{Proof}
+
+
     
