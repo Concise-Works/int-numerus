@@ -103,3 +103,10 @@
 
 \renewcommand{\clearforchapter}{ \newpage}
 
+\makeatletter
+\NewCommandCopy\@@pmod\pmod
+\DeclareRobustCommand{\pmod}{\@ifstar\@pmods\@@pmod}
+\def\@pmods#1{\mkern4mu({\operator@font mod}\mkern 6mu#1)}
+\makeatother
+
+
