@@ -114,6 +114,8 @@ We shall consider odd primes $p$, i.e., primes greater than 2, as 2 creates spec
 
 \begin{theo}[Square Roots of 1 Modulo $p$]
 
+    \label{theo:square_roots_1}
+
     Let $p$ be an odd prime, and $\beta\in\mathbb{Z}_p$. Then $\beta^2=1\Longleftrightarrow \beta=\pm1$.
 \end{theo}
 \begin{Proof}[Square Roots of 1 Modulo $p$]
@@ -125,30 +127,99 @@ We shall consider odd primes $p$, i.e., primes greater than 2, as 2 creates spec
 \newpage
 
 \noindent
-To reduce repetition, we will use $\qres$, to denote Quadratic Residues modulo odd primes $p$.
+\underline{To reduce repetition, we will use $\qres$,} to denote Quadratic Residues modulo odd primes $p$.
 \begin{theo}[Square Roots $\qres$]
     
         Let $p$ be an odd prime, for $\gamma,\beta\in\mathbb{Z}_p^*$. Then $\gamma^2\equiv\beta^2\pmod{p}\Longleftrightarrow\gamma\equiv\pm\beta\pmod{p}$.\\
-
-        \noindent
-        I.e., for some $\alpha\in\mathbb{Z}_p^*$, if $\alpha=\beta^2$, then $\alpha$ has two square roots modulo $p$: $\pm\beta$.
+        I.e., for some $\alpha\in\mathbb{Z}_p^*$, \underline{if $\alpha=\beta^2$, then $\alpha$ has two square roots modulo $p$: $\pm\beta$.}
 \end{theo}
 \begin{Proof}[Square Roots $\qres$]
 Following from the theorem proof we have,
 \[\gamma^2 = \beta^2 \iff \frac{\gamma^2}{\beta^2} = 1 \iff \frac{\gamma}{\beta} = \pm 1 \iff \gamma = \pm \beta\]  
-In terms of congruences,
+In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are invertible:
 \begin{align*} 
 \gamma^2 \equiv \beta^2 \pmod*{p} &\iff \gamma^2\cdot\beta^{-2} \equiv 1 \pmod*{p}\\
 &\iff \gamma\cdot\beta^{-1} \equiv \pm 1 \pmod*{p}\\
 &\iff \gamma \equiv \pm \beta \pmod*{p}
 \end{align*}
+
+\noindent
+
 \end{Proof}
 
 \begin{theo}[Cardinality of $\qres$]
     
     Let $p$ be an odd prime. Then,
-     \Large\[|\qres|=\dfrac{p-1}{2}
+     \Large\[|\qres|=\frac{(p-1)}{2}
      \]
      \normalsize
+     \noindent
+     Allowing us to represent $\qres$ as the interval $[1,(p-1)/2]$.
 \end{theo}
 
+\begin{Proof}[Cardinality of $\qres$]
+    Let $\beta^2\in\qres$, then there are two square roots for $\beta^2$: $\pm\beta$. We define the map:
+    \begin{align*}
+        \sigma: \pres &\to \pres\\
+        \pm\beta &\mapsto \beta^2 \text{ mod } p
+    \end{align*}
+    Since $\sigma$ is two-to-one where two elements from $\pres$ map to one element $\qres$, we cut our output in half.
+    Hence, $|\qres|=\frac{|\pres|}{2}=\frac{p-1}{2}$.
+\end{Proof}
+
+\newpage
+
+
+\begin{Def}[Quadratic non-residue]
+    
+    Let $p$ be an odd prime, and $\alpha\in\mathbb{Z}_p^*$. Then $\alpha$ is a quadratic non-residue modulo $p$ if $\alpha\notin\qres$.\\
+\end{Def}
+
+\begin{theo}[Euler's Criterion (Taking Square Root $\qres$)]
+
+    Let $p$ be an odd prime and $\alpha\in\mathbb{Z}_p^*$. Then,
+    \begin{enumerate}
+        \item[(i)] $\alpha^{(p-1)/2} \equiv \pm1 \pmod{p}$
+        \item[(ii)] If $\alpha\in\qres$, then $\alpha^{(p-1)/2}\equiv 1\pmod{p}$.
+        \item[(iii)] If $\alpha\notin\qres$, then $\alpha^{(p-1)/2}\equiv -1\pmod{p}$.
+    \end{enumerate}
+\end{theo}
+
+\begin{Note}
+    \textbf{Note:} Remember for $a\in\mathbb{Z}$, that $a^\frac{1}{2}$ is cancelled by $(a^\frac{1}{2})^2=a$.
+\end{Note}
+
+
+\begin{Proof}[Euler's Criterion]
+
+    \begin{enumerate}
+        \item [(i)] Let $\gamma=\alpha^{(p-1)/2}$. Then $\gamma^2=\alpha^{p-1}=1$ (\ref{theo:fermat}). Then $\gamma=\pm1$ (\ref{theo:square_roots_1}).
+        \item[(ii)] If $\alpha\in\qres$, $\alpha=\beta^2\in\mathbb{Z}_p^*$. Then $(\beta^2)^{(p-1)/2}=\alpha^{(p-1)/2}$.
+        Then , $\beta^{p-1}\equiv 1 \pmod*{p}$ (\ref{theo:fermat}).
+        \item[(iii)] We gather $|\qres|=(p-1)/2$. Then the other half of $\pres$ are quadratic non-residues, for which we define the set $\mathcal{P}$.
+                     We describe $\mathcal{P}$'s image by map $\mu$:
+                        \begin{align*}
+                            \mu: \pres &\to \pres\\
+                            \kappa\lambda &\mapsto \alpha\notin\qres
+                        \end{align*}
+                        For $\kappa,\lambda\in\pres:\kappa\neq\lambda$. Then, $\lambda=\frac{\alpha}{\kappa}$, so $\lambda$ is uniquely determined by $\kappa$.
+                        We define the set $C=\{\kappa\lambda\in\pres:\kappa\lambda=\alpha\}$, and $C\subseteq\mathcal{P}$. Then their product
+                        \[\prod_{\{\kappa\lambda\in C\}}\kappa\lambda\enspace=\prod_{\{\kappa\lambda\in C\}}\alpha=\alpha^{(p-1)/2}\]
+                        as a result of $\mathcal{P}, containing $(p-1)/2$ many $\kappa\lambda$ pairs.
+    \end{enumerate} 
+
+\end{Proof}
+\newpage
+\noindent
+We extend the definition of a Quadratic residue with the Legendre Symbol.
+\begin{Func}[Legendre Symbol]
+
+    Let $p$ be an odd prime, and $\alpha\in\mathbb{Z}_p^*$. Then the Legendre Symbol is defined as:
+    \[
+    \left(\frac{\alpha}{p}\right) = \begin{cases}
+        \hspace{.8em}1 & \text{if } \alpha\in\qres\\
+        -1 & \text{if } \alpha\notin\qres\\
+        \hspace{.8em}0 & \text{if } \alpha\equiv 0\pmod{p}
+    \end{cases}
+    \]
+\end{Func}
