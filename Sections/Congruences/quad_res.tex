@@ -170,10 +170,7 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
 \newpage
 
 
-\begin{Def}[Quadratic non-residue]
-    
-    Let $p$ be an odd prime, and $\alpha\in\mathbb{Z}_p^*$. Then $\alpha$ is a quadratic non-residue modulo $p$ if $\alpha\notin\qres$.\\
-\end{Def}
+
 
 \begin{theo}[Euler's Criterion (Taking Square Root $\qres$)]
 
@@ -203,13 +200,21 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
                             \kappa\lambda &\mapsto \alpha\notin\qres
                         \end{align*}
                         For $\kappa,\lambda\in\pres:\kappa\neq\lambda$. Then, $\lambda=\frac{\alpha}{\kappa}$, so $\lambda$ is uniquely determined by $\kappa$.
-                        We define the set $C=\{\kappa\lambda\in\pres:\kappa\lambda=\alpha\}$, and $C\subseteq\mathcal{P}$. Then their product
+                        We define the set $C:=\{\kappa\lambda\in\pres:\kappa\lambda=\alpha\}$, and $C\subseteq\mathcal{P}$. Then their product
                         \[\prod_{\{\kappa\lambda\in C\}}\kappa\lambda\enspace=\prod_{\{\kappa\lambda\in C\}}\alpha=\alpha^{(p-1)/2}\]
-                        as a result of $\mathcal{P}, containing $(p-1)/2$ many $\kappa\lambda$ pairs.
+                        as a result of $\mathcal{P}$ containing $(p-1)/2$ many $\kappa\lambda$ pairs. We define $\epsilon:=\prod_{\{\kappa\lambda\in C\}}\kappa\lambda$,
+                        and partition $D:=\{\{\kappa\lambda\}\in\mathcal{P}:\kappa\lambda=1\}$. If $\kappa\lambda=1$, then $\kappa:=\lambda^{-1}$, and $\kappa$ uniquely determines $\lambda$.
+                        then $\kappa=\lambda$ if and only if $\kappa^2=1$, which implies $\kappa=\pm1$. So exclude $[\pm1]$ from our set $D$. Still for other pairs, $\kappa\lambda=1$, we proceed:
+                        \[\epsilon=\enspace[1]\cdot[-1]\prod_{\{\kappa\lambda\in D\}}\kappa\lambda\enspace=\enspace[-1]\prod_{\{\kappa\lambda\in D\}}[1]=-1\]
+                        As we bring back $[\pm1]$ in the product, we see $\epsilon=-1$. Thus $\alpha^{(p-1)/2}\equiv -1\pmod{p}$.
     \end{enumerate} 
 
 \end{Proof}
 \newpage
+\begin{Def}[Quadratic non-residue]
+    
+    Let $p$ be an odd prime, and $\alpha\in\mathbb{Z}_p^*$. Then $\alpha$ is a quadratic non-residue modulo $p$ if $\alpha\notin\qres$.
+\end{Def}
 \noindent
 We extend the definition of a Quadratic residue with the Legendre Symbol.
 \begin{Func}[Legendre Symbol]
