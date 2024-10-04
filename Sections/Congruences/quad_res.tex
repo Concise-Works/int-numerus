@@ -204,7 +204,7 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
                         \[\prod_{\{\kappa\lambda\in C\}}\kappa\lambda\enspace=\prod_{\{\kappa\lambda\in C\}}\alpha=\alpha^{(p-1)/2}\]
                         as a result of $\mathcal{P}$ containing $(p-1)/2$ many $\kappa\lambda$ pairs. We define $\epsilon:=\prod_{\{\kappa\lambda\in C\}}\kappa\lambda$,
                         and partition $D:=\{\{\kappa\lambda\}\in\mathcal{P}:\kappa\lambda=1\}$. If $\kappa\lambda=1$, then $\kappa:=\lambda^{-1}$, and $\kappa$ uniquely determines $\lambda$.
-                        then $\kappa=\lambda$ if and only if $\kappa^2=1$, which implies $\kappa=\pm1$. So exclude $[\pm1]$ from our set $D$. Still for other pairs, $\kappa\lambda=1$, we proceed:
+                        then $\kappa=\lambda$ if and only if $\kappa^2=1$, which implies $\kappa=\pm1$ (\ref{theo:square_roots_1}). So we exclude $[\pm1]$ from our set $D$. Still for other pairs, $\kappa\lambda=1$, we proceed:
                         \[\epsilon=\enspace[1]\cdot[-1]\prod_{\{\kappa\lambda\in D\}}\kappa\lambda\enspace=\enspace[-1]\prod_{\{\kappa\lambda\in D\}}[1]=-1\]
                         As we bring back $[\pm1]$ in the product, we see $\epsilon=-1$. Thus $\alpha^{(p-1)/2}\equiv -1\pmod{p}$.
     \end{enumerate} 
@@ -212,15 +212,14 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
 \end{Proof}
 \newpage
 \noindent
-We extend the definition of a Quadratic residue with the Legendre Symbol.
+To abstract our findings we define the Legendre Symbol.
 \begin{Func}[Legendre Symbol]
 
     Let $p$ be an odd prime, and $\alpha\in\mathbb{Z}_p^*$. Then the Legendre Symbol is defined as:
     \[
     \left(\frac{\alpha}{p}\right) = \begin{cases}
-        \hspace{.8em}1 & \text{if } \alpha\in\qres\\
-        -1 & \text{if } \alpha\notin\qres\\
-        \hspace{.8em}0 & \text{if } \alpha\equiv 0\pmod{p}
+        \hspace{.8em}1 & \text{if } \alpha\in\qres\text{ ($\alpha$ is a quadratic residue),}\\
+        -1 & \text{if } \alpha\notin\qres\text{ ($\alpha$ is a quadratic non-residue).}\\
     \end{cases}
     \]
 \end{Func}
