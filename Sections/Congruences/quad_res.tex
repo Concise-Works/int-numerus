@@ -104,9 +104,9 @@ Pierre de Fermat (1601-1665) was a French lawyer and mathematician. Born in Beau
     Let $\alpha,n\in\mathbb{Z}$,$\beta\in\mathbb{Z}_n^*$, and $n>1$. Then,
     \begin{itemize}
         \item ``$\mathbf{\alpha}$ \textbf{is a quadratic residue modulo }$\textbf{n}$'' if $\gcd(\alpha,n)=1$ and $\alpha\equiv \beta^2\pmod{n}$.
+        \item ``$\mathbf{\alpha}$ \textbf{is a quadratic non-residue modulo }$\textbf{n}$'' if $\gcd(\alpha,n)=1$ and $\alpha\not\equiv \beta^2\pmod{n}$.
         \item ``$\mathbf{\beta} \textbf{ is a square root of } \mathbf{\alpha} \textbf{ modulo } \mathbf{n}$'' if $\beta^2\equiv \alpha\pmod{n}$.
     \end{itemize}
-    I.e., $a$ is a quadratic residue if $[a]\in(\mathbb{Z}_n^*)^2$.
 \end{Def}
 
 \subsection{Quadratic Residues Modulo Primes}
@@ -193,7 +193,7 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
         \item [(i)] Let $\gamma=\alpha^{(p-1)/2}$. Then $\gamma^2=\alpha^{p-1}=1$ (\ref{theo:fermat}). Then $\gamma=\pm1$ (\ref{theo:square_roots_1}).
         \item[(ii)] If $\alpha\in\qres$, $\alpha=\beta^2\in\mathbb{Z}_p^*$. Then $(\beta^2)^{(p-1)/2}=\alpha^{(p-1)/2}$.
         Then , $\beta^{p-1}\equiv 1 \pmod*{p}$ (\ref{theo:fermat}).
-        \item[(iii)] We gather $|\qres|=(p-1)/2$. Then the other half of $\pres$ are quadratic non-residues, for which we define the set $\mathcal{P}$.
+        \item[(iii)] Examine $|\qres|=(p-1)/2$. Then the other half of $\pres$ are quadratic non-residues, for which we define the set $\mathcal{P}$.
                      We describe $\mathcal{P}$'s image by map $\mu$:
                         \begin{align*}
                             \mu: \pres &\to \pres\\
@@ -211,10 +211,6 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
 
 \end{Proof}
 \newpage
-\begin{Def}[Quadratic non-residue]
-    
-    Let $p$ be an odd prime, and $\alpha\in\mathbb{Z}_p^*$. Then $\alpha$ is a quadratic non-residue modulo $p$ if $\alpha\notin\qres$.
-\end{Def}
 \noindent
 We extend the definition of a Quadratic residue with the Legendre Symbol.
 \begin{Func}[Legendre Symbol]
