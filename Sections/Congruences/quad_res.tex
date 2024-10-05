@@ -174,6 +174,7 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
 
 \begin{theo}[Euler's Criterion (Taking Square Root $\qres$)]
 
+    \label{theo:euler_criterion}
     Let $p$ be an odd prime and $\alpha\in\mathbb{Z}_p^*$. Then,
     \begin{enumerate}
         \item[(i)] $\alpha^{(p-1)/2} \equiv \pm1 \pmod{p}$
@@ -223,3 +224,36 @@ To abstract our findings we define the Legendre Symbol.
     \end{cases}
     \]
 \end{Func}
+
+\noindent
+This next theorem is a direct result from part (iii) in our proof of Euler's Criterion (\ref{theo:euler_criterion}).
+\begin{theo}[Wilson's Theorem]
+
+    \label{theo:wilson}
+    Let $p$ be an odd prime, then
+    \Large
+    \[
+    (p-1)! \equiv -1 \pmod*{p}
+    \]
+    \normalsize
+\end{theo}
+
+\begin{Proof}[Wilson's Theorem]
+
+    Let $p$ be an odd prime. We know each element $\kappa,\lambda\in\mathbb{Z}_p^*:\kappa\neq\lambda$, has an inverse
+    $\kappa\lambda=1$. Except for $[\pm1]$, as 1 is its own inverse.\\
+
+    \noindent
+    We take $(p-1)!=(p-1)(p-2)\cdots(2)(1)$, and pair each element with its inverse:
+    \[
+        (p-1)! \equiv (2\cdot2^{-1})(3\cdot3^{-1})\cdots(1\cdot(p-1)) \pmod*{p}
+    \]
+
+    \noindent
+    Note, $(p-1)= -1$ as $-1$ congruently is equivalent to the last element, i.e., $p-1$, yielding:
+    \[
+        (p-1)! \equiv (1)(1)\cdots (1\cdot(p-1)) \pmod*{p}
+    \]
+    Thus, $(p-1)! \equiv (p-1) \pmod*{p}$, which is $(p-1)! \equiv -1 \pmod*{p}$.
+
+\end{Proof}
