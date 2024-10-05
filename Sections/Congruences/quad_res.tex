@@ -223,6 +223,8 @@ To abstract our findings we define the Legendre Symbol.
         -1 & \text{if } \alpha\notin\qres\text{ ($\alpha$ is a quadratic non-residue).}\\
     \end{cases}
     \]
+    \noindent
+    Shortening our notation from (ii) and (iii) in Euler's Criterion (\ref{theo:euler_criterion}).
 \end{Func}
 
 \noindent
@@ -250,10 +252,49 @@ This next theorem is a direct result from part (iii) in our proof of Euler's Cri
     \]
 
     \noindent
-    Note, $(p-1)= -1$ as $-1$ congruently is equivalent to the last element, i.e., $p-1$, yielding:
+    Note, $(p-1)= -1$, as $-1$ congruently is equivalent to the last element, i.e., $p-1$, yielding:
     \[
         (p-1)! \equiv (1)(1)\cdots (1\cdot(p-1)) \pmod*{p}
     \]
     Thus, $(p-1)! \equiv (p-1) \pmod*{p}$, which is $(p-1)! \equiv -1 \pmod*{p}$.
 
 \end{Proof}
+\begin{theo}[Quadratic Non-Residues Product $\pres$]
+
+    Let \( p \) be an odd prime and \( \alpha, \beta \in \mathbb{Z}_p^* \). 
+If \( \alpha \notin (\mathbb{Z}_p^*)^2 \) and \( \beta \notin (\mathbb{Z}_p^*)^2 \), 
+then \( \alpha\beta \in (\mathbb{Z}_p^*)^2 \).
+\end{theo}
+
+\newpage
+
+\begin{Proof} [Quadratic Non-Residues' Product $\pres$]
+
+    For \( p \) an odd prime, let \( \alpha, \beta \in \mathbb{Z}_p^*: \alpha,\beta \notin (\mathbb{Z}_p^*)^2 \). Then,
+    \[
+        \left(\frac{\alpha}{p}\right) = -1 \text{ and } \left(\frac{\beta}{p}\right) = -1
+    \]
+    \noindent
+    Therefore,
+    \[
+        (\alpha\beta)^{(p-1)/2}=\left(\frac{\alpha}{p}\right)\cdot\left(\frac{\beta}{p}\right) = [-1]\cdot[-1] = 1
+    \]
+    \noindent
+    Thus $\alpha\beta\in\qres$ by Euler's Criterion (\ref{theo:euler_criterion}).
+\end{Proof}
+
+\noindent
+Giving us the following theorem:
+\begin{theo}[Products Quadratic Residues and Non-Residues]
+    
+        For odd \( p \) primes and $\alpha\in\qres$, $\beta\notin\qres$, then:
+        \begin{align*}
+            \left(\frac{\alpha}{p}\right) &\times \left(\frac{\alpha}{p}\right)\in\qres  \\
+            \left(\frac{\alpha}{p}\right) &\times \left(\frac{\beta}{p}\right)\notin\qres \\
+            \left(\frac{\beta}{p}\right) &\times \left(\frac{\beta}{p}\right)\in\qres
+        \end{align*}
+        \noindent
+        Which is to say, $[1]\cdot[1]=1$, $[1]\cdot[-1]=-1$, and $[-1]\cdot[-1]=1$.
+\end{theo}
+
+\section{Quadratic Residues Modulo $p^e$}
