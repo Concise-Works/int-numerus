@@ -112,7 +112,7 @@ Pierre de Fermat (1601-1665) was a French lawyer and mathematician. Born in Beau
 \subsection{Quadratic Residues Modulo Primes}
 We shall consider odd primes $p$, i.e., primes greater than 2, as 2 creates special cases that can complicate some of our results on quadratic residues.
 
-\begin{theo}[Square Roots of 1 Modulo $p$]
+\begin{theo}[Square Roots 1 Modulo $p$]
 
     \label{theo:square_roots_1}
 
@@ -297,4 +297,14 @@ Giving us the following theorem:
         Which is to say, $[1]\cdot[1]=1$, $[1]\cdot[-1]=-1$, and $[-1]\cdot[-1]=1$.
 \end{theo}
 
-\section{Quadratic Residues Modulo $p^e$}
+\section{Quadratic Residues Modulo of Raised Primes}
+
+\begin{theo}[Square Roots 1 Modulo \( p^e \)]
+
+    Let \( p \) be an odd prime, \( e\in\mathbb{Z^+}\), and \( \beta \in \mathbb{Z}_{p^e} \). 
+    Then \( \beta^2 = 1 \Longleftrightarrow \beta = \pm 1 \).
+\end{theo}
+\begin{Proof}[Square Roots 1 Modulo $p^e$]
+    If $\beta=\pm1$, then $\pm1^2\equiv 1\pmod{p^e}$. If $\beta^2=1$, then $\beta^2-1\equiv 0\pmod{p^e}$,
+    and $p^e\mid(\beta^2-1)$. Then $p$ divides $(\beta+1)$ or $(\beta-1)$. Note, if $p$ divides both, $p$ divides their difference, 2. This is impossible as $p$ is odd. Since, $p$ divides either $(\beta+1)$ or $(\beta-1)$, then $\beta=\pm1$.
+\end{Proof}
