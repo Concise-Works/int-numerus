@@ -1,2 +1,82 @@
 \subsection{Chinese Remainder Map Applied to Quadratic Residues}
-Revising the Chinese Remainder Theorem map (\ref{theo:crt})
+Revisiting the Chinese Remainder Map (\ref{theo:crt_map}), we show that since 
+prime factorizations also follow the Chinese Remainder Theorem schema (a product of pairwise coprime elements),
+we can generate a congruence system. Also allowing us to extend such systems to residue classes.
+\vfill
+\begin{center}
+    \textit{Continued on next page...}
+\end{center}
+\vfill
+\begin{Tip}
+    The Chinese Remainder Theorem (CRT) is named after its origin in ancient China, where it first appeared in the work of the mathematician \textbf{Sunzi} in the 3rd century AD.
+    In his book \textit{Sunzi Suanjing}, he posed a problem involving finding a number that leaves specific remainders when divided by different moduli. Although the method was later formalized in modern mathematics, the name honors its roots in early Chinese mathematical texts.
+\end{Tip}
+
+\newpage
+\begin{theo}[Chinese Remainder Map of Prime Factorizations]
+
+    Let $n\in\mathbb{Z}^+:2\nmid n$ and $n>1$ be a product of pairwise coprime elements,
+    \[n = p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k},\]
+    We map our factorization via CRT $\theta:=\Z_n\to\Z_{p_1^{e_1}}\times\cdots\times\Z_{p_k^{e_k}}$. Then 
+    we take $\alpha\in\Z_n^*$ as, $\alpha:=[a]_n$ and $\gcd(a,n)=1$, allowing us to construct the map $\theta(\alpha)=\{\alpha_1,...,\alpha_k\}$:
+    \begin{align*}
+        \theta(\alpha) = \begin{cases}
+           \alpha_1 & \text{mod } p_1^{e_1} \\
+            \alpha_2 & \text{mod } p_2^{e_2} \\
+            \vdots & \vdots \\
+            \alpha_k & \text{mod } p_k^{e_k}
+        \end{cases}
+    \end{align*}
+    \noindent
+    Which is the system of congruences:
+    \begin{align*}
+        \alpha &\equiv \alpha_1 \pmod{p_1^{e_1}} \\
+        \alpha &\equiv \alpha_2 \pmod{p_2^{e_2}} \\
+        &\hspace*{.5em}\vdots \\
+        \alpha &\equiv \alpha_k \pmod{p_k^{e_k}}
+    \end{align*}
+    \noindent
+    Meaning if we have some $\beta\in\Z_n^*: \alpha=\beta^2$, if $\theta(\beta)=\{\beta_1,...,\beta_k\}$, then:
+    \[
+        (\alpha_1,...,\alpha_k) = \theta(\alpha) = \theta(\beta^2) = \theta(\beta)^2 = (\beta_1^2,...,\beta_k^2)
+    \]
+    \noindent
+    Then $\alpha_i = \beta_i^2$ for each $i=1,...,k$. Suppose we began $\alpha_i=\beta_i^2$, for some $\beta_i\in\mathbb{Z}_{p_i^{e_i}}$.
+    Then $(\beta_1,\dots,\beta_k)$ is $\theta(\beta)^{-1}$. Then,
+    \[ 
+        (\beta_1,...,\beta_k)^2 = \theta(\beta^2) = (\beta_1^2,...,\beta_k^2) = (\alpha_1,...,\alpha_k) = \theta(\alpha)
+    \]
+    \noindent
+    Revealing for each $i=1,...,k$: \Large
+     \[\alpha\in(\mathbb{Z}_n^*)^2\Longleftrightarrow\alpha_i\in(\mathbb{Z}_{p_i^{e_i}}^*)^2\]
+    \normalsize
+    Restricting $\theta$ to $(\mathbb{Z}_n^*)^2$, we get $\theta:(\mathbb{Z}_n^*)^2\to(\mathbb{Z}_{p_1^{e_1}}^*)^2\times\cdots\times(\mathbb{Z}_{p_k^{e_k}}^*)^2$. Then if $\alpha\in\mathbb{Z}_n^*$, there is some 
+    tuple $\{\alpha_1,...,\alpha_k\}$ that it maps to, and vise versa, showing a bijection. Leaving us with:
+    \LARGE
+    \[
+    |(\mathbb{Z}_n^*)^2| = \prod_{i=1}^{k} \left(\varphi(p_i^{e_i})/2 \right) = \varphi(n)/2^k
+    \]
+    \normalsize
+    By theorems (\ref{theo:cardinality_peres}) and (\ref{theo:chinese_remainder_phi}).
+\end{theo}
+\newpage
+\noindent
+From the above theorem, we relate back to theorem (\ref{theo:square_roots_2}).
+\begin{theo}[Chinese Remainder Square Roots]
+
+    Let $n\in\mathbb{Z}^+:2\nmid n$ and $n>1$ be a product of pairwise coprime elements, and $\alpha\in\mathbb{Z}_n^*$, where $\alpha = \beta^2$ for some $\beta\in\mathbb{Z}_n^*$ and $\theta(\beta)=\{\beta_1,...,\beta_k\}$.\\
+    
+    \noindent
+    Then for some $\gamma\in\mathbb{Z}_n^*$, with $\theta(\gamma)=\{\gamma_1,...,\gamma_k\}$, consider:
+    \begin{align*}
+        \gamma^2 = \beta^2 &\iff \theta(\gamma^2) = \theta(\beta^2) \\
+        &\iff (\gamma_1^2, \dots, \gamma_r^2) = (\beta_1^2, \dots, \beta_r^2) \\
+        &\iff (\gamma_1, \dots, \gamma_r) = (\pm \beta_1, \dots, \pm \beta_r).
+        \end{align*}
+    \noindent
+    Therefore $\alpha$ has $2^k$ square roots, $\theta^{-1}(\pm\beta_1,...,\pm\beta_k)$.
+
+\end{theo}
+
+
+    

@@ -129,6 +129,8 @@ We shall consider odd primes $p$, i.e., primes greater than 2, as 2 creates spec
 \noindent
 \underline{To reduce repetition, we will use $\qres$,} to denote Quadratic Residues modulo odd primes $p$.
 \begin{theo}[Square Roots $\qres$]
+
+    \label{theo:square_roots_2}
     
         Let $p$ be an odd prime, for $\gamma,\beta\in\mathbb{Z}_p^*$. Then $\gamma^2\equiv\beta^2\pmod{p}\Longleftrightarrow\gamma\equiv\pm\beta\pmod{p}$.\\
         I.e., for some $\alpha\in\mathbb{Z}_p^*$, \underline{if $\alpha=\beta^2$, then $\alpha$ has two square roots modulo $p$: $\pm\beta$.}
@@ -322,7 +324,9 @@ It follows that our previous theorems $\pres$ follow to $\peres$. We shall conti
 
 \begin{theo}[Cardinality of $\peres$]
 
-Let $p$ be an odd prime. Then, $|\peres|=\frac{(p-1)}{2}$.
+    \label{theo:cardinality_peres}
+
+Let $p$ be an odd prime. Then, $|\peres|=\frac{\varphi(p^e)}{2}$.
 \end{theo}
 
 \begin{theo}[Euler's Criterion (Taking Square Root $\peres$)]
