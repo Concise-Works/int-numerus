@@ -95,6 +95,8 @@ From the above theorem, we relate back to theorem (\ref{theo:square_roots_2}).
     \textbf{Note:} The above refers to the Legendre symbol $\left(\frac{\alpha}{p}\right)$ (\ref{def:le}).
 \end{Note}
 \begin{Proof}[Quadratic Residue $-1$ test (mod $4$)]
+
+    \label{theo:quadratic_residue_4}
     
     By Euler's criterion $\left(\frac{-1}{p}\right)=1\Longleftrightarrow(-1)^{(p-1)/2}\equiv 1\pmod*{p}$.
     
@@ -156,3 +158,32 @@ We use this next theorem to prove Thue's Lemma.
     \noindent
     Satisfying $|r|<r^*$, and $|t|<t^*$. Additionally $t\neq 0$ as that implies $r\equiv 0\pmod{n}$, which contradicts $0<|r|$ and $0<|t|$.
 \end{Proof}
+\noindent 
+This lemma allows us to prove that primes $p \equiv 1 \pmod*{4}$ can be written as the sum of two squares.
+\begin{theo}[Fermat's Two Square Theorem]
+
+    Let $p$ be an odd prime. Then $p=r^2+t^2$ for some $r,t\in\mathbb{Z}$ if and only if $p\equiv 1\pmod{4}$.
+\end{theo}
+\begin{Proof}[Fermat's Two Square Theorem]
+
+    \textbf{Proving} $p=r^2+t^2\implies p\equiv 1\pmod*{4}$:\\
+    \noindent
+    The square of any integer modulo 4 is:
+    \begin{align*}
+        0^2 &\equiv 0\pmod{4} \\
+        1^2 &\equiv 1\pmod{4} \\
+        2^2 &\equiv 0\pmod{4} \\
+        3^2 &\equiv 1\pmod{4}
+    \end{align*}
+    \noindent
+    Our squares are either $0$ or $1$ modulo $4$. Therefore, their possible sums are $0,1,2$ modulo $4$, never $3$.
+    Therefore $p\equiv 3\pmod*{4}$ cannot be written as the sum of two squares.\\
+
+    \noindent
+    \textbf{Proving} $p\equiv 1\pmod*{4}\implies p=r^2+t^2$:\\
+
+    \noindent
+    We know $p\equiv 1\pmod*{4}$, then $b^2\equiv -1\pmod{p}$ for some $b\in\mathbb{Z}_p^*$ (\ref{theo:quadratic_residue_4}). Then $p\mid b^2+1$, and $p\mid (b+i)(b-i)$.
+
+\end{Proof}
+
