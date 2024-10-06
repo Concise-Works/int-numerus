@@ -205,6 +205,7 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
                         For $\kappa,\lambda\in\pres:\kappa\neq\lambda$. Then, $\lambda=\frac{\alpha}{\kappa}$, so $\lambda$ is uniquely determined by $\kappa$.
                         We define the set $C:=\{\kappa\lambda\in\pres:\kappa\lambda=\alpha\}$, and $C\subseteq\mathcal{P}$. Then their product
                         \[\prod_{\{\kappa\lambda\in C\}}\kappa\lambda\enspace=\prod_{\{\kappa\lambda\in C\}}\alpha=\alpha^{(p-1)/2}\]
+
                         as a result of $\mathcal{P}$ containing $(p-1)/2$ many $\kappa\lambda$ pairs. We define $\epsilon:=\prod_{\{\kappa\lambda\in C\}}\kappa\lambda$,
                         and partition $D:=\{\{\kappa\lambda\}\in\mathcal{P}:\kappa\lambda=1\}$. If $\kappa\lambda=1$, then $\kappa:=\lambda^{-1}$, and $\kappa$ uniquely determines $\lambda$.
                         then $\kappa=\lambda$ if and only if $\kappa^2=1$, which implies $\kappa=\pm1$ (\ref{theo:square_roots_1}). So we exclude $[\pm1]$ from our set $D$. Still for other pairs, $\kappa\lambda=1$, we proceed:
@@ -217,6 +218,8 @@ In terms of congruences, members of $\mathbb{Z}_p^*$, $\gamma$ and $\beta$ are i
 \noindent
 To abstract our findings we define the Legendre Symbol.
 \begin{Func}[Legendre Symbol]
+
+    \label{def:le}
 
     Let $p$ be an odd prime, and $\alpha\in\mathbb{Z}_p^*$. Then the Legendre Symbol is defined as:
     \[
@@ -290,6 +293,8 @@ then \( \alpha\beta \in (\mathbb{Z}_p^*)^2 \).
 Giving us the following theorem:
 \begin{theo}[Products Quadratic Residues and Non-Residues]
     
+        \label{theo:quadratic_residues_product}
+
         For odd \( p \) primes and $\alpha\in\qres$, $\beta\notin\qres$, then:
         \begin{align*}
             \left(\frac{\alpha}{p}\right) &\times \left(\frac{\alpha}{p}\right)\in\qres  \\

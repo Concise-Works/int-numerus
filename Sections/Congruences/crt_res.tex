@@ -78,5 +78,31 @@ From the above theorem, we relate back to theorem (\ref{theo:square_roots_2}).
 
 \end{theo}
 
+\subsection {Square roots of $-1$ modulo $p$}
+
+\begin{theo}[Quadratic Residue $-1$ test (mod $4$)]
+
+    Let $p$ be an odd prime. Then, 
+    \Large
+    \[\left(\frac{-1}{p}\right)=1\Longleftrightarrow p\equiv 1\pmod{4}\]
+    \normalsize
+    \noindent
+    I.e., $-1$ is a quadratic residue modulo $p$ if and only if $p$ is congruent to $1$ modulo $4$.
+\end{theo}
+\begin{Note}
+    \textbf{Note:} The above refers to the Legendre symbol $\left(\frac{\alpha}{p}\right)$ (\ref{def:le}).
+\end{Note}
+\begin{Proof}[Quadratic Residue $-1$ test (mod $4$)]
+    
+    By Euler's criterion $\left(\frac{-1}{p}\right)=1\Longleftrightarrow(-1)^{(p-1)/2}\equiv 1\pmod*{p}$.
+    
+    \begin{itemize}
+        \item If $p\equiv 1\pmod{4}$. Then, $p=4k+1$ for some $k\in\mathbb{Z}$. Taking $1$ from both sides and dividing $2$ yields, $(p-1)/2=2k$.
+        Therefore, $(p-1)/2$ is even, thus $(-1)^{(p-1)/2}=1$, as -1 raised to an even power is $1$.
+        \item If $p\equiv 3\pmod*{4}$, then $p=4k+3$ for some $k\in\mathbb{Z}$. Then $(p-1)/2=2k+1$ is odd, and $(-1)^{(p-1)/2}=-1$.
+
+    \end{itemize}
+     
+\end{Proof}
 
     
