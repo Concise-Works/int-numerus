@@ -221,6 +221,7 @@ To abstract our findings we define the Legendre Symbol.
     \left(\frac{\alpha}{p}\right) = \begin{cases}
         \hspace{.8em}1 & \text{if } \alpha\in\qres\text{ ($\alpha$ is a quadratic residue),}\\
         -1 & \text{if } \alpha\notin\qres\text{ ($\alpha$ is a quadratic non-residue).}\\
+        \hspace{.8em}0 & \text{if } \alpha\equiv 0\pmod*{p}\text{ ($p\mid\alpha$ and has no inverse).}
     \end{cases}
     \]
     \noindent
@@ -297,7 +298,7 @@ Giving us the following theorem:
         Which is to say, $[1]\cdot[1]=1$, $[1]\cdot[-1]=-1$, and $[-1]\cdot[-1]=1$.
 \end{theo}
 
-\section{Quadratic Residues Modulo of Raised Primes}
+\subsection{Quadratic Residues Modulo of Raised Primes}
 
 \begin{theo}[Square Roots 1 Modulo \( p^e \)]
 
@@ -308,3 +309,79 @@ Giving us the following theorem:
     If $\beta=\pm1$, then $\pm1^2\equiv 1\pmod{p^e}$. If $\beta^2=1$, then $\beta^2-1\equiv 0\pmod{p^e}$,
     and $p^e\mid(\beta^2-1)$. Then $p$ divides $(\beta+1)$ or $(\beta-1)$. Note, if $p$ divides both, $p$ divides their difference, 2. This is impossible as $p$ is odd. Since, $p$ divides either $(\beta+1)$ or $(\beta-1)$, then $\beta=\pm1$.
 \end{Proof}
+
+\newpage
+
+\noindent
+It follows that our previous theorems $\pres$ follow to $\peres$. We shall continue without proof.
+\begin{theo}[Square Roots $\peres$]
+    
+    Let $p$ be an odd prime and $e\in\mathbb{Z}^+$, for $\gamma,\beta\in\peres$. Then $\gamma^2=\beta^2\Longleftrightarrow\gamma=\pm\beta$.
+    
+\end{theo}
+
+\begin{theo}[Cardinality of $\peres$]
+
+Let $p$ be an odd prime. Then, $|\peres|=\frac{(p-1)}{2}$.
+\end{theo}
+
+\begin{theo}[Euler's Criterion (Taking Square Root $\peres$)]
+
+\label{theo:euler_criterion_peres}
+Let $p$ be an odd prime and $\alpha\in\peres$. Then,
+\begin{enumerate}
+    \item[(i)] $\alpha^{\varphi(p^e)/2} \equiv \pm1 \pmod{p}$
+    \item[(ii)] If $\alpha\in\peres$, then $\alpha^{\varphi(p^e)/2}\equiv 1\pmod{p}$.
+    \item[(iii)] If $\alpha\notin\peres$, then $\alpha^{\varphi(p^e)/2}\equiv -1\pmod{p}$.
+\end{enumerate}
+\noindent
+\textbf{Note:} $\varphi(p^e)=p^e-p^{e-1}=p^{e-1}(p-1)$.
+\end{theo}
+
+\begin{theo}[Quadratic Non-Residues Product $\peres$]
+
+    Let \( p \) be an odd prime and \( \alpha, \beta \in \peres \). 
+If \( \alpha \notin \ires \) and \( \beta \notin \ires \), 
+then \( \alpha\beta \in \ires \).
+\end{theo}
+\noindent
+
+\noindent
+Leading us to the following theorem:
+\begin{theo}[Quadratic Congugrences $\peres\to\qres$]
+
+    Let $p$ be an odd prime, $e\in\mathbb{Z^+}$, and $\alpha\in\Z$. Then,
+    \Large 
+    \[
+     \left(\frac{\alpha}{p^e}\right)=\pm1\Longleftrightarrow\left(\frac{\alpha}{p}\right)=\pm1
+    \]
+    \normalsize
+\end{theo}
+
+\newpage
+
+\begin{Proof}[Quadratic Congugrences $\peres\to\qres$]
+    Let $p$ be an odd prime, $e\in\mathbb{Z^+}$, and $\alpha\in\Z$,\\
+
+    \noindent
+    \textbf{Proving} $\left(\dfrac{\alpha}{p^e}\right)=\pm1\Longrightarrow\left(\dfrac{\alpha}{p}\right)=\pm1$:
+    \begin{itemize}
+        \item Suppose $\left(\dfrac{\alpha}{p^e}\right)=1$. Then $p\nmid\alpha$ and $\alpha\equiv\beta^2\pmod{p}$ for some $\beta\in\Z$. Thus, $\left(\dfrac{\alpha}{p}\right)=1$.
+        \item Suppose $\left(\dfrac{\alpha}{p^e}\right)=-1$. If $p\mid\alpha$ then $\left(\dfrac{\alpha}{p}\right)=0$. If $p\nmid\alpha$ then $\alpha\notin\qres$ and $\left(\dfrac{\alpha}{p}\right)=-1$.
+    \end{itemize}
+    \noindent
+    Both by theorem (\ref{theo:euler_criterion_peres}).\\
+
+    \noindent
+    \textbf{Proving} $\left(\dfrac{\alpha}{p^e}\right)=\pm1\Longleftarrow\left(\dfrac{\alpha}{p}\right)=\pm1$:\\
+    The congruence holds modulo $p$ by applying Fermat's Little Theorem $(e-1)$ times (\ref{theo:fermat}),
+    \[\alpha\equiv\alpha^p\equiv \alpha^{p^2}\equiv\cdots\equiv\alpha^{p^{e-1}}\pmod{p}\] 
+    \noindent
+    Then $1\equiv \alpha^{p^e}\pmod*{p}$. Similarly,
+    \[
+        -1\equiv \alpha^{p^{e-1}(p-1)/2}\equiv\alpha^{(p-1)/2}\pmod*{p}
+    \]
+    \noindent
+    By Euler's Criterion (\ref{theo:euler_criterion}).
+\end{Proof}
+
