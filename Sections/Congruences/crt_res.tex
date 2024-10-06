@@ -15,6 +15,8 @@ we can generate a congruence system. Also allowing us to extend such systems to 
 \newpage
 \begin{theo}[Chinese Remainder Map of Prime Factorizations]
 
+    \label{theo:crt_res_map}
+
     Let $n\in\mathbb{Z}^+:2\nmid n$ and $n>1$ be a product of pairwise coprime elements,
     \[n = p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k},\]
     We map our factorization via CRT $\theta:=\Z_n\to\Z_{p_1^{e_1}}\times\cdots\times\Z_{p_k^{e_k}}$. Then 
@@ -62,7 +64,7 @@ we can generate a congruence system. Also allowing us to extend such systems to 
 \newpage
 \noindent
 From the above theorem, we relate back to theorem (\ref{theo:square_roots_2}).
-\begin{theo}[Chinese Remainder Square Roots]
+\begin{theo}[Number of Square Roots CRT]
 
     Let $n\in\mathbb{Z}^+:2\nmid n$ and $n>1$ be a product of pairwise coprime elements, and $\alpha\in\mathbb{Z}_n^*$, where $\alpha = \beta^2$ for some $\beta\in\mathbb{Z}_n^*$ and $\theta(\beta)=\{\beta_1,...,\beta_k\}$.\\
     
@@ -105,4 +107,52 @@ From the above theorem, we relate back to theorem (\ref{theo:square_roots_2}).
      
 \end{Proof}
 
-    
+\newpage
+
+\begin{theo}[Quadratic non-residue $-1$ test (mod $4$)]
+
+    Let \( p \) be a prime with \( p \equiv 1 \pmod{4} \), \( \gamma \in \mathbb{Z}_p^* \setminus (\mathbb{Z}_p^*)^2 \), and \( \beta := \gamma^{(p-1)/4} \). Then \( \beta^2 = -1 \).
+
+\end{theo}
+\begin{Proof}[Quadratic non-residue $-1$ test (mod $4$)]
+
+    Since \( p \equiv 1 \pmod{4} \), we have \( p = 4k + 1 \) for some \( k \in \mathbb{Z} \). Then \( (p-1)/4 = k \) is an integer.
+    Therefore, \( \gamma^{(p-1)/4} = \beta \) is well-defined (\ref{theo:crt_res_map}). Since $\gamma$ is a non-square, then $\left(\frac{\gamma}{p}\right)=-1$, as we see by Euler's criterion:
+   \Large \[ \beta^2 = \gamma^{(p-1)/2} = -1 \]
+   \normalsize
+\end{Proof}
+
+\begin{theo}[Thue's Lemma]
+
+    Let \( n, b, r^*, t^* \in \mathbb{Z} \), with \( 0 < r^* \leq n < r^*t^* \). Then there exist \( r, t \in \mathbb{Z} \) with
+\[
+r \equiv bt \pmod{n}, \quad 0<|r| < r^*, \quad \text{and} \quad 0 < |t| < t^*.
+\]
+\noindent
+Meaning, $r-bt=nk:k\in\Z$, where $r$ and $bt$ differ by some multiple $n$. Such multiple could be enormous in magnitude. Thus we bound solutions $r$ and $t$ by $r^*$ and $t^*$ respectively.
+\end{theo}
+\noindent
+We use this next theorem to prove Thue's Lemma.
+\begin{theo}[Pigeon Hole Principle]
+
+    Let \( n, m \in \mathbb{Z}^+ \) with \( n < m \). Then if we distribute \( m \) pigeons into \( n \) pigeonholes, there must be at least one pigeonhole with more than one pigeon.
+\end{theo}
+\vspace{1em}
+\begin{Tip}
+    The principle dates back to the 1830s when it was first introduced by German mathematician Peter Gustav Lejeune Dirichlet. It was originally called Dirichlet's box principle. Over time, the term “pigeonhole” became more common, referring to the analogy of pigeons and their nesting holes.
+\end{Tip}
+
+\newpage
+\begin{Proof}[Thue's Lemma]
+
+    For $\{r_i\}_{i=0}^{r^*-1}$ and $\{t_i\}_{i=1}^{t^*-1}$, we have $n_{ij}^*:=i-bj$.
+    Since $r^*t^* > n$, then by the Pigeon Hole Principle, there must be a pigeon hole (residue) with more than one pigeon (representative) as $r^*t^*$ overlaps $n$.
+    Therefore, for some $(i_1,j_1)\neq(i_2,j_2)$, we have $n_{i_1j_1}^*=n_{i_2j_2}^*$. We define $r:=i_1-i_2$ and $t:=j_2-j_1$, then
+    \begin{align*}
+        i_1-bj_1&\equiv i_2-bj_2\pmod{n}\\
+        i_1-i_2&\equiv b(j_2-j_1)\pmod{n}\\
+        r&\equiv bt\pmod{n}
+    \end{align*}
+    \noindent
+    Satisfying $|r|<r^*$, and $|t|<t^*$. Additionally $t\neq 0$ as that implies $r\equiv 0\pmod{n}$, which contradicts $0<|r|$ and $0<|t|$.
+\end{Proof}
