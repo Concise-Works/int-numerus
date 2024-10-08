@@ -82,18 +82,19 @@ From the above theorem, we relate back to theorem (\ref{theo:square_roots_2}).
 
 \subsection {Square roots of $-1$ modulo $p$}
 
+\begin{theo}[Primes are Congruent to $1$ or $3$ modulo $4$]
+
+
+    \label{theo:primes_1_3}
+
+    Let $p$ be an odd prime. \underline{Then $p\equiv 1\pmod{4}$ or $p\equiv 3\pmod{4}$,} as $p\not\equiv 0\pmod{4}$ (divisible by 4) and $p\not\equiv 2\pmod{4}$ (even but not divisible by 4).
+\end{theo}
+
 \begin{theo}[Quadratic Residue $-1$ test (mod $4$)]
 
-    Let $p$ be an odd prime. Then, 
-    \Large
-    \[\left(\frac{-1}{p}\right)=1\Longleftrightarrow p\equiv 1\pmod{4}\]
-    \normalsize
-    \noindent
+    Let $p$ be an odd prime. Then, $\left(\frac{-1}{p}\right)=1\Longleftrightarrow p\equiv 1\pmod{4}$.\\
     I.e., $-1$ is a quadratic residue modulo $p$ if and only if $p$ is congruent to $1$ modulo $4$.
 \end{theo}
-\begin{Note}
-    \textbf{Note:} The above refers to the Legendre symbol $\left(\frac{\alpha}{p}\right)$ (\ref{def:le}).
-\end{Note}
 \begin{Proof}[Quadratic Residue $-1$ test (mod $4$)]
 
     \label{theo:quadratic_residue_4}
@@ -126,6 +127,8 @@ From the above theorem, we relate back to theorem (\ref{theo:square_roots_2}).
 
 \begin{theo}[Thue's Lemma]
 
+    \label{theo:thue}
+
     Let \( n, b, r^*, t^* \in \mathbb{Z} \), with \( 0 < r^* \leq n < r^*t^* \). Then there exist \( r, t \in \mathbb{Z} \) with
 \[
 r \equiv bt \pmod{n}, \quad 0<|r| < r^*, \quad \text{and} \quad 0 < |t| < t^*.
@@ -147,6 +150,8 @@ We use this next theorem to prove Thue's Lemma.
 \newpage
 \begin{Proof}[Thue's Lemma]
 
+    
+
     For $\{r_i\}_{i=0}^{r^*-1}$ and $\{t_i\}_{i=1}^{t^*-1}$, we have $n_{ij}^*:=i-bj$.
     Since $r^*t^* > n$, then by the Pigeon Hole Principle, there must be a pigeon hole (residue) with more than one pigeon (representative) as $r^*t^*$ overlaps $n$.
     Therefore, for some $(i_1,j_1)\neq(i_2,j_2)$, we have $n_{i_1j_1}^*=n_{i_2j_2}^*$. We define $r:=i_1-i_2$ and $t:=j_2-j_1$, then
@@ -158,8 +163,6 @@ We use this next theorem to prove Thue's Lemma.
     \noindent
     Satisfying $|r|<r^*$, and $|t|<t^*$. Additionally $t\neq 0$ as that implies $r\equiv 0\pmod{n}$, which contradicts $0<|r|$ and $0<|t|$.
 \end{Proof}
-\noindent 
-This lemma allows us to prove that primes $p \equiv 1 \pmod*{4}$ can be written as the sum of two squares.
 \begin{theo}[Fermat's Two Square Theorem]
 
     Let $p$ be an odd prime. Then $p=r^2+t^2$ for some $r,t\in\mathbb{Z}$ if and only if $p\equiv 1\pmod{4}$.
@@ -169,21 +172,67 @@ This lemma allows us to prove that primes $p \equiv 1 \pmod*{4}$ can be written 
     \textbf{Proving} $p=r^2+t^2\implies p\equiv 1\pmod*{4}$:\\
     \noindent
     The square of any integer modulo 4 is:
-    \begin{align*}
-        0^2 &\equiv 0\pmod{4} \\
-        1^2 &\equiv 1\pmod{4} \\
-        2^2 &\equiv 0\pmod{4} \\
-        3^2 &\equiv 1\pmod{4}
-    \end{align*}
+  
+    \[
+        0^2\equiv 0\pmod*{4};\enspace
+        1^2\equiv 1\pmod*{4};\enspace
+        2^2\equiv 0\pmod*{4};\enspace
+        3^2\equiv 1\pmod*{4};
+        \]
     \noindent
     Our squares are either $0$ or $1$ modulo $4$. Therefore, their possible sums are $0,1,2$ modulo $4$, never $3$.
     Therefore $p\equiv 3\pmod*{4}$ cannot be written as the sum of two squares.\\
 
     \noindent
     \textbf{Proving} $p\equiv 1\pmod*{4}\implies p=r^2+t^2$:\\
-
+    We know $p\equiv 1\pmod*{4}$, then $b^2\equiv -1\pmod{p}$ for some $b\in\mathbb{Z}_p^*$ (\ref{theo:quadratic_residue_4}).
+    We apply Thue's Lemma (\ref{theo:thue}): we define $n:=p$ and $r^*:=t^*:=\floor{\sqrt{p}}+1$, where $\sqrt{p}\notin\Z$ and $\floor{\sqrt{p}}<\sqrt{p}$.
+    This ensures $p<r^*t^*$. 
+    Then $r^*<p$ ($\leq$ if we included 2). Thus satisfying $0<r^*<p<r^*t^*$. Therefore, there exists $r,t\in\mathbb{Z}$,
+    \[r\equiv bt\pmod{p},\quad 0<|r|\leq\floor{\sqrt{p}}<\sqrt{p},\quad 0<|t|\leq\floor{\sqrt{p}}<\sqrt{p}\]
     \noindent
-    We know $p\equiv 1\pmod*{4}$, then $b^2\equiv -1\pmod{p}$ for some $b\in\mathbb{Z}_p^*$ (\ref{theo:quadratic_residue_4}). Then $p\mid b^2+1$, and $p\mid (b+i)(b-i)$.
+    Then, $r^2\equiv b^2t^2\pmod{p}$, substituting $b^2\equiv -1\pmod{p}$, yields $r^2\equiv -t^2\pmod{p}$. Therefore, $r^2+t^2\equiv 0\pmod{p}$, and $r^2+t^2=pk:k\in\Z$. Since $r^2+t^2<p(2)$, then $k=1$. Thus,\\
+    resulting in $p=r^2+t^2$.
+\end{Proof}
+
+\newpage
+
+\begin{theo}[Infinitely Many Primes $p\equiv 1\pmod{4}$]
+
+    There are infinitely many primes $p\equiv 1\pmod{4}$.
+\end{theo}
+
+\begin{Proof}[Infinitely Many Primes $p\equiv 1\pmod{4}$]
+
+    Suppose there are finitely many primes $p_1,...,p_k\equiv 1\pmod{4}$, then all such primes are odd.
+    Let $M:=\prod_{i=1}^{k}p_i$. Then $M\equiv 1\pmod{4}$, and $M = 4n+1$ for some arbitrary $n\in\mathbb{Z}$. 
+    We choose $N:=4M^2+1$, as:
+    \[M^2=\left(\prod_{i=1}^{k}p_i\right)^2=\prod_{i=1}^{k}p_i^2\]
+    \noindent
+    Therefore, there are no $p_i$ factors among $M^2$ or $N$, yielding a prime $p\notin\{p_1,...,p_k\}$. Then,
+    \begin{align*}
+        N\equiv 0\pmod*{p}&\quad \text{(Given.)}\\
+        4M^2+1\equiv 0\pmod*{p} &\quad \text{(Substitute.)}\\
+        4M^2\equiv -1\pmod*{p}&\quad \text{(Subtract 1.)}\\
+        (2M)^2\equiv -1\pmod*{p} &\quad \text{(Factor.)}
+    \end{align*}
+    Then $-1$ is also a quadratic residue modulo $p$, contradicting $p_1,...,p_k$ to be only such primes.
 
 \end{Proof}
+
+\begin{theo}[Infinitely Many Primes $p\equiv 3\pmod{4}$]
+
+    There are infinitely many primes $p\equiv 3\pmod{4}$.
+\end{theo}
+
+\begin{Proof}[Infinitely Many Primes $p\equiv 3\pmod{4}$]
+
+    Suppose there are finitely many primes $p_1, \dots, p_k \equiv 3\equiv-1 \pmod{4}$. 
+    Let \( M := \prod_{i=1}^{k} p_i \), which is $M=4n-1: n \in \mathbb{Z}$.
+    We choose \( N := 4M - 1 \). Since \( N \equiv 3 \pmod{4} \), then $N\equiv 0 \pmod*{p}$ for some prime  (\ref{theo:primes_1_3}).
+    Suppose $p\in\{p_1, \dots, p_k\}$. Then, \( p \) must divide both \( N \) and \( 4M \), which implies \( p \) divides \( 4M - N = 1 \). However, no prime can divide 1. Thus contradicting $p_1, \dots, p_k$ to be the only such primes. 
+
+\end{Proof}
+
+
 
