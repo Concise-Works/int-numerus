@@ -1,0 +1,63 @@
+\section{Algorithmic Computations}
+    \noindent 
+    The following section introduces algorithms for computing numbers in base-$B$ representation. We will discuss addition, subtraction, multiplication, division, and modulus of numbers in base-$B$.
+    Therefore, we will not consider math operations $O(1)$ (constant time).\\
+ 
+
+\begin{Def}[Turing Machine]
+
+    A \textbf{Turing Machine}, denoted by \(\mathcal{M}\), is a theoretical computational model used to describe the capabilities of a general-purpose computer. It consists of an infinite tape (acting as memory) and a read/write head that processes input symbols on the tape, one at a time, according to a set of predefined rules. The machine can move left or right, read or write symbols, and change states based on the current symbol it reads. 
+    
+    The machine \textbf{halts} once it reaches a final state or continues indefinitely if no halt condition is met. A \(\mathcal{M}\) is capable of computing any function that can be described algorithmically, serving as a flexible, \textbf{higher-order function} (a function which receives functions) capable of solving any computable problem. We will assume all operations implicitly run through \(\mathcal{M}\).
+\end{Def}
+
+\begin{Def}[Von Neumann Architecture]
+
+    In real-world computation, computers operate on a model known as the \textbf{Von Neumann architecture}, which consists of three primary components:
+    \begin{enumerate}
+        \item \textbf{Memory}: Stores data and instructions as sequences of bits.
+        \item \textbf{Arithmetic and Logic Unit (ALU)}: Executes operations such as addition, subtraction, multiplication, and division on numbers stored in memory.
+        \item \textbf{Control Unit}: Directs the execution of instructions and manages the flow of data between memory and the ALU.
+    \end{enumerate}
+    
+    In this architecture, numbers are stored in memory cells, and each cell can hold an integer value represented in a fixed base, typically \(B = 2\), meaning binary. Each number in memory is represented as a sequence of digits, where each digit is less than the base \(B\). We represent integers in memory as:
+    
+    \[
+    a = \sum_{i=0}^{k-1} a_i B^i
+    \]
+    
+    where \( a_i \) represents the individual digits, and \(B\) is the base. For large integers, computations may require manipulating several memory cells to store the full number.
+\end{Def}
+
+\begin{Func}[Base-B Addition - \texttt{BaseB\_Add($a, b, B$)}]
+    Computes the sum of two unsigned integers $a$ and $b$ in base-$B$ representation.
+
+    \vspace{.5em}
+    \noindent
+    \textbf{Input: } Two unsigned integers $a$ and $b$ in base-$B$, where $a = (a_{k-1}\cdots a_0)_B$ and $b = (b_{\ell-1}\cdots b_0)_B$.\\
+    \textbf{Output: } The sum $c = a + b$ in base-$B$ representation.\\
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        
+        \vspace{.5em}
+        \SetKwProg{Fn}{Function}{:}{\KwRet{$c$}}
+        \Fn{\texttt{BaseB\_Add($a, b, B$)}}{
+            $carry \gets 0$\;
+            \For{$i \gets 0$ \KwTo $\ell-1$}{
+                $tmp \gets a_i + b_i + carry$\;
+                $(carry, c_i) \gets \texttt{QuoRem}(tmp, B)$\;
+            }
+            \For{$i \gets \ell$ \KwTo $k-1$}{
+                $tmp \gets a_i + carry$\;
+                $(carry, c_i) \gets \texttt{QuoRem}(tmp, B)$\;
+            }
+            $c_k \gets carry$\;
+        }
+    \end{algorithm}
+
+    \noindent
+    \textbf{Time Complexity: }\\
+
+    \noindent
+    \textbf{Space Complexity: }
+\end{Func}
