@@ -1,0 +1,28 @@
+\newpage 
+\section{Computing in \(\mathbb{Z}_n\)}
+Recall the Least Residue definition (\ref{theo:least_rep}). 
+To stress, if $a\in\Z$, and $\in\mathbb{Z}_n:=\{0,\dots,n-1\}$ Then $a$ is the least residue.
+Moreover, $\alpha:=[a]_n$, where $\alpha$ or $a$ are used interchangeably, as they refer to the same element in $\mathbb{Z}_n$.
+Let $\beta:=[b]_n\mathbb{Z}_n$, then $\alpha+\beta=[a+b]_n=a+b$ if and only if $a$ and $b$ are the least residues. 
+
+\begin{Func}[Least Residue Representation - \textit{rep()}]
+
+    Given an integer $a \in \mathbb{Z}_n$, \textbf{\textit{rep($a$)}} refers to the least residue representation of $a$ modulo $n$.
+\end{Func}
+
+\begin{theo}[Arithmetic Operations in \(\mathbb{Z}_n\)]
+
+    \label{theo:zn_operations}
+    Let $\alpha, \beta \in \mathbb{Z}_n$, where $n$ is a modulus. We define the following operations in terms of their least residue representations \textit{rep($\cdot$)}:
+    \begin{itemize}
+        \item \textbf{Addition:} To compute \(\alpha + \beta\) in \(\mathbb{Z}_n\), we first calculate the integer sum \(\textit{rep}(\alpha) + \textit{rep}(\beta)\), then subtract $n$ if the result is greater than or equal to $n$.
+        \item \textbf{Subtraction:} To compute \(\alpha - \beta\) in \(\mathbb{Z}_n\), we first calculate the integer difference\\
+         \(\textit{rep}(\alpha) - \textit{rep}(\beta)\), adding $n$ if the result is negative.
+        \item \textbf{Multiplication:} To compute \(\alpha \cdot \beta\) in \(\mathbb{Z}_n\), we calculate \(\textit{rep}(\alpha) \cdot \textit{rep}(\beta) \mod n\) using integer multiplication followed by a division with remainder.
+    \end{itemize}
+    These operations can be performed in time complexities:
+    \begin{itemize}
+        \item Addition and Subtraction: \(O(||n||)\)
+        \item Multiplication: \(O(||n^2||)\)
+    \end{itemize}
+\end{theo}
