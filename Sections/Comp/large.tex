@@ -1,1 +1,208 @@
 \section{Computing Large Numbers}
+\noindent
+In this section we discuss algorithms for computing large numbers, but first we define 
+algorithmically, addition, subtraction, multiplication, division, and modula.
+
+\begin{Def}[Wordsize]
+
+    Our machine has a fixed \textbf{wordsize}, which is how much each memory cell can hold. Systems like 32-bit or 64-bit can hold $2^{32}$ $(\approx$ 4.3 billion) or $2^{64}$ $(\approx$ 18.4 quintillion) bits respectively.\\
+
+    \noindent
+    We say the ALU can performs arithmetic operations at $O(1)$ time, within wordsize. Operations beyond this size we deem \textbf{large numbers}.
+\end{Def}
+\noindent
+The game we play in the following algorithms is to compute large integers without exceeding wordsize. Moving forward, we assume our machine is a typical 64-bit system.
+
+\newpage
+\begin{Def}[Computer Integer Division]
+
+    Our ALU  \underline{only returns the quotient after division.} We denote the quotient as $\floor*{a/b}:a,b\in\Z$.
+\end{Def}
+\noindent
+Our first hurdle is long division, which will set up long addition and subtraction for success.
+\begin{Func}[Division with Remainder (Outline) - \textit{QuoRem()}]
+
+    For base $B$ integers, let dividend $a = (a_{k-1} \cdots a_0)_B$ and divisor $b = (b_{\ell-1} \cdots b_0)_B$ be unsigned, with $k \geq 1$,
+    $\ell \geq 1$, ensuring $0\leq b\leq a$, and $b_{\ell-1} \neq 0$, ensuring $b>0$.\\ 
+    
+    \noindent
+    We compute $q$ and $r$ such that, $a = bq + r$ and $0 \leq r < b$. 
+    Assume $k \geq \ell$; otherwise, $a < b$. We set $q \gets 0$ and $r \gets a$. 
+    Then quotient $q = (q_{m-1} \cdots q_0)_B$ where $m := k - \ell + 1$.\\
+
+    \noindent
+    To preform long division with remainder, we employ the strategy below. Recall, $a=\sum_{i=0}^{k-1}a_iB^i$.
+    Note: below is an outline, we want to get $r$ and $B^i$ down to a single digit representation.
+
+    \vspace{.5em}
+    \noindent
+    \textbf{Input:} $a, b$\\
+    \noindent
+    \textbf{Output:} $q, r$\\
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        \SetKwProg{Fn}{Function}{:}{\KwRet{}}
+        \Fn{\textit{QuoRem}($a, b$)}{
+            $r \gets a$\;
+            $q \gets \{0_{m-1}\cdots 0\}$\;
+            \vspace{.5em}
+            \For{$i \gets m-1$ $\textbf{\text{down to}}$ $0$}{
+                $q_i \gets \floor*{r/B^ib}$\;
+                $r \gets r - B^i\cdot q_ib$\;
+            }
+            \KwRet{$(q, r)$}\;
+        }
+    \end{algorithm}
+
+    \noindent
+    \textbf{Time Complexity:} $O(k-\ell)$, as we iterate $m := k - \ell + 1$ times, ignoring our constant factor.\\
+    \textbf{Space Complexity:} $O(k+\ell)$, as we store inputs $a, b$.
+\end{Func}
+\noindent
+\underline{\textbf{\textit{QuoRem()} Lines 5 and 6 }:} similar to grade-school long division: compute the quotient, subtract the product of the divisor and quotient from the dividend, repeating until the dividend is less than the divisor.
+\textbf{Examples:} let $a=\{12,5,17,40,89\}$, $b=\{4,2,3,9,10\}$ respectively, and $B=10$,
+\begin{center}
+    \intlongdivision{12}{4} \intlongdivision{5}{2}\intlongdivision{17}{3} \intlongdivision{40}{9} \intlongdivision{89}{10} 
+\end{center}
+\noindent
+Take $a=17$ and $b=3$: 3 fits into 17 five times, which is 15. 17 take away 15 is 2, our remainder.
+With this we go into more detail about lines 5 and 6...
+
+\newpage
+
+\begin{Proof}[($q_i\gets \left\lfloor \frac{r}{B^i b} \right\rfloor$) and ($r\gets r-B^i\cdot q_ib$)]
+    
+    Let $r$ be the current remainder in the division process. We aim to compute $q_i$, the digit of the quotient corresponding to the power $B^i$ in the base-$B$ representation. The divisor is $b$, and the base is $B$.\\
+
+    \noindent
+    \textbf{For Example:} $a = 5$ and $b = 2$ in base $B = 10$.
+
+    \noindent
+    Dividend 5, represented by each $B^i$.\\
+
+    \noindent
+    1. \textbf{Estimate Quotient Digit (line 5)}\\
+    We estimate how many times the scaled divisor $B^i \cdot b$ fits into the remainder $r$ in integer division gives us:
+    \[
+    q_i \gets \left\lfloor \frac{r}{B^i b} \right\rfloor \quad \text{e.g.,} \quad q_i \gets \left\lfloor \frac{5}{2^1 \cdot 2} \right\rfloor = \left\lfloor \frac{5}{4} \right\rfloor = 1
+    \]
+    This operation selects the largest integer $q_i$ such that:
+    \[
+    q_i \cdot B^i \cdot b \leq r \quad \text{e.g.,} \quad 1 \cdot 2^1 \cdot 2 = 4 \leq 5
+    \]
+    \noindent
+    2. \textbf{Update Remainder (line 6)}\\
+    \[
+    r \gets r - B^i \cdot q_ib \quad \text{e.g.,} \quad r \gets 5 - 2^1 \cdot (1)(2) = 5 - 4 = 1.\text{ Recall,} \intlongdivision{5}{2}
+    \]
+
+    \noindent
+    3. \textbf{Correctness}\\
+    Since $q_i$ was chosen as the largest integer such that $0 \leq r < B^i \cdot b$, through each iteration.
+
+\end{Proof}
+\noindent
+Though we need to adapt this algorithm for binary numbers. Consider the case $\ell=1$ (1 binary digit) and $B=2$:
+
+\begin{theo}[2's Powers - Division Algorithm (Part 1)]
+    
+    Any integer $x$ and $y$, base 10, can be represented in the division algorithm as 2's powers:
+    \[0\leq x=x'2^n+s \text{ and } 0 < y = y'2^n\]
+    \noindent
+    for some $n,s,x',y'\in\Z$, base 10. Where $n\geq 0$ and $0\leq s < 2^n$. Then $\floor*{x/y}=\floor*{x'/y'}$, ignoring our remainder $s$.
+
+\end{theo}
+\noindent
+This will help us working in binary, base 2, as for some integer $a=\sum_{i=0}^{k-1}a_i2^i$, we can represent $a$ as $a=a'2^n+s$ for some $n,s,a'\in\Z$.
+
+\newpage
+
+\begin{Proof}[2's Powers - Division Algorithm (Part 1)]
+
+    We have
+\[
+\frac{x}{y} = \frac{x'}{y'} + \frac{s}{y'2^n} \geq \frac{x'}{y'}.
+\]
+It follows immediately that $ \left\lfloor \frac{x}{y} \right\rfloor \geq \left\lfloor \frac{x'}{y'} \right\rfloor$. Then,
+\[
+\frac{x}{y} = \frac{x'}{y'} + \frac{s}{y'2^n} < \frac{x'}{y'} + \frac{1}{y'} \leq \left( \left\lfloor \frac{x'}{y'} \right\rfloor + \frac{y'-1}{y'} \right) + \frac{1}{y'} \leq \left\lfloor \frac{x'}{y'} \right\rfloor + 1.
+\]
+Thus, we have
+\[
+x/y < \left\lfloor \frac{x'}{y'} \right\rfloor + 1,
+\]
+and hence, 
+\[
+\left\lfloor x/y \right\rfloor \leq \left\lfloor x'/y' \right\rfloor.
+\]
+\end{Proof}
+\noindent
+Now we consider general cases $\ell\geq1$ and $B=2$.
+\begin{theo}[Binary Division Algorithm (Part 2)]
+    
+    Any integer $x$ and $y$, base 10, can be represented in the division algorithm as 2's powers:
+    \[0\leq x=x'2^n+s \text{ and } 0 < y = y'2^n+t\]
+    \noindent
+    for some $n,s,t,x',y'\in\Z$, base 10. Where $n\geq 0$, $0\leq s < 2^n$, and $0\leq t < 2^n$. Then $\floor*{x/y}=\floor*{x'/y'}$, ignoring our remainder $s$.
+
+\end{theo}
+
+
+\newpage
+
+\begin{theo}[Binary Bit Shifting (Powers of 2)]
+
+    Let $x_2$ be a base 2 unsigned integer. Shifting bits left or right yields a multiplication or division by a power of 2, respectively.\\
+
+    \noindent
+    \textbf{Left Shift:} A left shift by $k$ positions, denoted: $x \ll k:= x \cdot 2^k$\\
+    \noindent
+    \textbf{Right Shift:} A right shift by $k$ positions, denoted: $x \gg k = \left\lfloor x/2^k \right\rfloor$\\
+    \textbf{Remainder:} We capture the remainder by bits shifted off during right shift.
+\end{theo}
+
+
+\newpage
+
+\textbf{Example:} Consider the following powers of 2:
+\begin{align*}
+    3 = 2 + 1 &= 0000 \ 0011_2 \quad (1) \\
+    6 = 4 + 2 &= 0000 \ 0110_2 \quad (2) \\
+    12 = 8 + 4 &= 0000 \ 1100_2 \quad (3) \\
+    24 = 16 + 8 &= 0001 \ 1000_2 \quad (4) \\
+    48 = 32 + 16 &= 0011 \ 0000_2 \quad (5) \\
+    96 = 64 + 32 &= 0110 \ 0000_2 \quad (6) \\
+    192 = 128 + 64 &= 1100 \ 0000_2 \quad (7)
+\end{align*}
+
+\noindent
+Notice the ones shifting over one at a time as we increase the power of 2. This is the binary representation of the number.\\
+
+\noindent
+Instead of performing $3 \cdot 16$ in base 10, we can $3 \ll 4=48$. 
+
+\begin{theo}[Binary to Decimal Quick Conversion]
+
+    Let $x_2$ be a base 2 unsigned integer. Then $x_2$ via right shifts 
+
+    
+\newpage 
+\end{theo}
+\begin{Func}[Binary Length of a Number - $||a||$]
+    
+    The binary length $||a||$ of a number $a \in \mathbb{Z}$, representing the number of bits required to represent $a$ in binary, is given by:
+    
+    \[
+    ||a|| := 
+    \begin{cases} 
+    \lfloor \log_2 |a| \rfloor + 1 & \text{if } a \neq 0, \\
+    1 & \text{if } a = 0.
+    \end{cases}
+    \]
+    
+    \noindent
+    If $a \neq 0$, the length of $a$'s binary representation is $\lfloor \log_2 |a| \rfloor + 1$, which corresponds to the highest power of 2 required to represent $a$. If $a = 0$, the binary representation consists of a single bit.
+\end{Func}
+
+
+
