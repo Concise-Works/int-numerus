@@ -26,3 +26,57 @@ Let $\beta:=[b]_n\mathbb{Z}_n$, then $\alpha+\beta=[a+b]_n=a+b$ if and only if $
         \item Multiplication: \(O(||n^2||)\)
     \end{itemize}
 \end{theo}
+\begin{theo}[Karatsuba’s Multiplication Algorithm]
+
+    Let \( P \) and \( Q \) be large integers of length \( 2k \). Then \( P \cdot Q \) can be computed in \( O(n^{\log_2 3}) \) time, vs. standard \( O(n^2) \), when expressed as:
+    \[
+    P \cdot Q = P_1 Q_1 \cdot 10^{2k} + \left[ (P_1 + P_2)(Q_1 + Q_2) - P_1 Q_1 - P_2 Q_2 \right] \cdot 10^k + P_2 Q_2.
+    \]
+    where subscripts \( 1 \) and \( 2 \) represent the high and low parts of the numbers, respectively. Where $P_1 Q_1$ are $P_2 Q_2$ computed once.
+\end{theo}
+    
+\newpage
+
+\begin{Proof}[Karatsuba’s Algorithm Explanation]
+
+    Let \( P \) and \( Q \) be large integers with \( n \) digits each requiring \( O(n^2) \) multiplications. Karatsuba’s method reduces multiplications from 4 to 3 using a divide-and-conquer approach.\\
+
+    \noindent
+    \textbf{Step 1: Divide the numbers.} \\
+    Split the large integers \( P \) and \( Q \) into two halves:
+    \[
+    P = P_1 \cdot 10^k + P_2 \quad \text{and} \quad Q = Q_1 \cdot 10^k + Q_2,
+    \]
+    where \( P_1, P_2, Q_1, Q_2 \) represent the high and low parts of the numbers, and \( k \) is half the number of digits.\\
+
+    \noindent
+    \textbf{Step 2: Expand the product.} \\
+    The classical multiplication formula for \( P \cdot Q \) is:
+    \[
+    P \cdot Q = P_1 Q_1 \cdot 10^{2k} + (P_1 Q_2 + P_2 Q_1) \cdot 10^k + P_2 Q_2.
+    \]
+    We compute: \( P_1 Q_1 \) and \( P_2 Q_2 \), holding off on $(P_1 Q_2 + P_2 Q_1)$.\\
+
+    \noindent
+    \textbf{Step 3: Karatsuba’s Optimization.} \\
+    We reduce the number of multiplications by introducing the term: $ (P_1 + P_2)(Q_1 + Q_2)$.\\
+    Expanding this, we have:
+    \[
+    (P_1 + P_2)(Q_1 + Q_2) = P_1 Q_1 + P_1 Q_2 + P_2 Q_1 + P_2 Q_2.
+    \]
+    Note, we already have \( P_1 Q_1 \) and \( P_2 Q_2 \). Let $P':= P_1 Q_1$ and $Q':= P_2 Q_2$. Then,
+    \[
+        (P_1 Q_2 + P_2 Q_1):= ((P_1 + P_2)(Q_1 + Q_2))-P'-Q'
+    \]
+    Where $((P_1 + P_2)(Q_1 + Q_2))$ is \textbf{one multiplication}, reducing multiplications to 3.\\
+    
+
+    \noindent
+    \textbf{Step 4: Combine the results.} \\
+    Using the above observations, we can rewrite the product of \( P \cdot Q \) as:
+    \[
+    P \cdot Q = P_1 Q_1 \cdot 10^{2k} + \left[ (P_1 + P_2)(Q_1 + Q_2) - P_1 Q_1 - P_2 Q_2 \right] \cdot 10^k + P_2 Q_2.
+    \]
+    This results in only 3 recursive multiplications and achieves a time complexity of \( O(n^{\log_2 3}) \), which is approximately \( O(n^{1.585}) \), making it much faster than \( O(n^2) \).
+
+\end{Proof}
