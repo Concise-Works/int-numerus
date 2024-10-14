@@ -181,7 +181,7 @@ Now we consider general cases $\ell\geq1$ and $B=2$.
 
 \noindent
 Notice that as we increase the power of 2, the number of bits shift left towards a higher-order bit. We apply this theorem directly to 
-shifting bits to yield instant calculations rather than brute computation.
+shifting bits to yield instant calculations.
 
 \begin{theo}[Binary Bit Shifting (Powers of 2)]
 
@@ -193,7 +193,7 @@ shifting bits to yield instant calculations rather than brute computation.
     \textbf{Remainder:} bits pushed out after right shift.
 \end{theo}
 \noindent
-\textbf{Example:} Observe that $16=10000$ 4 trailing zeros, $8=1000$ 3 trailing zeros, so we shift by 4 and 3 respectively.
+\textbf{Example:} Observe, $16=10000$ 4 trailing zeros, $8=1000$ 3 trailing zeros, we shift by 4 and 3 respectively:
 \begin{itemize}
     \item Instead of $3 \cdot 16$ in base 10, we can $3 \ll 4=48$, as $3 \cdot 2^4 = 48$.
     \item Conversely, Instead of $48/16$ in base 10, $48 \gg 4 = 3$, as $\floor*{48/2^4} = 3$.
@@ -206,7 +206,14 @@ shifting bits to yield instant calculations rather than brute computation.
 \end{itemize}
 
 \noindent
-On the next page we revisit our division algorithm, employing bit shifting to optimize our calculations for binary numbers.
+Next we revisit our division algorithm, employing bit shifting to optimize our calculations.
+
+\begin{Tip}
+    The Z3, developed by Konrad Zuse in 1941 in Berlin, Germany, was the first programmable binary computer, using electromechanical relays processing numbers on 22-bit floating-point arithmetic. Unfortunately, the machine was destroyed in a Allied bombing raid during World War II.
+    
+    The first fully electronic binary computers came later, using bits and bytes to represent data. Machines like ENIAC (1945) in the U.S. operated on a decimal system initially but were pivotal in transitioning to binary-based computing, which became the standard.
+    
+    \end{Tip}
 
 \newpage
 
