@@ -26,23 +26,146 @@ Let $\beta:=[b]_n\mathbb{Z}_n$, then $\alpha+\beta=[a+b]_n=a+b$ if and only if $
         \item Multiplication: \(O(||n^2||)\)
     \end{itemize}
 \end{theo}
-\begin{theo}[Karatsuba’s Multiplication Algorithm]
 
-    Let \( P \) and \( Q \) be large integers of length \( 2k \). Then \( P \cdot Q \) can be computed in \( O(n^{\log_2 3}) \) time, vs. standard \( O(n^2) \), when expressed as:
-    \[
-    P \cdot Q = P_1 Q_1 \cdot 10^{2k} + \left[ (P_1 + P_2)(Q_1 + Q_2) - P_1 Q_1 - P_2 Q_2 \right] \cdot 10^k + P_2 Q_2.
-    \]
-    where subscripts \( 1 \) and \( 2 \) represent the high and low parts of the numbers, respectively. Where $P_1 Q_1$ are $P_2 Q_2$ computed once.
-\end{theo}
+\begin{Def}[Binary Inputs and Memory Allocation]
+
+    Say we want an array of 4 integers, all 4 bytes in size. Each entry is initialized at a specific memory address in hexadecimal. Then, for example:
+    \begin{align*}
+        [0] &= 0000 \ 0000 \ 0000 \ 0000 \quad \text{at memory address 0x4a0}\\
+        [1] &= 0000 \ 0000 \ 0000 \ 0000 \quad \text{at memory address 0x4a4}\\
+        [2] &= 0000 \ 0000 \ 0000 \ 0000 \quad \text{at memory address 0x4a8}\\
+        [3] &= 0000 \ 0000 \ 0000 \ 0000 \quad \text{at memory address 0x4ac}
+    \end{align*}
+    \noindent
+    The array starts at address 0x4a0. Since hexadecimal is base-16, each digit represents 4 bits. Thus, array cells are 4 bytes apart.
+\end{Def}
+
     
 \newpage
 
-\begin{Proof}[Karatsuba’s Algorithm Explanation]
+\begin{Func}[Repeated-Squaring Algorithm]
+    On input \( \alpha \in \mathbb{Z}_n \) and a non-negative integer \( e \), where \( e = (b_{\ell-1} \cdots b_0)_2 \) is the binary expansion of \( e \), the repeated-squaring algorithm computes \( \alpha^e \mod n \).
 
-    Let \( P \) and \( Q \) be large integers with \( n \) digits each requiring \( O(n^2) \) multiplications. Karatsuba’s method reduces multiplications from 4 to 3 using a divide-and-conquer approach.\\
+    \vspace{.5em}
+    \noindent
+    \textbf{Input:} \( \alpha \in \mathbb{Z}_n \), \( e \in \mathbb{Z}_{\geq 0} \) (binary)\\
+    \textbf{Output:} \( \beta = \alpha^e \mod n \)\\
+    
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        \SetKwProg{Fn}{Function}{:}{\KwRet{}}
+        \Fn{\textit{RepeatedSquare}($\alpha, e$)}{
+            $\beta \gets [1]_n$\;
+            \For{$i \gets \ell - 1$ \textbf{down to} $0$}{
+                $\beta \gets \beta^2 \mod n$\;
+                \If{$b_i = 1$}{
+                    $\beta \gets \beta \cdot \alpha \mod n$\;
+                }
+            }
+            \KwRet{$\beta$}\;
+        }
+    \end{algorithm}
+
+    \noindent\rule{\textwidth}{0.4pt}
 
     \noindent
-    \textbf{Step 1: Divide the numbers.} \\
+    \textbf{Time Complexity:} \( O(\ell) \), where \( \ell \) is the number of bits in \( e \). This involves \( \ell \) squarings and at most \( \ell \) additional multiplications in \( \mathbb{Z}_n \).
+    \textbf{Space Complexity:} \( O(\ell) \), where \( \ell \) is the number of bits in \( e \).
+\end{Func}
+
+\noindent
+\textbf{Example 3.5.} Suppose $e = 37 = (100101)_2$. The above algorithm performs the following operations in this case:
+
+\[
+\begin{aligned}
+    \beta &\gets [1] && // \text{0} \\
+    \beta &\gets \beta^2, \ \beta \gets \beta \cdot \alpha && // \text{1} \\
+    \beta &\gets \beta^2 && // \text{10} \\
+    \beta &\gets \beta^2 && // \text{100} \\
+    \beta &\gets \beta^2, \ \beta \gets \beta \cdot \alpha && // \text{1001} \\
+    \beta &\gets \beta^2 && // \text{10010} \\
+    \beta &\gets \beta^2, \ \beta \gets \beta \cdot \alpha && // \text{100101} 
+\end{aligned}
+\]
+
+\vspace{1em}
+\noindent 
+We utilize this algorithm to compute \textbf{multiplicative inverses} and test, \textbf{quadratic residues} and \textbf{primality}. The following algorithms demonstrate 
+such; Though in the following chapters, we will discuss more optimal solutions.
+
+\newpage
+
+\noindent
+
+\begin{theo}[Computing Multiplicative Inverses in $\mathbb{Z}_p$]
+
+    Let \( p \) be a prime and \( \alpha \in \mathbb{Z}_p^* \). The multiplicative inverse of \( \alpha \), denoted \( \alpha^{-1} \), can be computed using Euler's theorem. We have:
+
+    \[
+    \alpha^{p-1} = 1 \pmod{p}.
+    \]
+
+    \noindent
+    Multiplying both sides by \( \alpha^{-1} \), we obtain:
+
+    \[
+    \alpha^{p-2} = \alpha^{-1} \pmod{p}.
+    \]
+    
+    \noindent
+    Thus, \( \alpha^{-1} \) is computed by raising \( \alpha \) to the power \( p-2 \).
+\end{theo}
+
+\begin{theo}[Testing Quadratic Residuosity]
+
+    Let \( p \) be an odd prime and \( \alpha \in \mathbb{Z}_p^* \). To test whether \( \alpha \in (\mathbb{Z}_p^*)^2 \), we apply Euler's criterion:
+
+    \[
+    \alpha \in (\mathbb{Z}_p^*)^2 \iff \alpha^{(p-1)/2} = 1 \pmod{p}.
+    \]
+    
+    \noindent
+    Therefore, to determine whether \( \alpha \) is a quadratic residue, we raise \( \alpha \) to the power \( (p-1)/2 \).
+\end{theo}
+
+
+
+\begin{theo}[Computing Multiplicative Inverses in $\mathbb{Z}_p$]
+
+    Let \( p \) be a prime and \( \alpha \in \mathbb{Z}_p^* \). The multiplicative inverse of \( \alpha \), denoted \( \alpha^{-1} \), can be computed using Euler's theorem. We have:
+
+    \[
+    \alpha^{p-1} = 1 \pmod{p}.
+    \]
+    
+    \noindent
+    Multiplying both sides by \( \alpha^{-1} \), we obtain:
+
+    \[
+    \alpha^{p-2} = \alpha^{-1} \pmod{p}.
+    \]
+    
+    \noindent
+    Thus, \( \alpha^{-1} \) is computed by raising \( \alpha \) to the power \( p-2 \).
+\end{theo}
+
+\noindent
+Our next algorithm will optimize multiplication between two large integers. Our current method of multiplying $a,b$ and then dividing costs:
+$Mul(a,b)=O(k\ell)$ where $k=||a||$ and $\ell=||b||$. Then for, $k=\ell=n$, we have $O(n^2)$, which is polynomial time. 
+
+\newpage
+\begin{theo}[Karatsuba’s Multiplication Algorithm]
+
+    Let \( P \) and \( Q \) be large integers of length \( 2k \). Then \( P \cdot Q \) can be computed in \( O(n^{\log_2 3}) \):
+    \[
+    P \cdot Q = P_1 Q_1 \cdot 10^{2k} + \left[ (P_1 + P_2)(Q_1 + Q_2) - P_1 Q_1 - P_2 Q_2 \right] \cdot 10^k + P_2 Q_2.
+    \]
+    where subscripts \( 1 \) and \( 2 \) refer to the higher and lower orders, where $P_1 Q_1$ are $P_2 Q_2$ are computed once.
+\end{theo}
+
+\begin{Proof}[Karatsuba’s Multiplication Algorithm]
+
+    \textbf{Step 1: Divide the numbers:} 
     Split the large integers \( P \) and \( Q \) into two halves:
     \[
     P = P_1 \cdot 10^k + P_2 \quad \text{and} \quad Q = Q_1 \cdot 10^k + Q_2,
@@ -50,7 +173,7 @@ Let $\beta:=[b]_n\mathbb{Z}_n$, then $\alpha+\beta=[a+b]_n=a+b$ if and only if $
     where \( P_1, P_2, Q_1, Q_2 \) represent the high and low parts of the numbers, and \( k \) is half the number of digits.\\
 
     \noindent
-    \textbf{Step 2: Expand the product.} \\
+    \textbf{Step 2: Expand the product:} 
     The classical multiplication formula for \( P \cdot Q \) is:
     \[
     P \cdot Q = P_1 Q_1 \cdot 10^{2k} + (P_1 Q_2 + P_2 Q_1) \cdot 10^k + P_2 Q_2.
@@ -58,7 +181,7 @@ Let $\beta:=[b]_n\mathbb{Z}_n$, then $\alpha+\beta=[a+b]_n=a+b$ if and only if $
     We compute: \( P_1 Q_1 \) and \( P_2 Q_2 \), holding off on $(P_1 Q_2 + P_2 Q_1)$.\\
 
     \noindent
-    \textbf{Step 3: Karatsuba’s Optimization.} \\
+    \textbf{Step 3: Karatsuba’s Optimization:} 
     We reduce the number of multiplications by introducing the term: $ (P_1 + P_2)(Q_1 + Q_2)$.\\
     Expanding this, we have:
     \[
@@ -72,11 +195,18 @@ Let $\beta:=[b]_n\mathbb{Z}_n$, then $\alpha+\beta=[a+b]_n=a+b$ if and only if $
     
 
     \noindent
-    \textbf{Step 4: Combine the results.} \\
+    \textbf{Step 4: Combine the results.} 
     Using the above observations, we can rewrite the product of \( P \cdot Q \) as:
     \[
     P \cdot Q = P_1 Q_1 \cdot 10^{2k} + \left[ (P_1 + P_2)(Q_1 + Q_2) - P_1 Q_1 - P_2 Q_2 \right] \cdot 10^k + P_2 Q_2.
     \]
+
+    \noindent
     This results in only 3 recursive multiplications and achieves a time complexity of \( O(n^{\log_2 3}) \), which is approximately \( O(n^{1.585}) \), making it much faster than \( O(n^2) \).
 
 \end{Proof}
+
+\newpage 
+
+
+
