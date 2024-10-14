@@ -23,7 +23,7 @@ Let $\beta:=[b]_n\mathbb{Z}_n$, then $\alpha+\beta=[a+b]_n=a+b$ if and only if $
     These operations can be performed in time complexities:
     \begin{itemize}
         \item Addition and Subtraction: \(O(||n||)\)
-        \item Multiplication: \(O(||n^2||)\)
+        \item Multiplication, Division, and mod: \(O(||n^2||)\)
     \end{itemize}
 \end{theo}
 
@@ -151,7 +151,7 @@ such; Though in the following chapters, we will discuss more optimal solutions.
 
 \noindent
 Our next algorithm will optimize multiplication between two large integers. Our current method of multiplying $a,b$ and then dividing costs:
-$Mul(a,b)=O(k\ell)$ where $k=||a||$ and $\ell=||b||$. Then for, $k=\ell=n$, we have $O(n^2)$, which is polynomial time. 
+$Mul(a,b)=O(k\ell)$ where $k=||a||$ and $\ell=||b||$. Then for, $k=\ell=n$, we have $O(n^2)$, taking quadratic time. 
 
 \newpage
 \begin{theo}[Karatsuba’s Multiplication Algorithm]

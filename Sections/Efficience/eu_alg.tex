@@ -1,0 +1,312 @@
+\section{Euclid's Algorithm}
+\label{sec:euclid}
+
+\noindent
+The following algorithms we will discuss seeks to compute the 
+greatest common divisor of two integers. The first algorithm we will discuss is \textbf{Euclid's Algorithm}.
+
+\begin{theo}[Euclid's Strategy]
+
+    Let $a,b \in \mathbb{Z}$ with $a \geq b \geq 0$. To compute $\gcd(a,b)$:
+    \begin{enumerate}
+        \item[(i.)] If $b = 0$, then $\gcd(a,b) = a$.
+        \item[(ii.)] If $b >0$, then $q:= \floor{a/b}$ and $r:= a \mod b$, from the Division Algorithm, $a = bq + r$.
+        \begin{enumerate}
+            \item If $d \mid b$ and $d \mid r$, then $d \mid a$.
+            \item If $d \mid a$ and $d \mid b$, then $d \mid r$.
+            \item Then $\gcd(a,b) = \gcd(b,r)$.
+        \end{enumerate} 
+        \item Compute the reduced form $\gcd(b,r)$, to yield $\gcd(a,b)$.
+    \end{enumerate}
+\end{theo}
+
+\noindent
+Before we proceed, we will introduce $\phi$, not to be confused with $\varphi$ (Euler's totient function)(\ref{def:euler_phi}).
+
+\begin{Def}[$\phi$ - The Golden Ratio]
+
+    The symbol $\phi$ (the Greek letter ``phi'') refers to the \textbf{golden ratio}, defined as:
+    \[
+        \phi := \frac{1 + \sqrt{5}}{2} \approx 1.618.
+    \]
+
+    \noindent
+    In relation to the Fibonacci sequence, as \(n\) increases, the ratio of consecutive Fibonacci numbers approaches $\phi$:
+    \[
+        \lim_{n \to \infty} \frac{F_n}{F_{n-1}} = \phi,
+    \]
+    where $F_n$ represents the $n$-th Fibonacci number. This shows that the Fibonacci sequence asymptotically grows by a factor of $\phi$ between successive terms.
+    
+\end{Def}
+
+\newpage
+
+\begin{Func}[Euclid's Algorithm - \textit{gcd()}]
+
+    \label{func:gcd}
+    Let $a$ and $b$ be integers such that $a \geq b \geq 0$, compute $d = \gcd(a, b)$ as follows:
+
+    \vspace{.5em}
+    \noindent
+    \textbf{Input:} $a, b$ (integers with $a \geq b \geq 0$)\\
+    \textbf{Output:} $d = \gcd(a, b)$
+
+    \vspace{.5em}
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        \SetKwProg{Fn}{Function}{:}{\KwRet{}}
+        \Fn{\textit{gcd}($a, b$)}{
+            remainder $\gets a$\;
+            divisor $\gets b$\;
+            \While{\text{divisor} $\neq 0$}{
+                newRemainder $\gets$ remainder mod divisor\;
+                remainder $\gets$ divisor\;
+                divisor $\gets$ newRemainder\;
+            }
+            gcd $\gets$ remainder\;
+            \KwRet{gcd}\;
+        }
+    \end{algorithm}
+
+    \noindent\rule{\textwidth}{0.4pt}
+
+    \noindent
+    \textbf{Time Complexity:} $O(||a|| \cdot ||b||)$. Our most expensive call only even happens 
+    on the first iteration, where $a$ and $b$ are the largest. Let $n:=||a||=||b||.$ Then one could assume each new remainder is one less than the previous, leading to $O(n)$ iterations, yielding $O(n^3)$. However, we will show 
+    that as we decrease $||b||$, iterations increase and costs decrease at a fixed ratio.
+\end{Func}
+
+\vspace{-1em}
+\begin{Proof}[Euclidean Algorithm Time Complexity (Part 1)]
+
+    \label{proof:euclid_time_complexity}
+
+    Let $a, b \in \mathbb{Z}$ such that $a \geq b \geq 0$. We define the integers $r_0, r_1, \dots, r_{\lambda+1}$ and $q_1, q_2, \dots, q_{\lambda}$, as each new remainder and divisor each iterations, where $\lambda \geq 0$, as follows:
+    \[
+    \begin{aligned}
+        a &= r_0, \\
+        b &= r_1, \\
+        r_0 &= r_1 q_1 + r_2 &\quad (0 < r_2 < r_1), \\
+        r_1 &= r_2 q_2 + r_3 &\quad (0 < r_3 < r_2), \\
+            &\vdots \\
+        r_{i-1} &= r_i q_i + r_{i+1} &\quad (0 < r_{i+1} < r_i), \\
+            &\vdots \\
+        r_{\lambda-2} &= r_{\lambda-1} q_{\lambda-1} + r_\lambda &\quad (0 < r_\lambda < r_{\lambda-1}), \\
+        r_{\lambda-1} &= r_\lambda q_\lambda + r_{\lambda+1} &\quad (r_{\lambda+1} = 0).
+    \end{aligned}
+    \]
+    \noindent
+    By definition, $\lambda = 0$ if $b = 0$, and $\lambda > 0$ otherwise. Then, $r_\lambda = \gcd(a, b)$. Moreover, if $b > 0$, then $\lambda \leq \log b / \log \phi + 1$, where $\phi := \frac{1 + \sqrt{5}}{2} \approx 1.62$ is the golden ratio.
+    
+\end{Proof}
+
+\newpage 
+
+\begin{Proof}[Euclidean Algorithm Time Complexity (Part 2)]
+
+    For the first statement, one sees that for $i = 1, \dots, \lambda$, we have $r_{i-1} = r_i q_i + r_{i+1}$, from which it follows that the common divisors of $r_{i-1}$ and $r_i$ are the same as the common divisors of $r_i$ and $r_{i+1}$, and hence $\gcd(r_{i-1}, r_i) = \gcd(r_i, r_{i+1})$. From this, it follows that
+    \[
+    \gcd(a, b) = \gcd(r_0, r_1) = \dots = \gcd(r_\lambda, r_{\lambda+1}) = \gcd(r_\lambda, 0) = r_\lambda.
+    \]
+    
+    \noindent
+    To prove the second statement, assume that $b > 0$, and hence $\lambda > 0$. If $\lambda = 1$, the statement is obviously true, so assume $\lambda > 1$. We claim that for $i = 0, \dots, \lambda - 1$, we have $r_{\lambda-i} \geq \phi^i$. The statement will then follow by setting $i = \lambda - 1$ and taking logarithms.
+    
+    We now prove the above claim. For $i = 0$ and $i = 1$, we have
+    \[
+    r_\lambda \geq 1 = \phi^0 \quad \text{and} \quad r_{\lambda-1} \geq r_\lambda + 1 \geq 2 \geq \phi^1.
+    \]
+    
+    \noindent
+    For $i = 2, \dots, \lambda - 1$, using induction and applying the fact that $\phi^2 = \phi + 1$, we have
+    \[
+    r_{\lambda-i} \geq r_{\lambda-(i-1)} + r_{\lambda-(i-2)} \geq \phi^{i-1} + \phi^{i-2} = \phi^{i-2}(1 + \phi) = \phi^i,
+    \]
+    which proves Part 1.
+
+\end{Proof}
+
+\noindent
+\textbf{Example:} Suppose $a = 100$ and $b = 35$. Then the numbers appearing in Theorem 4.1 are easily computed as follows:
+
+\[
+\begin{array}{c|c|c|c|c|c}
+\rowcolor{OliveGreen!10}i      & 0   & 1   & 2   & 3   & 4   \\
+\hline
+r_i    & 100 & 35  & 30  & 5   & 0   \\
+q_i    &     & 2   & 1   & 6   &     \\
+\end{array}
+\]
+
+\noindent
+So we have $\gcd(a, b) = r_3 = 5$.
+
+\begin{Proof}[Euclidean Algorithm Time Complexity (Part 3)]
+
+    We may assume that $b > 0$. With notation as in Theorem 4.1, the running time is $O(T)$, where
+    \[
+    T = \sum_{i=1}^{\lambda} \text{len}(r_i) \text{len}(q_i) \leq \text{len}(b) \sum_{i=1}^{\lambda} \text{len}(q_i) \leq \text{len}(b) \sum_{i=1}^{\lambda} (\text{len}(r_{i-1}) - \text{len}(r_i) + 1)
+    \]
+    
+    \[
+    = \text{len}(b)(\text{len}(r_0) - \text{len}(r_{\lambda}) + \lambda) \quad (\text{telescoping the sum})
+    \]
+    \[
+    \leq \text{len}(b)(\text{len}(a) + \log b / \log \phi + 1) \quad (\text{by Theorem 4.1})
+    \]
+    \[
+    = O(\text{len}(a) \, \text{len}(b)).
+    \]
+\end{Proof}
+
+\newpage 
+
+\section{Extended Euclidean Algorithm}
+
+\noindent
+Let $a,b \in \Z$ and $d:= \gcd(a,b)$. Then by B'ezout's Identity (\ref{theo:bezouts_identity}), there exist $s,t \in \Z$ such that $as + bt = d$. For which the \textbf{Extended Euclidean Algorithm} computes $s$ and $t$.
+
+\begin{theo}[Euclid's Extended Algorithm Strategy]
+
+    Let $a$, $b$, $r_0, \dots, r_{\lambda+1}$ and $q_1, \dots, q_{\lambda}$ be as in Proof (\ref{proof:euclid_time_complexity}). Define integers $s_0, \dots, s_{\lambda+1}$ and $t_0, \dots, t_{\lambda+1}$ as follows:
+    \[
+    \begin{aligned}
+        s_0 &:= 1, \quad & t_0 &:= 0, \\
+        s_1 &:= 0, \quad & t_1 &:= 1, \\
+        s_{i+1} &:= s_{i-1} - s_i q_i, \quad & t_{i+1} &:= t_{i-1} - t_i q_i, \quad (i = 1, \dots, \lambda).
+    \end{aligned}
+    \]
+    Then:
+    \begin{itemize}
+        \item[(i)] for $i = 0, \dots, \lambda+1$, we have $a s_i + b t_i = r_i$; in particular, $a s_{\lambda} + b t_{\lambda} = \gcd(a, b)$;
+        \item[(ii)] for $i = 0, \dots, \lambda$, we have $s_i t_{i+1} - t_i s_{i+1} = (-1)^i$;
+        \item[(iii)] for $i = 0, \dots, \lambda+1$, we have $\gcd(s_i, t_i) = 1$;
+        \item[(iv)] for $i = 0, \dots, \lambda$, we have $t_i t_{i+1} \leq 0$ and $|t_i| \leq |t_{i+1}|$; for $i = 1, \dots, \lambda$, we have $s_i s_{i+1} \leq 0$ and $|s_i| \leq |s_{i+1}|$;
+        \item[(v)] for $i = 1, \dots, \lambda+1$, we have $r_{i-1} | t_i | \leq a$ and $r_{i-1} | s_i | \leq b$;
+        \item[(vi)] if $a > 0$, then for $i = 1, \dots, \lambda+1$, we have $|t_i| \leq a$ and $|s_i| \leq b$; if $a > 1$ and $b > 0$, then $|t_{\lambda}| \leq a/2$ and $|s_{\lambda}| \leq b/2$.
+    \end{itemize}
+\end{theo}
+
+\begin{Proof} [Extended Euclidean Algorithm (Part 1)]
+    (i) By induction on \( i \), with \( i = 0, 1 \). For \( i = 2, \dots, \lambda+1 \), we have
+    \begin{align*}
+        a s_i + b t_i &= a(s_{i-2} - s_{i-1} q_{i-1}) + b(t_{i-2} - t_{i-1} q_{i-1}) \\
+        &= (a s_{i-2} + b t_{i-2}) - (a s_{i-1} + b t_{i-1}) q_{i-1} \\
+        &= r_{i-2} - r_{i-1} q_{i-1} = r_i \quad \text{(by induction)}
+    \end{align*}
+    
+    \noindent
+    (ii) By induction on \( i \), with \( i = 0 \). Then \( i = 1, \dots, \lambda \), we have
+    \begin{align*}
+        s_i t_{i+1} - t_i s_{i+1} &= s_i(t_{i-1} - t_i q_i) - t_i(s_{i-1} - s_i q_i) \\
+        &= -(s_i t_i - t_i s_i) \\
+        &= -(1) = (-1)^i \quad \text{(by induction)}.
+    \end{align*}
+\end{Proof}
+
+\begin{Proof}[Extended Euclidean Algorithm (Part 2)]
+
+    (iii) follows directly from (ii) from Part 1.
+
+    \noindent
+    (iv) By induction on \( i \). The statement involving the \( t_i \)'s is true for \( i = 0 \). For \( i = 1, \dots, \lambda \), we have
+    \[
+    t_{i+1} = t_i - t_i q_i;
+    \]
+    moreover, by the induction hypothesis, \( t_{i-1} \) and \( t_i \) have opposite signs and \( |t_i| \geq |t_{i-1}| \). It follows that \( |t_{i+1}| = |t_{i-1}| + |t_i| q_i \geq |t_i| \), and that the sign of \( t_{i+1} \) is the opposite of that of \( t_i \). The proof of the statement involving the \( s_i \)'s is the same, except that we start the induction at \( i = 1 \).
+
+    \noindent
+    For (v), one considers the two equations:
+    \[
+    a s_{i-1} + b t_{i-1} = r_{i-1},
+    \]
+    \[
+    a s_i + b t_i = r_i.
+    \]
+    Subtracting \( t_{i-1} \) times the second equation from \( t_i \) times the first, and applying (ii), we get
+    \[
+    \pm a = t_i r_{i-1} - t_{i-1} r_i;
+    \]
+    consequently, using the fact that \( t_i \) and \( t_{i-1} \) have opposite signs, we obtain
+    \[
+    a = |t_i r_{i-1} - t_{i-1} r_i| = |t_i| |r_{i-1}| + |t_{i-1}| |r_i| \geq |t_i| |r_{i-1}|.
+    \]
+
+    The inequality involving \( s_i \) follows similarly, subtracting \( s_{i-1} \) times the second equation from \( s_i \) times the first.
+
+    \noindent
+    (vi) follows from (v) and the following observations: if \( a > 0 \), then \( r_{i-1} > 0 \) for \( i = 1, \dots, \lambda + 1 \); and if \( a \) and \( b > 0 \), then \( \lambda > 0 \) and \( r_{\lambda-1} \geq 2 \).
+
+\end{Proof}
+
+\noindent
+\textbf{Example:} We continue with the previous example. The $s_i$'s and $t_i$'s are computed from the $q_i$'s:
+\[
+\begin{array}{c|c|c|c|c|c}
+\rowcolor{OliveGreen!10}i & r_i & q_i & s_i & t_i \\
+\hline
+0 & 100 &   & 1 & 0 \\
+1 & 35  & 2 & 0 & 1 \\
+2 & 30  & 1 & 1 & -2 \\
+3 & 5   & 6 & -1 & 3 \\
+4 & 0   &  & 7 & -20 \\
+\end{array}
+\]
+So we have $\gcd(a, b) = 5 = -a + 3b$.
+
+\newpage
+
+\begin{Func}[Extended Euclidean Algorithm - \textit{gcdExtended()}]
+
+    \label{func:gcdExtended}
+
+    On input $a, b$, where $a$ and $b$ are integers such that $a \geq b \geq 0$, compute integers $d$, $s$, and $t$, such that $d = \gcd(a, b)$ and $as + bt = d$, as follows:
+
+    \vspace{.5em}
+    \noindent
+    \textbf{Input:} $a, b$ (integers with $a \geq b \geq 0$)\\
+    \textbf{Output:} $d = \gcd(a, b)$, and integers $s, t$ such that $as + bt = d$
+
+    \vspace{.5em}
+    \begin{algorithm}[H]
+        \SetAlgoLined
+        \SetKwProg{Fn}{Function}{:}{\KwRet{}}
+        \Fn{\textit{gcdExtended}($a, b$)}{
+            $r \gets a$, $r' \gets b$\;
+            $s \gets 1$, $s' \gets 0$\;
+            $t \gets 0$, $t' \gets 1$\;
+            \While{$r' \neq 0$}{
+                $q \gets \left\lfloor \dfrac{r}{r'} \right\rfloor$\;
+                $r'' \gets r \mod r'$\;
+                $(r, r', s, s', t, t') \gets (r', r'', s', s - s'q, t', t - t'q)$\;
+            }
+            $d \gets r$\;
+            \KwRet{$d, s, t$}\;
+        }
+    \end{algorithm}
+
+    \noindent\rule{\textwidth}{0.4pt}
+
+    \noindent
+    \textbf{Time Complexity:} $O(\|a\| \cdot \|b\|)$, where $||a||$ and $||b||$ are the number of bits in $a$ and $b$. We may assume that $b > 0$. It suffices to analyze the cost of computing the coefficient sequences $\{s_i\}$ and $\{t_i\}$.
+    Consider first the cost of computing all of the $t_i$'s, which is $O(T)$, where $T = \sum_{i=2}^{\lambda} \|t_i\|\cdot\|q_i\|$. We have $t_1 = 1$ and, by part (vi) of our previous proof, we have $|t_i| \leq a$ for $i = 2, \dots, \lambda$. Then we have
+    \[
+    T \leq \|q_1\| + \|a\| \sum_{i=2}^{\lambda} \|q_i\|
+    \]
+    \[
+    \leq \|a\| + \|a\|(\|r_1\| - \|r_{\lambda}\| + \lambda - 1) = O(\|a\| \cdot \|b\|).
+    \]
+
+    \noindent
+    An analogous argument shows that one can also compute all of the $s_i$'s in time $O(\|a\| \cdot \|b\|)$, and in fact, in time $O(\|b\|^2)$.
+\end{Func}
+
+
+
+
+
+
+
+
+
+
