@@ -12,6 +12,6 @@ Don't
 7. Put non-critical information into Tip boxes
 8. Put some-what critical information into Note boxes
 
-## Mission
+## Goal
 Text books should operate as dictionaries of knowledge, not stories or a display of skill.
 Things ought to be consise and well written, so much so, that a laymen could understand at a highlevel what each definition or theorem means.
