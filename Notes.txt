@@ -6,12 +6,20 @@
 
 # Abstract Algebra
 
+additive inverses and mult inverses: 
+    add or negative or minus is to add something with it's opposite, here we say inverse 
+    the opposite for multiplacation is its reciprocal.
+
 Groups: 
     - Operations * preformed on a group G element g stays in the group (closed under the opration)
     - inverses, or opposite elements
     - When opposites combine they form an identity
     - An identity combined with another element g is still g 
     - associativity
+
+Semi-group: 
+
+    a group which does not require inverses, or identities
 
 Abelian Groups (commutative groups):
     - Groups that also hold under commutativity
@@ -118,6 +126,172 @@ First Isomorphism Theorem:
 
 
 Order of an Element: 
-    group G with identity e, x in G has order
+    group G with identity e, x in G the order of x is the smallest positive integer 
+    n such that x^n = e. Denoted |x|, not to be confused with absolute. If 
+    no such n exists, it has infinite order.
 
+    The order of any identity element is 1
+
+Symmetric Groups: 
+
+    Sn (S sub n), S tells us its symmetric and n tells us how many elements are in that set.
+    This runs n permutations on such a set, the resulting set is n!, which is also it's order.
+
+    compact form of 
+
+    1,2,3,4 permutations 4,3,2,1 and 1,2,4,3, could be 
+    f(1): 4
+    f(2): 3
+    and so on 
+    g(1): 1
+    g(3): 3 
+    and so on 
+    compactly represented as 
+    (large parenthesis) 
+    |1 2 3 4|     |1 2 3 4|
+    |4 3 2 1|  *  |1 2 4 3|
+
+    to do f of g and multply we follow, the composition. 1->1 in g, 1 in f-> 4 
+    and so on 
+
+    |1 2 3 4|
+    |4 3 1 2| is the resulting multiplication 
+
+    except for n > 2 are non-abelian (non-commutative)
+
+Caleys theorem:
+    every finite group is a subgroup of a Symmetric group.
+
+Cycle Notation: 
+    simplifies the above notation
+
+    |1 2 3 4|
+    |4 3 1 2| 
+    to 1->4->2->3->1 shortens to (1 4 2 3)
+
+    |1 2 3 4 5|
+    |3 5 4 1 2| 
+    1->3->4->1, 2->5->2 shortens to  (1 3 4)(2 5) a product of two cycles
+
+    (1 3 4) a 3-cycle 
+    (2 5) a 2-cycle (transposition)
+
+    (2 4 1)(3)(5) , 3 and 5 can be omitted for short-hand as they don't change any numbers
+
+    the order of the cycle doesn't matter, when all cycles have unique elements pairwise (they commute)
+
+    (2 5)(1 3 4)
+
+Direct Product of Groups:
+    take G1 and G2, then the direct product is x in G1 and y in G2 such that 
+    (x,y) in G1 * G2 (the cartesian almost, not really)
+
+    say G1 uses multiplication and G2 uses addition then, to find entries we do 
+
+    (x1,y2) * (x2,y2) = ((x1*x2),(y1+y2)) in G1 * G2, only groups function on themselves. The 
+    group product is are all permutations of (x,y) pairs added against all other pairs. Hence 
+    the size of G1 * G2 is |G1| * |G2|
+
+    if infinite order, is in one, then the product is infinite
+
+    if one group is non-abelian, then the result is non abelian.
+
+FTA on Groups:
+
+    just how numbers can be factored into primes (you may think of primes as the building blocks).
+    This too can be done with groups, using simple groups on finite groups.
+
+    to start, we preform such on G, find a maximal normal subgroup N1 of G. This means this 
+    is the biggest possible normal subgroup of G such that no other H betwen N1 and G could be made.
+    This N1 is also a proper subgroup (smaller than G).
+
+    Create a series of these max proper normal groups from N1 until the trivial group is made. Each 
+    sub group a child that is max and proper to its parent. 
+    1 <|...<| N4 <| N3 <| N2 <| N1 <| G
+    this is called a "normal series"
+    the longest of these chains are a "composition series"
+
+    Jorden Holder Theorem states, that there may be multiple composition series 
+    though all of them are identical, just in different order.
+
+    In a composition series each group is a Simple 
+    
+    Finite simple groups Z/pZ, as Z/pZ is mod p for p prime. 
+    it has order p. though it's composition series consists of only two elements 
+    p itself and 1, as p cannot be broken into any smaller normal subgroups then such. 
+
+Ring: 
+
+    a set of elements which, 
+    - closed under addition as an abelian group
+    - closed under multiplication 
+      semi-group
+      (not necessarily abelian, and not all elements may have inverses, associative)
+    - Distributive Property (left and right)
+
+Units: 
+    the set of elements within a Ring which do have mult inverses. 
+    This set forms a group under the operation. Denoted R^x (R to cartesian X)
+
+Associate: 
+    element times a unit = an associate.
+
+Associates Usage in FTA or factoring:
+    Associates help generalize FTA to negative numbers
+
+Zero Divisors:
+    we say a|b if a*k = b, 
+    hence in mod 
+
+    3*4 cong 0 (mod 12) is a zero divisor 
+
+Factoring Rings:
+    when there are no zero divisors you can solve by factoring and setting terms to zero 
+    (polynamials) (x^2+5x+6) cong 0 (mod 11), 11 a prime, however, when there are zero 
+    divisors you may mis solutions, (mod 12)
+
+Integral Domain:
+    - a commutative ring
+    - mult identity 1
+    - no zero divisors (enables cancellation and factoring)
+    - cancellation property 
+        a != 0
+        ax=ay, ax-ay=0, a(x-y)= 0 by Distributive
+        x-y must equal 0 as a isn't 0
+        x=y (a is cancelled)
+
+Domain: 
+    a domain in abstract algebra is 
+    an integral domain which does not require commutativity
+
+Ideal:
+    is a subgroup I of a ring R which 
+    r in R and i in I 
+    then ir in I 
+    and ri in I
+
+    so it acts as a normal group of rings, which the set of ideals form a Ring.
+    So it is a subgroup closed under multiplacation, but it's not a subring as 
+    it misses the identity element 1. (but don't rings not inherently have an identity? 
+    is it that it doesn't have the additive identity?)
+
+Fields: 
+    (
+        aside:
+            +,- (group)
+            +,-,x (ring)
+            +,-,x,/ (field) 
+    )
+    F is a field with 2 operations
+    <F,+> commutative addition 
+    <F^x,*> commutative multiplication (excluding 0)
+    closed under Distributive property
+
+    building blocks are Rational numbers (Q) and prime modulus classes Z/pZ
+    Q: infinite field (more Real numbers, Complex numbers)
+    Z/pZ: finite field 
+
+    anything built of of such, is an extension field
+    if an extension of Z/5z "F has characteristic 3"
+    if an extension of Q "F has characteristic 0"
 
